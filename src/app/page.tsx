@@ -1,5 +1,7 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <div>Wikusia</div>;
+  return (
+    <div className="w-full h-screen flex justify-center items-center font-semibold">
+      Wikusia
+    </div>
+  );
 }
