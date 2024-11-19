@@ -1,7 +1,11 @@
+import Header from "@/components/header/Header";
+import AboutsUs from "@/components/sections/aboutUs/AboutsUs";
+
 export default function Home() {
   return (
-    <div className="w-full h-screen flex justify-center items-center font-semibold">
-      Wikusia
-    </div>
+    <>
+      <Header />
+      <AboutsUs />
+    </>
   );
 }

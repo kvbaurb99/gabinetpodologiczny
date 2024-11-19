@@ -9,7 +9,17 @@ export const NavigationWrapper = styled.nav`
 `;
 
 export const NavigationContainer = styled.div`
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
+
+export const LinksList = styled.ul`
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+`;
+
+export const LinkItem = styled.li``

@@ -1,21 +1,14 @@
 import { metadata } from "@/meta/home";
-import localFont from "next/font/local";
+import dynamic from "next/dynamic";
 import "./globals.css";
-import Navigation from "@/components/navigation/Navigation";
-import Footer from "@/components/footer/Footer";
 import StyledComponentsRegistry from "@/lib/registry";
+import { geistMono, geistSans } from "@/lib/fonts";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// Dynamic imports
+const Footer = dynamic(() => import("@/components/footer/Footer"));
+const Navigation = dynamic(() => import("@/components/navigation/Navigation"));
 
+// Meta data is imported from the meta folder
 export { metadata };
 
 export default function RootLayout({
