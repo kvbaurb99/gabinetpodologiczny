@@ -7,6 +7,7 @@ export const AboutContainer = styled.div`
   justify-content: space-between;
   gap: 2rem;
   align-items: center;
+  
 `;
 
 export const AboutImage = styled(Image)`
