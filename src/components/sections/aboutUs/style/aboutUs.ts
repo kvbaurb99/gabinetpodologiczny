@@ -17,6 +17,7 @@ export const AboutImage = styled(Image)`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
+
 export const AboutTitle = styled.h1`
   font-size: 2rem;
   font-weight: 600;
