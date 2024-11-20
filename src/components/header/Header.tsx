@@ -1,33 +1,33 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Slide from "./elements/Slide";
-import { EffectFade, Autoplay } from "swiper/modules";
 import { headerSlides } from "./data/headerSlides";
+import { sliderSettings } from "./sliderSettings/settings";
+import Pagination from "./elements/Pagination";
 
+// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/autoplay";
+import "swiper/css/navigation";
 
 export default function Header() {
   return (
-    <header>
-      <Swiper
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: true,
-        }}
-        speed={800}
-        loop
-        slidesPerView={1}
-        modules={[EffectFade, Autoplay]}
-        effect="fade"
-      >
+    <header className="relative">
+      <Swiper {...sliderSettings}>
         {headerSlides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <Slide currentIndex={index} img={slide.src} alt={slide.alt} />
+            <Slide
+              currentIndex={index}
+              img={slide.src}
+              alt={slide.alt}
+              title={slide.title}
+              description={slide.description}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
+      <Pagination />
     </header>
   );
 }

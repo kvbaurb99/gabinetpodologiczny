@@ -2,24 +2,47 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export const AboutContainer = styled.div`
+type AboutUsProps = {
+  $reverse?: boolean;
+};
+
+export const AboutContainer = styled.div<AboutUsProps>`
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
   align-items: center;
-  
+  justify-content: center;
+  gap: 3rem;
+  flex-direction: ${(props) => (props.$reverse ? "row-reverse" : "row")};
 `;
 
-export const AboutImage = styled(Image)`
-  width: 560px;
+export const Figure = styled.figure`
+  width: 50%;
   height: 360px;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
+export const AboutImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
 
 export const AboutTitle = styled.h1`
+  color: #2b6777;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
+
+export const AboutTitleH2 = styled.h2`
+  color: #2b6777;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;

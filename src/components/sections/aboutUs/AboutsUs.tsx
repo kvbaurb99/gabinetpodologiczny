@@ -1,20 +1,49 @@
-import { P, SectionWrapper } from "@/global-styles/global";
-import Image from "next/image";
-import about_src from "@/assets/sections/aboutUs/about_us.png";
-import { AboutContainer, AboutImage, AboutTitle } from "./style/aboutUs";
+import { Button, P, SectionWrapper } from "@/global-styles/global";
+import about_src from "@/assets/backgrounds/clinic.jpg";
+import about_src_2 from "@/assets/backgrounds/Office_Rm_1111.webp";
+import {
+  AboutContainer,
+  AboutImage,
+  AboutTitle,
+  AboutTitleH2,
+  Figure,
+} from "./style/aboutUs";
 
-export default function AboutsUs() {
+type Props = {
+  main?: boolean;
+  reverse?: boolean;
+};
+
+export default function AboutsUs({ reverse, main }: Props) {
   return (
     <SectionWrapper>
-      <AboutContainer>
-        <div>
-          <AboutTitle>Gabinet podologiczny Zdrowe Stopy</AboutTitle>
+      <AboutContainer $reverse={reverse}>
+        <div className="w-1/2">
+          {!main ? (
+            <AboutTitleH2>
+              {reverse ? "Przejście 2" : "Przejście 1"}
+            </AboutTitleH2>
+          ) : (
+            <AboutTitle>
+              {reverse ? "Przejście 2" : "Gabinet podologiczny"}
+            </AboutTitle>
+          )}
           <P>
-            Szukasz profesjonalnej pomocy? Zmagasz się z nieprzyjemnymi
-            dolegliwościami podologicznymi? Jesteś w dobrym miejscu.{" "}
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
           </P>
+          <Button>Dowiedz się więcej</Button>
         </div>
-        <AboutImage src={about_src} alt="image" />
+        <Figure>
+          <AboutImage
+            priority={!reverse}
+            src={!reverse ? about_src : about_src_2}
+            alt="Gabinet zdrowe stopy"
+            title="Gabinet zdrowe stopy"
+          />
+        </Figure>
       </AboutContainer>
     </SectionWrapper>
   );
