@@ -35,14 +35,14 @@ export const AboutImage = styled(Image)`
 `;
 
 export const AboutTitle = styled.h1`
-  color: #2b6777;
+  color: rgb(79, 103, 189);
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 `;
 
 export const AboutTitleH2 = styled.h2`
-  color: #2b6777;
+  color: rgb(79, 103, 189);
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
