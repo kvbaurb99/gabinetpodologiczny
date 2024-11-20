@@ -14,7 +14,7 @@ export default function Offer() {
         backgroundImage: `url(${BackgroundImage.src})`,
       }}
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-blue-500/60 backdrop-blur-sm">
+      <div className="absolute top-0 left-0 w-full h-full bg-blue-500/60">
         <DefaultContainer className="py-12">
           <H2 $white>Schorzenia stóp którymi się zajmujemy:</H2>
           <P>Do dokończenia (potrzeba zdjęć i szczegółów oferty)</P>
