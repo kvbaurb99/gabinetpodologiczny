@@ -1,3 +1,116 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Article */
+
+.article-style {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.article-style div {
+  margin-bottom: 1.5rem;
+}
+
+.article-style h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 2rem 0 1.5rem;
+  color: #111;
+}
+
+.article-style h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.75rem 0 1.25rem;
+  color: #222;
+}
+
+.article-style h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem;
+  color: #333;
+}
+
+.article-style h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.75rem;
+  color: #444;
+}
+
+.article-style p {
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+}
+
+.article-style ul,
+.article-style ol {
+  margin: 1.25rem 0;
+  padding-left: 2rem;
+}
+
+.article-style li {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.article-style img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+}
+
+.article-style table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.article-style th,
+.article-style td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.article-style th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.article-style tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.article-style blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid #666;
+  background-color: #f5f5f5;
+  font-style: italic;
+}
+
+.article-style code {
+  font-family: monospace;
+  background-color: #f5f5f5;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.article-style a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.article-style a:hover {
+  text-decoration: underline;
+}

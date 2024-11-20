@@ -1,9 +1,10 @@
 import ImageOne from "@/assets/header/img_one.jpg";
 import ImageTwo from "@/assets/header/img_two.jpg";
+import ImageThree from "@/assets/header/img_three.jpg";
 
 export const headerSlides = [
   {
-    src: ImageOne,
+    src: ImageThree,
     alt: "Zadbaj o zdrowie swoich stóp",
     title: "Zadbaj o zdrowie swoich stóp",
     description:
@@ -15,5 +16,12 @@ export const headerSlides = [
     title: "Nowoczesne metody leczenia",
     description:
       "Wykorzystujemy najnowocześniejszy sprzęt i sprawdzone metody terapeutyczne. W gabinecie Zdrowe Stopy Twoje stopy są w najlepszych rękach.",
+  },
+  {
+    src: ImageOne,
+    alt: "Komfort i profesjonalizm",
+    title: "Komfort i profesjonalizm",
+    description:
+      "Zapewniamy przyjazną atmosferę i indywidualne podejście do każdego pacjenta. Skorzystaj z bezpłatnej konsultacji i przekonaj się, że Twoje stopy zasługują na najlepszą opiekę.",
   },
 ];

@@ -4,8 +4,7 @@ import {
   P,
   SectionWrapper,
 } from "@/global-styles/global";
-import BackgroundImage from "@/assets/backgrounds/test.jpg";
-import Image from "next/image";
+import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_900px_cf1ef4ccad.jpg";
 
 export default function Offer() {
   return (
@@ -15,9 +14,10 @@ export default function Offer() {
         backgroundImage: `url(${BackgroundImage.src})`,
       }}
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-blue-400/60">
+      <div className="absolute top-0 left-0 w-full h-full bg-blue-500/60 backdrop-blur-sm">
         <DefaultContainer className="py-12">
           <H2 $white>Schorzenia stóp którymi się zajmujemy:</H2>
+          <P>Do dokończenia (potrzeba zdjęć i szczegółów oferty)</P>
         </DefaultContainer>
       </div>
     </section>
