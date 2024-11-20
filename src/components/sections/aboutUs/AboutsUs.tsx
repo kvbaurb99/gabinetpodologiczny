@@ -39,6 +39,8 @@ export default function AboutsUs({ reverse, main }: Props) {
         <Figure>
           <AboutImage
             priority={!reverse}
+            width={360}
+            height={360}
             src={!reverse ? about_src : about_src_2}
             alt="Gabinet zdrowe stopy"
             title="Gabinet zdrowe stopy"
