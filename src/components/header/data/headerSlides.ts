@@ -1,6 +1,6 @@
-import ImageOne from "@/assets/header/img_one.jpg";
+import ImageOne from "@/assets/header/img_one.webp";
 import ImageTwo from "@/assets/header/img_two.jpg";
-import ImageThree from "@/assets/header/img_three.jpg";
+import ImageThree from "@/assets/header/img_three.webp";
 
 export const headerSlides = [
   {

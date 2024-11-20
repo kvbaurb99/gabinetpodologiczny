@@ -1,6 +1,6 @@
 import { H2, SectionWrapper } from "@/global-styles/global";
 import articles from "@/data/articles.json";
-import TestImage from "@/assets/header/img_one.jpg";
+import TestImage from "@/assets/header/img_one.webp";
 import Image from "next/image";
 import {
   ArticlesGrid,

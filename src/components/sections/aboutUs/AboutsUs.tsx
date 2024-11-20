@@ -1,5 +1,5 @@
 import { Button, P, SectionWrapper } from "@/global-styles/global";
-import about_src from "@/assets/backgrounds/clinic.jpg";
+import about_src from "@/assets/backgrounds/clinic.webp";
 import about_src_2 from "@/assets/backgrounds/Office_Rm_1111.webp";
 import {
   AboutContainer,

@@ -4,7 +4,7 @@ import {
   P,
   SectionWrapper,
 } from "@/global-styles/global";
-import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_900px_cf1ef4ccad.jpg";
+import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_900px_cf1ef4ccad.webp";
 
 export default function Offer() {
   return (
