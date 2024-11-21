@@ -1,6 +1,5 @@
 import { DefaultContainer, H2 } from "@/global-styles/global";
 import { offer } from "./data/offer";
-import OfferImage from "@/assets/sections/offer/poladolog-ikonka-1.png";
 import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_900px_cf1ef4ccad.webp";
 import {
   CardBack,
@@ -27,7 +26,7 @@ export default function Offer() {
                 <CardInner>
                   <CardFront>
                     <StyledImage
-                      src={OfferImage}
+                      src={item.image}
                       alt="Podolog"
                       loading="lazy"
                       width={150}
