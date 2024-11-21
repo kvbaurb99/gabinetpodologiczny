@@ -27,21 +27,16 @@ export default function Offer() {
                   <CardFront>
                     <StyledImage
                       src={item.image}
-                      alt="Podolog"
+                      alt={item.title}
                       loading="lazy"
-                      width={150}
+                      width={140}
                       height={160}
                     />
                     <CardTitle>{item.title}</CardTitle>
                   </CardFront>
                   <CardBack>
                     <CardTitle>{item.title}</CardTitle>
-                    <CardDescription>
-                      Poszukujesz skutecznego rozwiązania problemów z stopami?
-                      Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy
-                      pacjent otrzymuje kompleksową opiekę i indywidualnie
-                      dobrany plan terapii.
-                    </CardDescription>
+                    <CardDescription>{item.overview}</CardDescription>
                   </CardBack>
                 </CardInner>
               </CardWrapper>
