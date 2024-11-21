@@ -4,7 +4,7 @@ import ImageThree from "@/assets/header/img_three.webp";
 
 export const headerSlides = [
   {
-    src: ImageThree,
+    src: ImageOne,
     alt: "Zadbaj o zdrowie swoich stóp",
     title: "Zadbaj o zdrowie swoich stóp",
     description:
@@ -18,7 +18,7 @@ export const headerSlides = [
       "Wykorzystujemy najnowocześniejszy sprzęt i sprawdzone metody terapeutyczne. W gabinecie Zdrowe Stopy Twoje stopy są w najlepszych rękach.",
   },
   {
-    src: ImageOne,
+    src: ImageThree,
     alt: "Komfort i profesjonalizm",
     title: "Komfort i profesjonalizm",
     description:
