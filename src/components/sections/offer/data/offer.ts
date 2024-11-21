@@ -10,36 +10,36 @@ export const offer = [
     title: "Pedicure podologiczny",
     image: Pedicure,
     overview:
-      "Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii.",
+      "Profesjonalny zabieg pielęgnacyjny stóp. Obejmuje kompleksową ocenę stanu stóp, usuwanie zrogowaciałego naskórka oraz pielęgnację paznokci. Idealny zarówno dla profilaktyki, jak i przy występujących dolegliwościach.",
   },
   {
     title: "Odciski i modzele",
     image: Modzele,
     overview:
-      "Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii.",
+      "Specjalistyczne usuwanie zgrubień i zrogowaceń skóry powstałych w wyniku nadmiernego ucisku. Stosujemy bezpieczne metody usuwania modzeli i odcisków, dobierając odpowiednią metodę terapii oraz zapobiegając ich nawrotom poprzez indywidualne zalecenia.",
   },
   {
     title: "Pękające pięty",
     image: Pekajace,
     overview:
-      "Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii.",
+      "Kompleksowe leczenie pękającej i nadmiernie przesuszonej skóry pięt. Podczas zabiegu wykonujemy oczyszczanie pięt, usuwamy zrogowaciały naskórek oraz aplikujemy specjalistyczne preparaty regenerujące. Doradzamy w zakresie codziennej pielęgnacji.",
   },
   {
     title: "Brodawki wirusowe",
     image: Brodawki,
     overview:
-      "Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii.",
+      "Skuteczne usuwanie brodawek wirusowych (kurzajek) z wykorzystaniem nowoczesnych metod terapeutycznych. Oferujemy kompleksowe podejście łączące usuwanie zmian z wzmacnianiem odporności skóry i zapobieganiem rozprzestrzenianiu się wirusa.",
   },
   {
     title: "Paznokcie zmienione chorobowo",
     image: Paznokcie,
     overview:
-      "Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii.",
+      "Specjalistyczna opieka nad paznokciami zmienionymi przez grzyby, urazy lub inne schorzenia. Przeprowadzamy dokładną diagnostykę, frezowanie płytki oraz aplikację preparatów leczniczych. Opracowujemy indywidualny plan terapii dla każdego pacjenta.",
   },
   {
     title: "Wrastające paznokcie",
     image: Wrastajace,
     overview:
-      "Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii.",
+      "Profesjonalne leczenie wrastających paznokci metodami konserwatywnymi lub z zastosowaniem specjalistycznych klamer ortonyksyjnych. Zapewniamy natychmiastową ulgę w bólu oraz długotrwałe efekty korekcji poprzez odpowiednie prowadzenie płytki paznokciowej.",
   },
 ];

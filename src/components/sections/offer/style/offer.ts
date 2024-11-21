@@ -2,12 +2,10 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-
-
 export const StyledSection = styled.section<{ $bgImage: string }>`
   height: 800px;
   width: 100%;
-  background: url(${props => props.$bgImage}) no-repeat center center;
+  background: url(${(props) => props.$bgImage}) no-repeat center center;
   background-size: cover;
   margin-top: 3rem;
   position: relative;
@@ -41,7 +39,7 @@ export const CardInner = styled.div`
   width: 100%;
   transition: all 0.5s;
   transform-style: preserve-3d;
-  
+
   ${CardWrapper}:hover & {
     transform: rotateY(180deg);
   }
@@ -57,7 +55,7 @@ export const CardSide = styled.div`
   background-color: white;
   border-radius: 0.25rem;
   backface-visibility: hidden;
-  box-shadow: 0 8px 30px rgb(0,0,0,0.12);
+  box-shadow: 0 8px 30px rgb(0, 0, 0, 0.12);
 `;
 
 export const CardFront = styled(CardSide)`
@@ -67,7 +65,7 @@ export const CardFront = styled(CardSide)`
 
 export const CardBack = styled(CardSide)`
   transform: rotateY(180deg);
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 
 export const CardTitle = styled.h3`
@@ -79,6 +77,7 @@ export const CardTitle = styled.h3`
 export const CardDescription = styled.p`
   padding: 0 1.5rem;
   text-align: center;
+  color: #747474;
 `;
 
 export const StyledImage = styled(Image)`
