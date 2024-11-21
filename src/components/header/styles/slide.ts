@@ -40,7 +40,7 @@ export const TextContent = styled.div`
   max-width: 42rem;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.p`
   font-size: 2.375rem;
   font-weight: bold;
   margin-bottom: 1rem;

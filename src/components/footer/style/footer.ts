@@ -44,7 +44,7 @@ export const Description = styled.p`
   font-size: 0.875rem;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.p`
   font-size: 1.125rem;
   font-weight: bold;
   margin-bottom: 0.375rem;
