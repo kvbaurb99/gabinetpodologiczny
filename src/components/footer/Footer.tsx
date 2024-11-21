@@ -35,8 +35,10 @@ const Footer = () => {
               <span>LOGO</span>
             </LogoContainer>
             <Description>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Gabinet Podologiczny Zdrowe Stopy - Twoja kompleksowa opieka
+              podologiczna w profesjonalnych warunkach. Specjalizujemy się w
+              diagnostyce i leczeniu schorzeń stóp, zapewniając najwyższy
+              standard usług i indywidualne podejście do każdego pacjenta.
             </Description>
           </Column>
 

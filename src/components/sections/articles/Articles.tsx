@@ -13,10 +13,14 @@ import {
 } from "../../blog/style/article";
 import Link from "next/link";
 
-export default function Articles() {
+type Props = {
+  withoutTitle?: boolean;
+};
+
+export default function Articles({ withoutTitle }: Props) {
   return (
     <SectionWrapper>
-      <H2>Artykuły i Wskazówki Podologiczne</H2>
+      {!withoutTitle ? <H2>Artykuły i Wskazówki Podologiczne</H2> : null}
       <ArticlesGrid>
         {articles.map((article, index) => (
           <ArticleCard key={index}>

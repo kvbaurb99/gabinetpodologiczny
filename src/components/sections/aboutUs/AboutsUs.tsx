@@ -8,33 +8,29 @@ import {
   AboutTitleH2,
   Figure,
 } from "./style/aboutUs";
+import Link from "next/link";
 
 type Props = {
   main?: boolean;
   reverse?: boolean;
+  title: string;
+  description: string;
 };
 
-export default function AboutsUs({ reverse, main }: Props) {
+export default function AboutsUs({ reverse, main, title, description }: Props) {
   return (
     <SectionWrapper>
       <AboutContainer $reverse={reverse}>
         <div className="w-1/2">
           {!main ? (
-            <AboutTitleH2>
-              {reverse ? "Przejście 2" : "Przejście 1"}
-            </AboutTitleH2>
+            <AboutTitleH2>{title}</AboutTitleH2>
           ) : (
-            <AboutTitle>
-              {reverse ? "Przejście 2" : "Gabinet podologiczny"}
-            </AboutTitle>
+            <AboutTitle>{title}</AboutTitle>
           )}
-          <P>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
-          </P>
-          <Button>Dowiedz się więcej</Button>
+          <P>{description}</P>
+          <Link href={!reverse ? "/o-nas" : "/kontakt"}>
+            <Button>Dowiedz się więcej</Button>
+          </Link>
         </div>
         <Figure>
           <AboutImage
