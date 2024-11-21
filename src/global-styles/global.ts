@@ -31,7 +31,7 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2<H2Props>`
   color: ${(props) => (props.$white ? "#fff" : "rgb(79, 103, 189)")};
-  font-size: 2rem;
+  font-size: 2.125rem;
   font-weight: 600;
   margin-bottom: 1rem;
 `;
