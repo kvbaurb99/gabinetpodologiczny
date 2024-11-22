@@ -45,7 +45,7 @@ export const Description = styled.p`
 `;
 
 export const Title = styled.p`
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0.375rem;
 `;

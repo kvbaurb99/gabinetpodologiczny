@@ -11,7 +11,11 @@ import "swiper/css/effect-fade";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
 
-export default function Header() {
+type Props = {
+  isMobile: boolean;
+};
+
+export default function Header({ isMobile }: Props) {
   return (
     <header className="relative">
       <Swiper {...sliderSettings}>
@@ -23,6 +27,7 @@ export default function Header() {
               alt={slide.alt}
               title={slide.title}
               description={slide.description}
+              isMobile={isMobile}
             />
           </SwiperSlide>
         ))}

@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Header from "@/components/header/Header";
+import { mobileDetectFunction } from "@/utils/mobileDetectFunction";
 
 // Dynamic imports
 const AboutsUs = dynamic(
@@ -12,14 +13,15 @@ const Articles = dynamic(
 );
 const Reviews = dynamic(() => import("@/components/sections/reviews/Reviews"));
 
-export default function Home() {
+export default async function Home() {
+  const isMobile = await mobileDetectFunction();
   return (
     <>
-      <Header />
+      <Header isMobile={isMobile} />
       <AboutsUs
         main
         title="Gabinet Podologiczny Zdrowe Stopy - Twój Specjalista od Pielęgnacji Stóp"
-        description="Witaj w gabinecie podologicznym Zdrowe Stopy, gdzie profesjonalizm łączy się z indywidualnym podejściem do każdego pacjenta. Nasz zespół doświadczonych podologów specjalizuje się w kompleksowej diagnostyce i leczeniu wszelkich dolegliwości stóp. Oferujemy szeroki zakres zabiegów, od podstawowej pielęgnacji po specjalistyczne procedury medyczne. "
+        description="Witaj w gabinecie podologicznym Zdrowe Stopy, gdzie profesjonalizm łączy się z indywidualnym podejściem do każdego pacjenta. Specjalizujemy się w kompleksowej diagnostyce i leczeniu wszelkich dolegliwości stóp. Oferujemy szeroki zakres zabiegów, od podstawowej pielęgnacji po specjalistyczne procedury medyczne. "
       />
       <AboutsUs
         reverse

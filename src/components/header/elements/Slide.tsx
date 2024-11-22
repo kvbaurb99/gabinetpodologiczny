@@ -18,6 +18,7 @@ type Props = {
   alt: string;
   title?: string;
   description?: string;
+  isMobile: boolean;
 };
 
 export default function Slide({
@@ -26,6 +27,7 @@ export default function Slide({
   alt,
   title,
   description,
+  isMobile,
 }: Props) {
   return (
     <SlideContainer>
@@ -33,7 +35,7 @@ export default function Slide({
         priority={currentIndex === 0}
         src={img}
         alt={alt}
-        width={1440}
+        width={isMobile ? 360 : 1440}
         height={500}
       />
       <Overlay />
@@ -46,22 +48,6 @@ export default function Slide({
           </Description>
           <div className="flex items-center gap-7 mt-6">
             <Button>Umów wizytę już dziś</Button>
-            <div className=" items-center rounded gap-5 hidden">
-              <Image
-                src={PhoneIcon}
-                priority
-                alt="Telefon"
-                width={22}
-                height={22}
-              />
-              <Link
-                href="tel:+48501408528"
-                className="flex flex-col gap-0.5 font-medium"
-              >
-                <span>Zadzwoń</span>
-                <p>+48 501 408 528</p>
-              </Link>
-            </div>
           </div>
         </TextContent>
       </ContentWrapper>

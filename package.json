@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/third-parties": "^15.0.3",
     "lucide-react": "^0.460.0",
+    "mobile-detect": "^1.4.5",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-device-detect": "^2.2.3",
