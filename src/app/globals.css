@@ -118,7 +118,7 @@
 /* Style dla headera gabinetu podologicznego */
 
 .podology-slider {
-  --swiper-theme-color: #14b8a6; /* Kolor motywu - teal-500 */
+  --swiper-theme-color: rgb(79, 103, 189); /* Kolor motywu - teal-500 */
   --swiper-pagination-bullet-inactive-color: #ffffff;
   --swiper-pagination-bullet-inactive-opacity: 0.5;
   --swiper-pagination-bullet-size: 10px;
