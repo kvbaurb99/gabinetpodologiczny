@@ -85,7 +85,7 @@ function HeaderSlide({
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 
       {/* Zawartość slajdu */}
-      <div className="absolute inset-0 w-[80%] mx-auto h-full flex items-center">
+      <div className="absolute inset-0 w-[80%] mx-auto h-full flex items-center xl:mt-4">
         <div className="max-w-xl text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
             {title || "Profesjonalna opieka podologiczna"}
