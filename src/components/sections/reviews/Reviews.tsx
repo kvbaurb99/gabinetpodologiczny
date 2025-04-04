@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
@@ -7,22 +8,27 @@ import { Star } from "lucide-react";
 import { reviews } from "./data/reviews";
 import GoogleIcon from "@/assets/socials/google.svg";
 import FacebookIcon from "@/assets/socials/facebook-circle.svg";
+import type { Swiper as SwiperType } from "swiper";
+import Image from "next/image";
 import {
   Avatar,
   AvatarLetter,
+  NavigationButton,
+  PaginationContainer,
+  PaginationDot,
   RatingContainer,
   ReviewCard,
   ReviewContent,
   ReviewDate,
+  ReviewFooter,
   ReviewHeader,
+  ReviewsContainer,
+  SectionTitle,
+  SourceIcon,
   StyledSwiper,
   UserInfo,
   UserName,
-  PaginationContainer,
-  PaginationDot,
 } from "./style/reviews";
-import type { Swiper as SwiperType } from "swiper";
-import Image from "next/image";
 
 const Reviews = () => {
   const [realIndex, setRealIndex] = useState(0);
@@ -42,11 +48,19 @@ const Reviews = () => {
     return Math.floor(realIndex / slidesPerView);
   };
 
+  const handlePrev = () => {
+    if (swiper) swiper.slidePrev();
+  };
+
+  const handleNext = () => {
+    if (swiper) swiper.slideNext();
+  };
+
   return (
     <SectionWrapper $fullWidth>
       <DefaultContainer>
-        <H2 className="text-center mb-12">Opinie i doświadczenia pacjentów</H2>
-        <div className="relative">
+        <SectionTitle>Co mówią nasi pacjenci</SectionTitle>
+        <ReviewsContainer>
           <StyledSwiper
             modules={[Pagination, Navigation, Autoplay]}
             spaceBetween={30}
@@ -76,34 +90,53 @@ const Reviews = () => {
                     <UserInfo>
                       <UserName>{review.name}</UserName>
                       <RatingContainer>
-                        {[...Array(review.rating)].map((_, index) => (
+                        {[...Array(5)].map((_, index) => (
                           <Star
                             key={index}
-                            size={14}
-                            fill="#FCD34D"
-                            stroke="#FCD34D"
+                            size={16}
+                            fill={index < review.rating ? "#FCD34D" : "#E2E8F0"}
+                            stroke={
+                              index < review.rating ? "#FCD34D" : "#E2E8F0"
+                            }
                           />
                         ))}
                       </RatingContainer>
                     </UserInfo>
                   </ReviewHeader>
                   <ReviewContent>{review.content}</ReviewContent>
-                  <div className="flex justify-between items-center">
+                  <ReviewFooter>
                     <ReviewDate>{review.date}</ReviewDate>
-                    <Image
-                      src={
-                        review.type === "facebook" ? FacebookIcon : GoogleIcon
-                      }
-                      alt="Google"
-                      width={20}
-                      loading="lazy"
-                      height={20}
-                    />
-                  </div>
+                    <SourceIcon>
+                      <Image
+                        src={
+                          review.type === "facebook" ? FacebookIcon : GoogleIcon
+                        }
+                        alt={review.type === "facebook" ? "Facebook" : "Google"}
+                        width={22}
+                        height={22}
+                        loading="lazy"
+                      />
+                    </SourceIcon>
+                  </ReviewFooter>
                 </ReviewCard>
               </SwiperSlide>
             ))}
           </StyledSwiper>
+
+          <NavigationButton
+            $direction="prev"
+            onClick={handlePrev}
+            aria-label="Previous slide"
+          >
+            &#10094;
+          </NavigationButton>
+          <NavigationButton
+            $direction="next"
+            onClick={handleNext}
+            aria-label="Next slide"
+          >
+            &#10095;
+          </NavigationButton>
 
           <PaginationContainer>
             {[...Array(numberOfDots)].map((_, index) => (
@@ -114,7 +147,7 @@ const Reviews = () => {
               />
             ))}
           </PaginationContainer>
-        </div>
+        </ReviewsContainer>
       </DefaultContainer>
     </SectionWrapper>
   );

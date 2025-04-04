@@ -10,7 +10,7 @@ type H2Props = {
 };
 
 export const SectionWrapper = styled.section<SectionProps>`
-  width: ${(props) => (props.$fullWidth ? "100%" : "70%")};
+  width: ${(props) => (props.$fullWidth ? "100%" : "80%")};
   background-color: ${(props) =>
     props.$fullWidth ? "#F5F6F8" : "transparent"};
   padding: ${(props) => (props.$fullWidth ? "4rem 0" : "0 0")};
@@ -19,7 +19,7 @@ export const SectionWrapper = styled.section<SectionProps>`
 `;
 
 export const DefaultContainer = styled.div`
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
 `;
 

@@ -114,3 +114,84 @@
 .article-style a:hover {
   text-decoration: underline;
 }
+
+/* Style dla headera gabinetu podologicznego */
+
+.podology-slider {
+  --swiper-theme-color: #14b8a6; /* Kolor motywu - teal-500 */
+  --swiper-pagination-bullet-inactive-color: #ffffff;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+  position: relative;
+}
+
+/* Style dla kropek paginacji */
+.swiper-pagination {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 2px !important; 
+  position: absolute;
+  bottom: 28px !important;
+  width: 100%;
+  z-index: 20;
+}
+
+.swiper-pagination-bullet {
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px;
+  border-radius: 5px;
+}
+
+/* Animacja dla elementów slajdu */
+.swiper-slide-active h1 {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.swiper-slide-active p {
+  animation: fadeInUp 0.8s 0.2s ease both;
+}
+
+.swiper-slide-active .flex {
+  animation: fadeInUp 0.8s 0.4s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efekt zoom dla obrazów w slajdach */
+.swiper-slide-active img {
+  animation: zoomScale 10s linear forwards;
+}
+
+@keyframes zoomScale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .podology-slider h1 {
+    font-size: 2rem;
+  }
+  
+  .podology-slider p {
+    font-size: 1rem;
+  }
+}

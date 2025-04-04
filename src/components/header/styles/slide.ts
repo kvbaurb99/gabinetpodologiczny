@@ -28,7 +28,7 @@ export const Overlay = styled.div`
 export const ContentWrapper = styled.div`
   position: absolute;
   inset: 0;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   height: 100%;
   display: flex;
