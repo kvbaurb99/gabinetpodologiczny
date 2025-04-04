@@ -1,14 +1,17 @@
 import { Button, P, SectionWrapper } from "@/global-styles/global";
 import about_src from "@/assets/backgrounds/clinic.webp";
 import about_src_2 from "@/assets/backgrounds/Office_Rm_1111.webp";
+import Link from "next/link";
 import {
   AboutContainer,
+  ContentContainer,
+  Figure,
   AboutImage,
   AboutTitle,
   AboutTitleH2,
-  Figure,
+  StyledDescription,
+  StyledButton
 } from "./style/aboutUs";
-import Link from "next/link";
 
 type Props = {
   main?: boolean;
@@ -17,26 +20,26 @@ type Props = {
   description: string;
 };
 
-export default function AboutsUs({ reverse, main, title, description }: Props) {
+export default function AboutUs({ reverse, main, title, description }: Props) {
   return (
     <SectionWrapper>
       <AboutContainer $reverse={reverse}>
-        <div className="w-1/2">
+        <ContentContainer>
           {!main ? (
             <AboutTitleH2>{title}</AboutTitleH2>
           ) : (
             <AboutTitle>{title}</AboutTitle>
           )}
-          <P>{description}</P>
+          <StyledDescription>{description}</StyledDescription>
           <Link href={!reverse ? "/o-nas" : "/kontakt"}>
-            <Button>Dowiedz się więcej</Button>
+            <StyledButton>Dowiedz się więcej</StyledButton>
           </Link>
-        </div>
+        </ContentContainer>
         <Figure>
           <AboutImage
             priority={!reverse}
-            width={360}
-            height={360}
+            width={600}
+            height={400}
             src={!reverse ? about_src : about_src_2}
             alt="Gabinet zdrowe stopy"
             title="Gabinet zdrowe stopy"
