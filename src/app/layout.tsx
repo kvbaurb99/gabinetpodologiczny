@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
 import { geistMono, geistSans } from "@/lib/fonts";
-import Analytics from "@/components/analytics/Analytics";
 import Navigation from "@/components/navigation/Navigation";
 // Dynamic imports
 const Footer = dynamic(() => import("@/components/footer/Footer"));
@@ -21,7 +20,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Analytics />
         <StyledComponentsRegistry>
           <main>
             <Navigation />
