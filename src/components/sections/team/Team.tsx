@@ -1,6 +1,7 @@
 import { H2, P, SectionWrapper } from "@/global-styles/global";
 import Image, { StaticImageData } from "next/image";
 import MemberImage from "@/assets/387872201_6208764695892156_305300303520319174_n.jpg";
+import MemberImageTwo from "@/assets/sections/aboutUs/about_us.png";
 
 type TeamMemberProps = {
   name: string;
@@ -18,11 +19,11 @@ const TeamMember = ({
   specialties,
 }: TeamMemberProps) => {
   return (
-    <div className="flex flex-col items-center p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100 w-full transform hover:-translate-y-1">
+    <div className="flex flex-col items-center p-6 xl:p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100 w-full transform hover:-translate-y-1">
       {/* Decorative element */}
       <div className="absolute top-0 left-0 w-24 h-24 bg-blue-50 rounded-br-3xl -z-10 opacity-70"></div>
 
-      <div className="relative w-56 h-56 mb-6 overflow-hidden rounded-full border-4 border-blue-200 shadow-md">
+      <div className="relative w-48 h-48 xl:w-56 xl:h-56 mb-6 overflow-hidden rounded-full border-4 border-blue-200 shadow-md">
         <Image
           src={imageSrc}
           alt={`${name} - ${role}`}
@@ -51,7 +52,7 @@ export default function Team() {
       name: "Jolanta Cięciara",
       role: "Dyplomowana Podolożka",
       bio: "Specjalistka z 8-letnim doświadczeniem w leczeniu schorzeń stóp. Absolwentka prestiżowego kursu podologii klinicznej. Pasjonatka nowoczesnych technik leczenia, regularnie poszerzająca swoją wiedzę na międzynarodowych szkoleniach.",
-      imageSrc: MemberImage,
+      imageSrc: MemberImageTwo,
       specialties: ["Wrastające paznokcie", "Grzybica", "Modzele", "Odciski"],
     },
     {
@@ -71,7 +72,7 @@ export default function Team() {
   return (
     <SectionWrapper id="zespol" className="py-20 relative">
       <div className="relative z-10">
-        <div className="mb-16">
+        <div className="mb-8 xl:mb-16">
           <H2 className="text-blue-900 mb-4">Poznaj nasz zespół</H2>
         </div>
 
