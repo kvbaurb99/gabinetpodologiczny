@@ -69,7 +69,7 @@ function HeaderSlide({
   description,
 }: SlideProps) {
   return (
-    <div className="relative w-full h-[680px] xl:h-[720px]">
+    <div className="relative w-full h-[640px] xl:h-[720px]">
       {/* Obraz w tle */}
       <Image
         priority={currentIndex === 0}
