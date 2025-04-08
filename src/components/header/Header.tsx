@@ -70,7 +70,7 @@ function HeaderSlide({
   isMobile,
 }: SlideProps) {
   return (
-    <div className="relative w-full h-[650px]">
+    <div className="relative w-full h-[680px] xl:h-[720px]">
       {/* Obraz w tle */}
       <Image
         priority={currentIndex === 0}
@@ -85,7 +85,7 @@ function HeaderSlide({
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 
       {/* Zawartość slajdu */}
-      <div className="absolute inset-0 w-[80%] mx-auto h-full flex items-center xl:mt-4">
+      <div className="absolute inset-0 w-[90%] xl:w-[80%] mx-auto h-full flex items-center xl:mt-4">
         <div className="max-w-xl text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
             {title || "Profesjonalna opieka podologiczna"}
