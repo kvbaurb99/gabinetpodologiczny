@@ -166,4 +166,7 @@ export const SectionTitle = styled(H2)`
   display: inline-block;
   margin-bottom: 2rem;
   font-weight: 700;
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
 `;

@@ -18,7 +18,7 @@ export const SectionWrapper = styled.section<SectionProps>`
   margin-top: 4rem;
   @media (max-width: 768px) {
     width: ${(props) => (props.$fullWidth ? "100%" : "90%")};
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -42,13 +42,16 @@ export const H2 = styled.h2<H2Props>`
   font-weight: 700;
   margin-bottom: 1rem;
   @media (max-width: 768px) {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
   }
 `;
 
 export const P = styled.p`
   color: #747474;
   font-size: 1.15rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Button = styled.button`

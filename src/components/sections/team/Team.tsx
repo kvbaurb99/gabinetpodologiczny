@@ -10,12 +10,7 @@ type TeamMemberProps = {
   imageSrc: StaticImageData | string;
 };
 
-const TeamMember = ({
-  name,
-  role,
-  bio,
-  imageSrc,
-}: TeamMemberProps) => {
+const TeamMember = ({ name, role, bio, imageSrc }: TeamMemberProps) => {
   return (
     <div
       id="team"
@@ -36,13 +31,15 @@ const TeamMember = ({
       </div>
 
       <div className="text-center w-full">
-        <h3 className="text-2xl font-bold text-blue-800 mb-2">{name}</h3>
+        <h3 className="text-xl xl:text-2xl font-bold text-blue-800 mb-2">
+          {name}
+        </h3>
 
         <P className="text-gray-700 mb-6">{bio}</P>
       </div>
 
       {/* Bottom decorative element */}
-      <div className="mt-6 w-32 h-1 bg-gradient-to-r from-blue-300 to-teal-300 rounded-full"></div>
+      <div className="mt-4 xl:mt-6 w-32 h-1 bg-gradient-to-r from-blue-300 to-teal-300 rounded-full"></div>
     </div>
   );
 };

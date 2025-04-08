@@ -10,13 +10,16 @@ export const FooterWrapper = styled.footer`
 export const Container = styled.div`
   width: 80%;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -39,7 +42,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const Description = styled.p`
-  color: #9CA3AF; // text-gray-400
+  color: #9ca3af; // text-gray-400
   font-size: 0.875rem;
 `;
 
@@ -57,10 +60,10 @@ export const MenuList = styled.ul`
 
 export const MenuItem = styled.li`
   a {
-    color: #9CA3AF;
+    color: #9ca3af;
     transition: color 0.3s;
     text-decoration: none;
-    
+
     &:hover {
       color: white;
     }
@@ -71,7 +74,7 @@ export const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  color: #9CA3AF;
+  color: #9ca3af;
 `;
 
 export const SocialLinks = styled.div`
@@ -80,10 +83,10 @@ export const SocialLinks = styled.div`
 `;
 
 export const Copyright = styled.div`
-  border-top: 1px solid #1F2937; // border-gray-800
+  border-top: 1px solid #1f2937; // border-gray-800
   margin-top: 2rem;
   padding-top: 2rem;
   text-align: center;
-  color: #9CA3AF;
+  color: #9ca3af;
   font-size: 0.875rem;
 `;
