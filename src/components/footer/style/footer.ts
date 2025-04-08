@@ -5,7 +5,6 @@ export const FooterWrapper = styled.footer`
   background-color: #000; // bg-gray-900
   color: white;
   padding: 3rem 0;
-  margin-top: 4rem;
 `;
 
 export const Container = styled.div`
