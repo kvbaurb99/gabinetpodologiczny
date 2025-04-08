@@ -8,7 +8,6 @@ type TeamMemberProps = {
   role: string;
   bio: string;
   imageSrc: StaticImageData | string;
-  specialties: string[];
 };
 
 const TeamMember = ({
@@ -16,10 +15,12 @@ const TeamMember = ({
   role,
   bio,
   imageSrc,
-  specialties,
 }: TeamMemberProps) => {
   return (
-    <div id="team" className="flex flex-col items-center p-6 xl:p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100 w-full transform hover:-translate-y-1">
+    <div
+      id="team"
+      className="flex flex-col items-center p-6 xl:p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100 w-full transform hover:-translate-y-1"
+    >
       {/* Decorative element */}
       <div className="absolute top-0 left-0 w-24 h-24 bg-blue-50 rounded-br-3xl -z-10 opacity-70"></div>
 
@@ -30,7 +31,7 @@ const TeamMember = ({
           fill
           sizes="(max-width: 768px) 100vw, 224px"
           className="object-cover"
-          priority
+          loading="lazy"
         />
       </div>
 
@@ -53,19 +54,12 @@ export default function Team() {
       role: "Dyplomowana Podolożka",
       bio: "Specjalistka z 8-letnim doświadczeniem w leczeniu schorzeń stóp. Absolwentka prestiżowego kursu podologii klinicznej. Pasjonatka nowoczesnych technik leczenia, regularnie poszerzająca swoją wiedzę na międzynarodowych szkoleniach.",
       imageSrc: MemberImageTwo,
-      specialties: ["Wrastające paznokcie", "Grzybica", "Modzele", "Odciski"],
     },
     {
       name: "Wiktoria Cięciara",
       role: "Podolożka, Kosmetolog",
       bio: "Łączy wiedzę z podologii i kosmetologii, zapewniając kompleksową opiekę nad stopami. Jej holistyczne podejście do pacjenta oraz naturalna empatia sprawiają, że zabiegi przebiegają w przyjemnej atmosferze, a efekty terapii są długotrwałe.",
       imageSrc: MemberImage,
-      specialties: [
-        "Pielęgnacja stóp diabetyków",
-        "Zabiegi regeneracyjne",
-        "Ortonyksja",
-        "Rekonstrukcja paznokci",
-      ],
     },
   ];
 

@@ -1,4 +1,4 @@
-import { Button, P, SectionWrapper } from "@/global-styles/global";
+import { SectionWrapper } from "@/global-styles/global";
 import about_src from "@/assets/backgrounds/clinic.webp";
 import about_src_2 from "@/assets/backgrounds/Office_Rm_1111.webp";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import {
   AboutTitle,
   AboutTitleH2,
   StyledDescription,
-  StyledButton
+  StyledButton,
 } from "./style/aboutUs";
 
 type Props = {
@@ -38,9 +38,9 @@ export default function AboutUs({ reverse, main, title, description }: Props) {
         <Figure>
           <AboutImage
             priority={!reverse}
-            width={600}
-            height={400}
+            fill
             src={!reverse ? about_src : about_src_2}
+            loading={!reverse ? "eager" : "lazy"}
             alt="Gabinet zdrowe stopy"
             title="Gabinet zdrowe stopy"
           />
