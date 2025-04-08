@@ -7,9 +7,12 @@ export const StyledSection = styled.section<{ $bgImage: string }>`
   width: 100%;
   background: url(${(props) => props.$bgImage}) no-repeat center center;
   background-size: cover;
-  margin-top: 3rem;
+  margin-top: 2rem;
   position: relative;
   background-attachment: fixed;
+  @media (max-width: 768px) {
+    height: 2250px;
+  }
 `;
 
 export const Overlay = styled.div`
