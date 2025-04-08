@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10rem;
+}
+
 /* Article */
 
 .article-style {

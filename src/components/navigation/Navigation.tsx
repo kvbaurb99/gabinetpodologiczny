@@ -6,15 +6,12 @@ import {
   Logo,
   MenuItems,
   MenuItem,
-  SocialsContainer,
   MobileMenuButton,
   MobileMenu,
   LogoContainer,
 } from "./style/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import FacebookIcon from "@/assets/socials/facebook.svg";
-import Image from "next/image";
 import { navbarLinks } from "./data/navbarLinks";
 
 export default function Navigation() {

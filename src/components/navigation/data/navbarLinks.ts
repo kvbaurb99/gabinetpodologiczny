@@ -5,22 +5,18 @@ export const navbarLinks = [
   },
   {
     title: "O nas",
-    slug: "o-nas",
+    slug: "#about",
   },
   {
     title: "Oferta",
-    slug: "oferta",
+    slug: "#offer",
   },
   {
     title: "Zespół",
-    slug: "cennik",
+    slug: "#team",
   },
   {
     title: "Opinie",
-    slug: "blog",
-  },
-  {
-    title: "Kontakt",
-    slug: "kontakt",
+    slug: "#reviews",
   },
 ];
