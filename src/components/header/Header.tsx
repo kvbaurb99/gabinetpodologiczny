@@ -67,7 +67,6 @@ function HeaderSlide({
   alt,
   title,
   description,
-  isMobile,
 }: SlideProps) {
   return (
     <div className="relative w-full h-[680px] xl:h-[720px]">
@@ -76,11 +75,9 @@ function HeaderSlide({
         priority={currentIndex === 0}
         src={img}
         alt={alt}
-        width={isMobile ? 360 : 1920}
-        height={650}
+        fill
         className="object-cover w-full h-full"
       />
-
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 
