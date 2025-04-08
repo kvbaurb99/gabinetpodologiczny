@@ -1,17 +1,10 @@
 import dynamic from "next/dynamic";
 import Header from "@/components/header/Header";
 import { mobileDetectFunction } from "@/utils/mobileDetectFunction";
-
-// Dynamic imports
-const AboutsUs = dynamic(
-  () => import("@/components/sections/aboutUs/AboutsUs")
-);
+import AboutsUs from "@/components/sections/aboutUs/AboutsUs";
+import Reviews from "@/components/sections/reviews/Reviews";
 const Offer = dynamic(() => import("@/components/sections/offer/Offer"));
 const Team = dynamic(() => import("@/components/sections/team/Team"));
-const Articles = dynamic(
-  () => import("@/components/sections/articles/Articles")
-);
-const Reviews = dynamic(() => import("@/components/sections/reviews/Reviews"));
 
 export default async function Home() {
   const isMobile = await mobileDetectFunction();
@@ -31,7 +24,6 @@ export default async function Home() {
       <Offer />
       <Team />
       <Reviews />
-      <Articles />
     </>
   );
 }
