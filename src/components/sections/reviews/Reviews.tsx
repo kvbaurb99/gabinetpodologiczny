@@ -57,7 +57,7 @@ const Reviews = () => {
   };
 
   return (
-    <SectionWrapper $fullWidth>
+    <SectionWrapper $fullWidth id="reviews">
       <DefaultContainer>
         <SectionTitle>Co mówią nasi pacjenci</SectionTitle>
         <ReviewsContainer>

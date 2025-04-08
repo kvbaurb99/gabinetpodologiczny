@@ -16,7 +16,7 @@ import {
 
 export default function Offer() {
   return (
-    <StyledSection $bgImage={BackgroundImage.src}>
+    <StyledSection $bgImage={BackgroundImage.src} id="offer">
       <Overlay>
         <DefaultContainer className="py-12">
           <H2 $white>Schorzenia stóp którymi się zajmujemy:</H2>

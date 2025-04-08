@@ -19,7 +19,7 @@ const TeamMember = ({
   specialties,
 }: TeamMemberProps) => {
   return (
-    <div className="flex flex-col items-center p-6 xl:p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100 w-full transform hover:-translate-y-1">
+    <div id="team" className="flex flex-col items-center p-6 xl:p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100 w-full transform hover:-translate-y-1">
       {/* Decorative element */}
       <div className="absolute top-0 left-0 w-24 h-24 bg-blue-50 rounded-br-3xl -z-10 opacity-70"></div>
 
