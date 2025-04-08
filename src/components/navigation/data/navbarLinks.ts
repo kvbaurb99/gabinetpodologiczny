@@ -12,11 +12,11 @@ export const navbarLinks = [
     slug: "oferta",
   },
   {
-    title: "Cennik",
+    title: "Zespół",
     slug: "cennik",
   },
   {
-    title: "Artykuły",
+    title: "Opinie",
     slug: "blog",
   },
   {

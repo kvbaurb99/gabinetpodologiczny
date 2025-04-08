@@ -61,19 +61,7 @@ export default function Navigation() {
           })}
         </MenuItems>
 
-        {/* Ikony social media */}
-        <SocialsContainer>
-          <Link href="https://facebook.com" target="_blank" aria-label="Facebook">
-            <Image
-              width={24}
-              height={24}
-              priority
-              src={FacebookIcon}
-              alt="Facebook"
-              className="hover:-translate-y-1 duration-150"
-            />
-          </Link>
-        </SocialsContainer>
+        <div />
 
         {/* Przycisk menu mobilnego */}
         <MobileMenuButton
@@ -91,26 +79,15 @@ export default function Navigation() {
           {navbarLinks.map((link, index) => {
             const isActive = pathname === `/${link.slug}`;
             return (
-              <MenuItem 
-                key={index} 
-                $isActive={isActive} 
+              <MenuItem
+                key={index}
+                $isActive={isActive}
                 onClick={handleMobileMenuClick}
               >
                 <Link href={`/${link.slug}`}>{link.title}</Link>
               </MenuItem>
             );
           })}
-          <div className="mobile-socials">
-            <Link href="https://facebook.com" target="_blank" aria-label="Facebook">
-              <Image
-                width={24}
-                height={24}
-                priority
-                src={FacebookIcon}
-                alt="Facebook"
-              />
-            </Link>
-          </div>
         </MobileMenu>
       </NavContainer>
     </Nav>
