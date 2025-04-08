@@ -165,4 +165,5 @@ export const SectionTitle = styled(H2)`
   position: relative;
   display: inline-block;
   margin-bottom: 2rem;
+  font-weight: 700;
 `;
