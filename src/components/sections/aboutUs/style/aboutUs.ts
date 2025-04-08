@@ -17,8 +17,9 @@ export const AboutContainer = styled.div<AboutUsProps>`
   padding: 2rem 0;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 2rem;
+    flex-direction: column-reverse;
+
+    gap: 1.5rem;
   }
 `;
 
@@ -42,7 +43,7 @@ export const Figure = styled.figure`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 350px;
+    height: 280px;
   }
 `;
 
@@ -66,7 +67,7 @@ export const AboutTitle = styled.h1`
   position: relative;
   line-height: 1.35;
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
 `;
 
@@ -78,7 +79,7 @@ export const AboutTitleH2 = styled.h2`
   margin-bottom: 1rem;
   position: relative;
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
 `;
 

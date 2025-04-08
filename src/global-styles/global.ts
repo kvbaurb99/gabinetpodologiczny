@@ -25,6 +25,9 @@ export const SectionWrapper = styled.section<SectionProps>`
 export const DefaultContainer = styled.div`
   width: 80%;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -36,8 +39,11 @@ export const H1 = styled.h1`
 export const H2 = styled.h2<H2Props>`
   color: ${(props) => (props.$white ? "#fff" : "rgb(79, 103, 189)")};
   font-size: 2.125rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    font-size: 1.875rem;
+  }
 `;
 
 export const P = styled.p`
