@@ -16,6 +16,10 @@ export const SectionWrapper = styled.section<SectionProps>`
   padding: ${(props) => (props.$fullWidth ? "4rem 0" : "0 0")};
   margin: 0 auto;
   margin-top: 4rem;
+  @media (max-width: 768px) {
+    width: ${(props) => (props.$fullWidth ? "100%" : "90%")};
+    margin-top: 1rem;
+  }
 `;
 
 export const DefaultContainer = styled.div`

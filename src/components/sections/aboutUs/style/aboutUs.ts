@@ -15,7 +15,7 @@ export const AboutContainer = styled.div<AboutUsProps>`
   gap: 4rem;
   flex-direction: ${(props) => (props.$reverse ? "row-reverse" : "row")};
   padding: 2rem 0;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 2rem;
@@ -26,10 +26,9 @@ export const ContentContainer = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-  
+
   @media (max-width: 768px) {
     width: 100%;
-    text-align: center;
   }
 `;
 
@@ -40,7 +39,7 @@ export const Figure = styled.figure`
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(79, 103, 189, 0.15);
   position: relative;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     height: 350px;
@@ -66,6 +65,9 @@ export const AboutTitle = styled.h1`
   margin-bottom: 1rem;
   position: relative;
   line-height: 1.35;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 export const AboutTitleH2 = styled.h2`
@@ -75,7 +77,9 @@ export const AboutTitleH2 = styled.h2`
   font-weight: 700;
   margin-bottom: 1rem;
   position: relative;
-  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 export const StyledDescription = styled(P)`
@@ -90,7 +94,7 @@ export const StyledButton = styled(Button)`
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(79, 103, 189, 0.3);

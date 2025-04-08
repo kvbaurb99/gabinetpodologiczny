@@ -26,6 +26,9 @@ export const CardsGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
   margin-top: 1.5rem;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const CardWrapper = styled.div`
