@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { headerSlides } from "./data/headerSlides";
 import { EffectFade, Pagination } from "swiper/modules";
+import { Phone } from "lucide-react";
 import { sliderSettings } from "./sliderSettings/settings";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -11,7 +12,6 @@ import Link from "next/link";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/autoplay";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // Typy
@@ -95,7 +95,7 @@ function HeaderSlide({
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/kontakt"
+              href="tel:+48501408528"
               style={{
                 backgroundColor: "rgb(79, 103, 189)",
               }}
@@ -105,10 +105,11 @@ function HeaderSlide({
             </Link>
 
             <Link
-              href="/uslugi"
-              className="inline-flex items-center justify-center bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 font-medium py-3 px-6 rounded-md transition-all duration-300"
+              href="tel:+48501408528"
+              className="inline-flex items-center gap-3 justify-center bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 font-medium py-3 px-6 rounded-md transition-all duration-300"
             >
-              Poznaj nasze usługi
+              <Phone size={16} color="#fff" />
+              <span>+48 501 408 528</span>
             </Link>
           </div>
         </div>
