@@ -83,7 +83,7 @@ export const MenuItem = styled.li<LinkProps>`
   a {
     font-size: 1.05rem;
     font-weight: ${(props) => (props.$isActive ? "600" : "500")};
-    color: ${(props) => (props.$isActive ? "#4F67BD" : "#2c3e50")};
+    color: ${(props) => (props.$isActive ? "#007BA7" : "#2c3e50")};
     text-decoration: none;
     position: relative;
     padding: 0.5rem 0;
@@ -96,7 +96,7 @@ export const MenuItem = styled.li<LinkProps>`
       left: 0;
       width: ${(props) => (props.$isActive ? "100%" : "0")};
       height: 1.5px;
-      background-color: #4F67BD;
+      background-color: #007BA7;
       transition: width 0.3s ease;
     }
     

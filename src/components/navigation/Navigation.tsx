@@ -18,6 +18,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("");
 
   // Efekt obsługujący zmianę wyglądu nawigacji podczas scrollowania
   useEffect(() => {
@@ -49,9 +50,13 @@ export default function Navigation() {
         {/* Menu na większych ekranach */}
         <MenuItems>
           {navbarLinks.map((link, index) => {
-            const isActive = pathname === `/${link.slug}`;
+            const isActive = currentCategory === link.slug;
             return (
-              <MenuItem key={index} $isActive={isActive}>
+              <MenuItem
+                onClick={() => setCurrentCategory(link.slug)}
+                key={index}
+                $isActive={isActive}
+              >
                 <Link href={`/${link.slug}`}>{link.title}</Link>
               </MenuItem>
             );
