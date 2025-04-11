@@ -40,7 +40,6 @@ position: relative;
 top: 1rem;
   width: 90%; /* Mobile-first: 90% width */
   margin: 0 auto;
-  padding: 0 1rem;
   display: flex;
   justify-content: flex-start;
 
