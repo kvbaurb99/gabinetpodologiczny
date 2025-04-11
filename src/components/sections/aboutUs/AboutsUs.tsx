@@ -31,9 +31,7 @@ export default function AboutUs({ reverse, main, title, description }: Props) {
             <AboutTitle>{title}</AboutTitle>
           )}
           <StyledDescription>{description}</StyledDescription>
-          <Link href={!reverse ? "/o-nas" : "/kontakt"}>
-            <StyledButton>Dowiedz się więcej</StyledButton>
-          </Link>
+          <StyledButton>Dowiedz się więcej</StyledButton>
         </ContentContainer>
         <Figure>
           <AboutImage
