@@ -1,10 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { headerSlides } from "./data/headerSlides";
-import { EffectFade, Pagination } from "swiper/modules";
-import { Phone } from "lucide-react";
-import { sliderSettings } from "./sliderSettings/settings";
+import { EffectFade, Pagination, Autoplay } from "swiper/modules";
+import { Phone, Calendar, ChevronRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -14,7 +14,28 @@ import "swiper/css/effect-fade";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
 
-// Typy
+// Import styled components
+import {
+  SliderHeader,
+  SlideWrapper,
+  GradientOverlay,
+  SlideContent,
+  ContentContainer,
+  ContentBox,
+  Divider,
+  SlideTitle,
+  SlideDescription,
+  ButtonsContainer,
+  PrimaryButton,
+  SecondaryButton,
+  TopGradient,
+  BottomGradient,
+  PaginationContainer,
+  PaginationInner,
+  PaginationDots,
+} from "./styles/slide";
+
+// Types
 type HeaderProps = {
   isMobile: boolean;
 };
@@ -26,21 +47,54 @@ type SlideProps = {
   title?: string;
   description?: string;
   isMobile: boolean;
+  isActive: boolean;
+  isInitialRender: boolean;
 };
 
-// Komponent Header
+// Slider settings
+const sliderSettings = {
+  slidesPerView: 1,
+  spaceBetween: 0,
+  loop: true,
+  speed: 1000,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: true,
+  },
+  fadeEffect: {
+    crossFade: true,
+  },
+};
+
+// Main Header Component
 export default function Header({ isMobile }: HeaderProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isInitialRender, setIsInitialRender] = useState(true);
+
+  // After component mounts, mark initial render as complete
+  useEffect(() => {
+    // Use a small timeout to ensure the component has fully rendered
+    const timer = setTimeout(() => {
+      setIsInitialRender(false);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <header className="relative">
+    <SliderHeader>
       <Swiper
         {...sliderSettings}
-        modules={[Pagination, EffectFade]}
+        modules={[Pagination, EffectFade, Autoplay]}
         effect="fade"
         pagination={{
           clickable: true,
-          el: ".swiper-pagination",
+          el: ".pagination-container",
+          bulletClass: "pagination-bullet",
+          bulletActiveClass: "pagination-bullet-active",
         }}
-        className="podology-slider"
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        className="medical-slider"
       >
         {headerSlides.map((slide, index) => (
           <SwiperSlide key={index} className="overflow-hidden">
@@ -51,69 +105,94 @@ export default function Header({ isMobile }: HeaderProps) {
               title={slide.title}
               description={slide.description}
               isMobile={isMobile}
+              isActive={activeIndex === index}
+              isInitialRender={isInitialRender}
             />
           </SwiperSlide>
         ))}
-        <div className="swiper-pagination"></div>
+
+        {/* Custom pagination dots container */}
+        <PaginationContainer>
+          <PaginationInner>
+            <PaginationDots className="pagination-container" />
+          </PaginationInner>
+        </PaginationContainer>
       </Swiper>
-    </header>
+
+      {/* Medical decorative elements */}
+      <TopGradient />
+      <BottomGradient />
+    </SliderHeader>
   );
 }
 
-// Komponent pojedynczego slajdu
+// Single Slide Component
 function HeaderSlide({
   currentIndex,
   img,
   alt,
   title,
   description,
+  isMobile,
+  isActive,
+  isInitialRender,
 }: SlideProps) {
   return (
-    <div className="relative w-full h-[640px] xl:h-[720px]">
-      {/* Obraz w tle */}
+    <SlideWrapper>
+      {/* Background Image - disable transition on initial render */}
       <Image
         priority={currentIndex === 0}
         src={img}
         alt={alt}
         fill
-        className="object-cover w-full h-full"
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+          width: "100%",
+          height: "100%",
+          transition: !isInitialRender ? "transform 7000ms" : "none",
+          transform: !isInitialRender && isActive ? "scale(1.05)" : "scale(1)",
+        }}
       />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 
-      {/* Zawartość slajdu */}
-      <div className="absolute inset-0 w-[90%] xl:w-[80%] mx-auto h-full flex items-center xl:mt-4">
-        <div className="max-w-xl text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            {title || "Profesjonalna opieka podologiczna"}
-          </h1>
+      {/* Gradient overlay with medical blue tones */}
+      <GradientOverlay />
 
-          <p className="text-lg md:text-xl opacity-90 mb-8 leading-relaxed">
-            {description ||
-              "Zapewniamy kompleksową opiekę nad zdrowiem Twoich stóp, wykorzystując najnowocześniejsze metody i sprzęt medyczny."}
-          </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="tel:+48501408528"
-              style={{
-                backgroundColor: "rgb(79, 103, 189)",
-              }}
-              className="inline-flex items-center justify-center text-white font-medium py-3 px-6 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Umów wizytę
-            </Link>
+      {/* Slide Content - disable animation on initial render */}
+      <SlideContent>
+        <ContentContainer>
+          <ContentBox $isActive={isActive} $isInitialRender={isInitialRender}>
+            <Divider />
 
-            <Link
-              href="tel:+48501408528"
-              className="inline-flex items-center gap-3 justify-center bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 font-medium py-3 px-6 rounded-md transition-all duration-300"
-            >
-              <Phone size={16} color="#fff" />
-              <span>+48 501 408 528</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+            <SlideTitle>
+              {title || "Profesjonalna opieka podologiczna"}
+            </SlideTitle>
+
+            <SlideDescription>
+              {description ||
+                "Zapewniamy kompleksową opiekę nad zdrowiem Twoich stóp, wykorzystując najnowocześniejsze metody i sprzęt medyczny."}
+            </SlideDescription>
+
+            <ButtonsContainer>
+              <Link href="tel:+48501408528" passHref legacyBehavior>
+                <PrimaryButton>
+                  <Calendar />
+                  <span>Umów wizytę</span>
+                  <ChevronRight />
+                </PrimaryButton>
+              </Link>
+
+              <Link href="tel:+48501408528" passHref legacyBehavior>
+                <SecondaryButton>
+                  <Phone />
+                  <span>+48 501 408 528</span>
+                </SecondaryButton>
+              </Link>
+            </ButtonsContainer>
+          </ContentBox>
+        </ContentContainer>
+      </SlideContent>
+    </SlideWrapper>
   );
 }
