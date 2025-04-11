@@ -10,7 +10,7 @@ export const SliderHeader = styled.header`
 export const SlideWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 700px;
+  height: 680px;
 
   @media (min-width: 1280px) {
     height: 720px;
