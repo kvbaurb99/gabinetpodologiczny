@@ -28,6 +28,9 @@ export const Nav = styled.nav<NavProps>`
       ? "0 4px 12px rgba(43, 103, 119, 0.15)"
       : "0 2px 8px rgba(43, 103, 119, 0.08)"};
   backdrop-filter: blur(8px);
+  @media (max-width: 768px) {
+    padding: ${(props) => (props.$scrolled ? "0.5rem 0" : "0.8rem 0")};
+  }
 `;
 
 // Kontener dla zawartości nawigacji
@@ -150,8 +153,8 @@ export const MobileMenuButton = styled.button`
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 28px;
-  height: 20px;
+  width: 20px;
+  height: 16px;
   background: transparent;
   border: none;
   cursor: pointer;
