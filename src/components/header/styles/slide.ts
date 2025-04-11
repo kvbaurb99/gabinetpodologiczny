@@ -36,6 +36,8 @@ export const SlideContent = styled.div`
 `;
 
 export const ContentContainer = styled.div`
+position: relative;
+top: 1rem;
   width: 90%; /* Mobile-first: 90% width */
   margin: 0 auto;
   padding: 0 1rem;
@@ -77,7 +79,7 @@ export const SlideTitle = styled.h1`
   font-size: 2.25rem;
   line-height: 1.2;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 768px) {
     font-size: 3rem;
@@ -85,11 +87,14 @@ export const SlideTitle = styled.h1`
 `;
 
 export const SlideDescription = styled.p`
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.7;
   opacity: 0.9;
   margin-bottom: 2rem;
   color: #f1f5f9;
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
 `;
 
 export const ButtonsContainer = styled.div`
@@ -240,7 +245,7 @@ export const PaginationInner = styled.div`
   width: 90%; /* Mobile-first: 90% width */
   margin: 0 auto;
   padding: 0 1rem;
-  
+
   @media (min-width: 768px) {
     width: 80%; /* Larger screens: 80% width */
     padding: 0 2rem;
