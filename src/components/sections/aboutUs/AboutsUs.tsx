@@ -18,16 +18,9 @@ type Props = {
   reverse?: boolean;
   title: string;
   description: string;
-  isMobile?: boolean;
 };
 
-export default function AboutUs({
-  reverse,
-  main,
-  title,
-  description,
-  isMobile,
-}: Props) {
+export default function AboutUs({ reverse, main, title, description }: Props) {
   return (
     <SectionWrapper id="about">
       <AboutContainer $reverse={reverse}>
@@ -38,11 +31,13 @@ export default function AboutUs({
             <AboutTitle>{title}</AboutTitle>
           )}
           <StyledDescription>{description}</StyledDescription>
-          <StyledButton>Dowiedz się więcej</StyledButton>
+          <Link href={"/"}>
+            <StyledButton>Dowiedz się więcej</StyledButton>
+          </Link>
         </ContentContainer>
         <Figure>
           <AboutImage
-            priority={!reverse || !isMobile}
+            priority={!reverse}
             fill
             src={!reverse ? about_src : about_src_2}
             loading={!reverse ? "eager" : "lazy"}
