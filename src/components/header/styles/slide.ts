@@ -240,7 +240,7 @@ export const PaginationContainer = styled.div`
 
 export const PaginationInner = styled.div`
   position: relative;
-  bottom: 1rem;
+  bottom: 0.75rem;
   width: 90%; /* Mobile-first: 90% width */
   margin: 0 auto;
   padding: 0 1rem;
