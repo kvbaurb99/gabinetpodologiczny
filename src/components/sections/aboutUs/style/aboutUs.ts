@@ -93,6 +93,7 @@ export const StyledDescription = styled(P)`
 export const StyledButton = styled(Button)`
   margin-top: 0.5rem;
   padding: 0.75rem 1.5rem;
+  max-width: fit-content;
   font-weight: 600;
   transition: all 0.3s ease;
 

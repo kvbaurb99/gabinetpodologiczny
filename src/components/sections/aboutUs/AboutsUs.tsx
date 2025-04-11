@@ -31,7 +31,7 @@ export default function AboutUs({ reverse, main, title, description }: Props) {
             <AboutTitle>{title}</AboutTitle>
           )}
           <StyledDescription>{description}</StyledDescription>
-          <StyledButton>Dowiedz się więcej</StyledButton>
+            <StyledButton>Dowiedz się więcej</StyledButton>
         </ContentContainer>
         <Figure>
           <AboutImage
