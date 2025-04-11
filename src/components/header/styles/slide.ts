@@ -44,7 +44,6 @@ export const ContentContainer = styled.div`
 
   @media (min-width: 768px) {
     width: 80%; /* Larger screens: 80% width */
-    padding: 0 2rem;
   }
 `;
 
