@@ -37,7 +37,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2<H2Props>`
-  color: ${(props) => (props.$white ? "#fff" : "rgb(79, 103, 189)")};
+  color: ${(props) => (props.$white ? "#fff" : "#007BA7")};
   font-size: 2.125rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -56,7 +56,7 @@ export const P = styled.p`
 
 export const Button = styled.button`
   margin-top: 1.25rem;
-  background-color: rgb(79, 103, 189);
+  background-color: #007BA7;
   color: #fff;
   padding: 0.575rem 1.15rem;
   border-radius: 6px;

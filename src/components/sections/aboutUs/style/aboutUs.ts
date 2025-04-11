@@ -60,7 +60,7 @@ export const AboutImage = styled(Image)`
 `;
 
 export const AboutTitle = styled.h1`
-  color: rgb(79, 103, 189);
+  color: #007BA7;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -72,7 +72,7 @@ export const AboutTitle = styled.h1`
 `;
 
 export const AboutTitleH2 = styled.h2`
-  color: rgb(79, 103, 189);
+  color: #007BA7;
   font-size: 2.25rem;
   line-height: 1.35;
   font-weight: 700;

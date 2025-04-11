@@ -34,7 +34,7 @@ export default function Offer() {
                     />
                     <CardTitle>{item.title}</CardTitle>
                     <span
-                      style={{ color: "rgb(79, 103, 189)", fontWeight: 500 }}
+                      style={{ color: "#007BA7", fontWeight: 500 }}
                       className="relative bottom-6"
                     >
                       Dowiedz się więcej

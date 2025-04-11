@@ -31,7 +31,12 @@ const TeamMember = ({ name, role, bio, imageSrc }: TeamMemberProps) => {
       </div>
 
       <div className="text-center w-full">
-        <h3 className="text-xl xl:text-2xl font-bold text-blue-800 mb-2">
+        <h3
+          style={{
+            color: "#007BA7",
+          }}
+          className="text-xl xl:text-2xl font-bold mb-2"
+        >
           {name}
         </h3>
 
@@ -64,7 +69,7 @@ export default function Team() {
     <SectionWrapper id="zespol" className="py-20 relative">
       <div className="relative z-10">
         <div className="mb-8 xl:mb-16">
-          <H2 className="text-blue-900 mb-4">Poznaj nasz zespół</H2>
+          <H2 className="mb-4">Poznaj nasz zespół</H2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
