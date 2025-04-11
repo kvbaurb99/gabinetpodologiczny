@@ -62,20 +62,7 @@ export default function Navigation() {
             );
           })}
         </MenuItems>
-
         <div />
-
-        {/* Przycisk menu mobilnego */}
-        <MobileMenuButton
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-expanded={mobileMenuOpen}
-          aria-label="Menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </MobileMenuButton>
-
         {/* Menu mobilne */}
         <MobileMenu $isOpen={mobileMenuOpen}>
           {navbarLinks.map((link, index) => {
