@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 type SectionProps = {
   $fullWidth?: boolean;
+  $smallerMargin?: boolean;
 };
 
 type H2Props = {
@@ -18,7 +19,7 @@ export const SectionWrapper = styled.section<SectionProps>`
   margin-top: 4rem;
   @media (max-width: 768px) {
     width: ${(props) => (props.$fullWidth ? "100%" : "90%")};
-    margin-top: 2rem;
+    margin-top: ${(props) => (props.$smallerMargin ? "0.5rem" : "2rem")};
   }
 `;
 

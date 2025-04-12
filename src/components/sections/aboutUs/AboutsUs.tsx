@@ -22,7 +22,7 @@ type Props = {
 
 export default function AboutUs({ reverse, main, title, description }: Props) {
   return (
-    <SectionWrapper id="about">
+    <SectionWrapper $smallerMargin id="about">
       <AboutContainer $reverse={reverse}>
         <ContentContainer>
           {!main ? (
