@@ -43,7 +43,7 @@ export const Figure = styled.figure`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 220px;
+    height: 240px;
   }
 `;
 
@@ -100,5 +100,8 @@ export const StyledButton = styled(Button)`
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(79, 103, 189, 0.3);
+  }
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
   }
 `;
