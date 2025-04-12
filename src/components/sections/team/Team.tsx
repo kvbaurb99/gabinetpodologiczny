@@ -17,7 +17,7 @@ const TeamMember = ({ name, role, bio, imageSrc }: TeamMemberProps) => {
       className="flex flex-col items-center p-6 xl:p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-100 w-full transform hover:-translate-y-1"
     >
       {/* Decorative element */}
-      <div className="absolute top-0 left-0 w-24 h-24 bg-blue-50 rounded-br-3xl -z-10 opacity-70"></div>
+      <div className="absolute top-0 left-0 w-full h-36 bg-blue-50 rounded-br-3xl -z-10 opacity-70"></div>
 
       <div className="relative w-48 h-48 xl:w-56 xl:h-56 mb-6 overflow-hidden rounded-full border-4 border-blue-200 shadow-md">
         <Image
