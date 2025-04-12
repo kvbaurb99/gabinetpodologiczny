@@ -43,7 +43,7 @@ export const Figure = styled.figure`
 
   @media (max-width: 768px) {
     width: 100%;
-    height: 280px;
+    height: 220px;
   }
 `;
 
