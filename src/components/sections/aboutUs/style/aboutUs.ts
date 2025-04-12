@@ -67,7 +67,7 @@ export const AboutTitle = styled.h1`
   position: relative;
   line-height: 1.35;
   @media (max-width: 768px) {
-    font-size: 1.875rem;
+    font-size: 1.675rem;
   }
 `;
 
@@ -79,7 +79,7 @@ export const AboutTitleH2 = styled.h2`
   margin-bottom: 1rem;
   position: relative;
   @media (max-width: 768px) {
-    font-size: 1.875rem;
+    font-size: 1.675rem;
   }
 `;
 

@@ -73,7 +73,7 @@ export const Divider = styled.div`
 `;
 
 export const SlideTitle = styled.h1`
-  font-size: 2.25rem;
+  font-size: 2rem;
   line-height: 1.2;
   font-weight: 700;
   margin-bottom: 1rem;

@@ -178,7 +178,7 @@ export const MobileMenu = styled.div<MobileMenuProps>`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 100%;
   background-color: #ffffff;

@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navbarLinks } from "./data/navbarLinks";
+import { Menu } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -62,7 +63,8 @@ export default function Navigation() {
             );
           })}
         </MenuItems>
-        <div />
+        <Menu onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="xl:hidden" />
+        <div className="hidden xl:block" />
         {/* Menu mobilne */}
         <MobileMenu $isOpen={mobileMenuOpen}>
           {navbarLinks.map((link, index) => {
