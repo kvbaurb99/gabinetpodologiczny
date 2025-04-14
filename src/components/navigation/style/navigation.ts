@@ -20,7 +20,8 @@ export const Nav = styled.nav<NavProps>`
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: ${(props) => (props.$scrolled ? "#ffffff" : "rgba(255, 255, 255, 0.9)")};
+  background-color: ${(props) =>
+    props.$scrolled ? "#ffffff" : "rgba(255, 255, 255, 0.9)"};
   padding: ${(props) => (props.$scrolled ? "0.8rem 0" : "1.5rem 0")};
   transition: all 0.3s ease-in-out;
   box-shadow: ${(props) =>
@@ -55,11 +56,11 @@ export const LogoContainer = styled.div`
 `;
 
 export const Logo = styled.div`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #2c3e50;
-  letter-spacing: 0.5px;
-  
+  color: #007ba7;
+  letter-spacing: 0.6px;
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -73,7 +74,7 @@ export const MenuItems = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -82,7 +83,7 @@ export const MenuItems = styled.ul`
 // Pojedynczy element menu
 export const MenuItem = styled.li<LinkProps>`
   position: relative;
-  
+
   a {
     font-size: 1.05rem;
     font-weight: ${(props) => (props.$isActive ? "600" : "500")};
@@ -91,33 +92,33 @@ export const MenuItem = styled.li<LinkProps>`
     position: relative;
     padding: 0.5rem 0;
     transition: all 0.3s ease;
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       width: ${(props) => (props.$isActive ? "100%" : "0")};
       height: 1.5px;
-      background-color: #007BA7;
+      background-color: #007ba7;
       transition: width 0.3s ease;
     }
-    
+
     &:hover {
-      color: #4F67BD;
-      
+      color: #4f67bd;
+
       &::after {
         width: 100%;
       }
     }
   }
-  
+
   // Style dla menu mobilnego
   @media (max-width: 768px) {
     width: 100%;
     text-align: center;
     margin: 1rem 0;
-    
+
     a {
       font-size: 1.1rem;
       display: block;
@@ -131,18 +132,18 @@ export const SocialsContainer = styled.div`
   display: flex;
   gap: 1.2rem;
   align-items: center;
-  
+
   a {
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
-    
+
     &:hover {
       transform: translateY(-3px);
     }
   }
-  
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -159,14 +160,14 @@ export const MobileMenuButton = styled.button`
   border: none;
   cursor: pointer;
   z-index: 1001;
-  
+
   span {
     width: 100%;
     height: 2px;
     background-color: #2c3e50;
     transition: all 0.3s ease;
   }
-  
+
   @media (max-width: 768px) {
     display: flex;
   }
@@ -186,12 +187,12 @@ export const MobileMenu = styled.div<MobileMenuProps>`
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 10px 10px;
   z-index: 1000;
-  
+
   .mobile-socials {
     display: flex;
     gap: 1.5rem;
     margin-top: 1.5rem;
-    
+
     a {
       display: flex;
       align-items: center;
@@ -200,7 +201,7 @@ export const MobileMenu = styled.div<MobileMenuProps>`
       background-color: #f7f7f7;
       border-radius: 50%;
       transition: all 0.3s ease;
-      
+
       &:hover {
         background-color: #e9ecef;
       }

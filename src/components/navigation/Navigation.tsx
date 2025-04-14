@@ -45,7 +45,7 @@ export default function Navigation() {
       <NavContainer>
         <LogoContainer>
           {/* Tutaj dodaj swoje logo */}
-          <Logo>PodoClinic</Logo>
+          <Logo>Zdrowe Stopy</Logo>
         </LogoContainer>
 
         {/* Menu na większych ekranach */}
@@ -63,7 +63,10 @@ export default function Navigation() {
             );
           })}
         </MenuItems>
-        <Menu onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="xl:hidden" />
+        <Menu
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="xl:hidden"
+        />
         <div className="hidden xl:block" />
         {/* Menu mobilne */}
         <MobileMenu $isOpen={mobileMenuOpen}>

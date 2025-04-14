@@ -32,7 +32,7 @@ const Footer = () => {
           {/* Column 1: Logo and Description */}
           <Column>
             <LogoContainer>
-              <span>LOGO</span>
+              <span className="font-semibold">Zdrowe Stopy</span>
             </LogoContainer>
             <Description>
               Gabinet Podologiczny Zdrowe Stopy - Twoja kompleksowa opieka
