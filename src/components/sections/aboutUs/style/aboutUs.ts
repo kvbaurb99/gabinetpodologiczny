@@ -87,7 +87,7 @@ export const StyledDescription = styled(P)`
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #444;
+  color: #747474;
 `;
 
 export const StyledButton = styled(Button)`
