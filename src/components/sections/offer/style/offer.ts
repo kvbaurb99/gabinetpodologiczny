@@ -11,6 +11,7 @@ export const StyledSection = styled.section<{ $bgImage: string }>`
   position: relative;
   background-attachment: fixed;
   @media (max-width: 768px) {
+    background: url(${(props) => props.$bgImage}) repeat center center;
     height: 2250px;
   }
 `;
