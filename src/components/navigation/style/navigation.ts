@@ -11,6 +11,7 @@ type LinkProps = {
 
 type MobileMenuProps = {
   $isOpen: boolean;
+  $scrolled: boolean;
 };
 
 // Główny kontener nawigacji
@@ -42,7 +43,6 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 
   @media (max-width: 1024px) {
     width: 90%;
@@ -177,34 +177,13 @@ export const MobileMenuButton = styled.button`
 export const MobileMenu = styled.div<MobileMenuProps>`
   display: ${(props) => (props.$isOpen ? "flex" : "none")};
   flex-direction: column;
-  align-items: center;
   position: absolute;
-  top: 0;
+  top: 100%;
+  background-color: #fff;
+  backdrop-filter: blur(8px);
   left: 0;
   width: 100%;
-  background-color: #ffffff;
   padding: 2rem 0;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 10px 10px;
   z-index: 1000;
-
-  .mobile-socials {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem;
-      background-color: #f7f7f7;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: #e9ecef;
-      }
-    }
-  }
 `;

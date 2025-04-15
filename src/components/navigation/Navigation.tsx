@@ -13,7 +13,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navbarLinks } from "./data/navbarLinks";
-import { Menu } from "lucide-react";
+import { Menu, XIcon } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -63,25 +63,29 @@ export default function Navigation() {
             );
           })}
         </MenuItems>
-        <Menu
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="xl:hidden"
-        />
+        {mobileMenuOpen ? (
+          <XIcon
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="xl:hidden"
+          />
+        ) : (
+          <Menu
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="xl:hidden"
+          />
+        )}
         <div className="hidden xl:block" />
         {/* Menu mobilne */}
-        <MobileMenu $isOpen={mobileMenuOpen}>
-          {navbarLinks.map((link, index) => {
-            const isActive = pathname === `/${link.slug}`;
-            return (
-              <MenuItem
-                key={index}
-                $isActive={isActive}
-                onClick={handleMobileMenuClick}
-              >
-                <Link href={`/${link.slug}`}>{link.title}</Link>
-              </MenuItem>
-            );
-          })}
+        <MobileMenu $scrolled={scrolled} $isOpen={mobileMenuOpen}>
+          <ul className="w-[90%] mx-auto flex flex-col gap-6 tracking-wide text-lg font-medium">
+            {navbarLinks.map((link, index) => {
+              return (
+                <li key={index} onClick={handleMobileMenuClick}>
+                  <Link href={`/${link.slug}`}>{link.title}</Link>
+                </li>
+              );
+            })}
+          </ul>
         </MobileMenu>
       </NavContainer>
     </Nav>
