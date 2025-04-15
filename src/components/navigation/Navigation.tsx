@@ -6,10 +6,9 @@ import {
   Logo,
   MenuItems,
   MenuItem,
-  MobileMenuButton,
-  MobileMenu,
   LogoContainer,
 } from "./style/navigation";
+import { EnhancedMobileMenu } from "./MobileMenu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navbarLinks } from "./data/navbarLinks";
@@ -34,6 +33,12 @@ export default function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Update current category based on pathname when component mounts
+  useEffect(() => {
+    const path = pathname.split("/")[1] || "";
+    setCurrentCategory(path);
+  }, [pathname]);
 
   // Funkcja zamykająca menu mobilne po kliknięciu w link
   const handleMobileMenuClick = () => {
@@ -67,26 +72,27 @@ export default function Navigation() {
           <XIcon
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="xl:hidden"
+            size={24}
+            color="#2c3e50"
           />
         ) : (
           <Menu
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="xl:hidden"
+            size={24}
+            color="#2c3e50"
           />
         )}
         <div className="hidden xl:block" />
-        {/* Menu mobilne */}
-        <MobileMenu $scrolled={scrolled} $isOpen={mobileMenuOpen}>
-          <ul className="w-[90%] mx-auto flex flex-col gap-6 tracking-wide text-lg font-medium">
-            {navbarLinks.map((link, index) => {
-              return (
-                <li key={index} onClick={handleMobileMenuClick}>
-                  <Link href={`/${link.slug}`}>{link.title}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        </MobileMenu>
+        
+        {/* Enhanced Mobile Menu */}
+        <EnhancedMobileMenu 
+          $isOpen={mobileMenuOpen} 
+          $scrolled={scrolled} 
+          navbarLinks={navbarLinks}
+          onClose={handleMobileMenuClick}
+          currentPath={currentCategory}
+        />
       </NavContainer>
     </Nav>
   );
