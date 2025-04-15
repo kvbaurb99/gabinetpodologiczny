@@ -4,6 +4,7 @@ import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
 import { geistMono, geistSans } from "@/lib/fonts";
 import Navigation from "@/components/navigation/Navigation";
+import { Analytics } from "@vercel/analytics/react"
 // Dynamic imports
 const Footer = dynamic(() => import("@/components/footer/Footer"));
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           </main>
         </StyledComponentsRegistry>
       </body>
+      <Analytics />
     </html>
   );
 }
