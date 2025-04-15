@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { Swiper } from "swiper/react";
 
 // Styled Components
+export const ReviewsContainer = styled.div`
+  position: relative;
+`;
 
 export const ReviewCard = styled.div`
   background: white;
