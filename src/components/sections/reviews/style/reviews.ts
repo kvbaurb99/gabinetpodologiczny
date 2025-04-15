@@ -4,12 +4,6 @@ import styled from "styled-components";
 import { Swiper } from "swiper/react";
 
 // Styled Components
-export const ReviewsContainer = styled.div`
-  position: relative;
-  padding: 2rem 0;
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  border-radius: 1rem;
-`;
 
 export const ReviewCard = styled.div`
   background: white;

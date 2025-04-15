@@ -22,7 +22,6 @@ import {
   ReviewDate,
   ReviewFooter,
   ReviewHeader,
-  ReviewsContainer,
   SectionTitle,
   SourceIcon,
   StyledSwiper,
@@ -60,7 +59,6 @@ const Reviews = () => {
     <SectionWrapper $fullWidth id="reviews">
       <DefaultContainer>
         <SectionTitle>Co mówią nasi pacjenci</SectionTitle>
-        <ReviewsContainer>
           <StyledSwiper
             modules={[Pagination, Navigation, Autoplay]}
             spaceBetween={30}
@@ -147,7 +145,6 @@ const Reviews = () => {
               />
             ))}
           </PaginationContainer>
-        </ReviewsContainer>
       </DefaultContainer>
     </SectionWrapper>
   );
