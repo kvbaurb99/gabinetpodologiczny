@@ -21,7 +21,7 @@ export default async function Home() {
         title="Profesjonalne Zabiegi Podologiczne w Gabinecie Zdrowe Stopy"
         description="Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii. Specjalizujemy się w leczeniu wrastających paznokci, usuwaniu odcisków i modzeli oraz profesjonalnej pielęgnacji stóp diabetycznych. "
       />
-      <Offer />
+      <Offer isMobile={isMobile} />
       <Team />
       <Reviews />
     </>

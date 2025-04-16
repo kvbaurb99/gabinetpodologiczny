@@ -14,7 +14,11 @@ import {
   StyledSection,
 } from "./style/offer";
 
-export default function Offer() {
+type Props = {
+  isMobile: boolean;
+};
+
+export default function Offer({ isMobile }: Props) {
   return (
     <StyledSection $bgImage={BackgroundImage.src} id="offer">
       <Overlay>
@@ -29,7 +33,7 @@ export default function Offer() {
                       src={item.image}
                       alt={item.title}
                       loading="lazy"
-                      width={140}
+                      width={isMobile ? 70 : 140}
                       height={160}
                     />
                     <CardTitle>{item.title}</CardTitle>
