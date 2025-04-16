@@ -33,7 +33,7 @@ export default function Offer({ isMobile }: Props) {
                       src={item.image}
                       alt={item.title}
                       loading="lazy"
-                      width={isMobile ? 70 : 140}
+                      width={isMobile ? 120 : 140}
                       height={160}
                     />
                     <CardTitle>{item.title}</CardTitle>
