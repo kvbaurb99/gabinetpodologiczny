@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from "styled-components";
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Home, Clipboard, Info, Mail, Heart, Users, Star, ScrollText, Footprints } from 'lucide-react';
 
 interface NavLink {
@@ -27,8 +26,8 @@ const COLORS = {
   lightText: '#718096',
 };
 
-// Menu container with styling matched to your navbar
-const MenuContainer = styled(motion.div)<{ $scrolled: boolean }>`
+// Menu container with styling matched to your navbar and simple animation
+const MenuContainer = styled.div<{ $isOpen: boolean, $scrolled: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
@@ -40,6 +39,13 @@ const MenuContainer = styled(motion.div)<{ $scrolled: boolean }>`
   padding: 1rem 0 1.5rem 0;
   overflow: hidden;
   border-top: 1px solid rgba(0, 123, 167, 0.1);
+  
+  /* Simple slide down and opacity animation */
+  transform: translateY(${props => props.$isOpen ? '0' : '-20px'});
+  opacity: ${props => props.$isOpen ? 1 : 0};
+  max-height: ${props => props.$isOpen ? '1000px' : '0'};
+  transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
+  pointer-events: ${props => props.$isOpen ? 'all' : 'none'};
 `;
 
 const MenuList = styled.ul`
@@ -52,10 +58,14 @@ const MenuList = styled.ul`
   padding: 0;
 `;
 
-const MenuItem = styled(motion.li)<{ $isActive: boolean }>`
+const MenuItem = styled.li<{ $isActive: boolean }>`
   border-radius: 8px;
   background: ${props => props.$isActive ? COLORS.primary + '10' : 'transparent'};
   transition: all 0.3s ease;
+  
+  &:active {
+    transform: scale(0.98);
+  }
   
   a {
     display: flex;
@@ -100,7 +110,7 @@ const MenuFooter = styled.div`
   margin-right: auto;
 `;
 
-const ContactButton = styled(motion.a)`
+const ContactButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,55 +128,17 @@ const ContactButton = styled(motion.a)`
   
   &:hover {
     background: ${COLORS.accent};
+    transform: scale(1.02);
+  }
+  
+  &:active {
+    transform: scale(0.98);
   }
   
   svg {
     margin-right: 0.5rem;
   }
 `;
-
-// Animation variants
-const containerVariants = {
-  hidden: { 
-    height: 0,
-    opacity: 0 
-  },
-  visible: { 
-    height: 'auto',
-    opacity: 1,
-    transition: { 
-      duration: 0.3,
-      staggerChildren: 0.05
-    }
-  },
-  exit: {
-    height: 0,
-    opacity: 0,
-    transition: { 
-      duration: 0.2,
-      when: "afterChildren",
-      staggerChildren: 0.05,
-      staggerDirection: -1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    y: -10, 
-    opacity: 0 
-  },
-  visible: { 
-    y: 0, 
-    opacity: 1,
-    transition: { duration: 0.2 }
-  },
-  exit: { 
-    y: -10, 
-    opacity: 0,
-    transition: { duration: 0.2 }
-  }
-};
 
 // Function to get icon based on menu item slug
 const getIconForSlug = (slug: string) => {
@@ -181,8 +153,8 @@ const getIconForSlug = (slug: string) => {
       return <Info size={18} />;
     case '#team':
       return <Users size={18} />;
-      case '#reviews':
-        return <Star size={18} />;
+    case '#reviews':
+      return <Star size={18} />;
     default:
       return <Heart size={18} />;
   }
@@ -201,54 +173,41 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
   };
 
   return (
-    <AnimatePresence>
-      {$isOpen && (
-        <MenuContainer
-          $scrolled={$scrolled}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
+    <MenuContainer
+      $isOpen={$isOpen}
+      $scrolled={$scrolled}
+    >
+      <MenuList>
+        {navbarLinks.map((link, index) => (
+          <MenuItem 
+            key={index}
+            $isActive={isActive(link.slug)}
+            onClick={onClose}
+          >
+            <Link href={`/${link.slug}`}>
+              <IconWrapper>
+                {getIconForSlug(link.slug)}
+              </IconWrapper>
+              {link.title}
+            </Link>
+          </MenuItem>
+        ))}
+      </MenuList>
+      
+      <MenuFooter>
+        <h4 style={{ color: COLORS.primary, fontWeight: 600, marginBottom: '0.5rem' }}>
+          Potrzebujesz konsultacji?
+        </h4>
+        <p style={{ fontSize: '0.9rem', color: COLORS.text, opacity: 0.8 }}>
+          Zadzwoń i umów wizytę w gabinecie podologicznym
+        </p>
+        <ContactButton 
+          href="tel:+48123456789"
         >
-          <MenuList>
-            {navbarLinks.map((link, index) => (
-              <MenuItem 
-                key={index} 
-                variants={itemVariants}
-                $isActive={isActive(link.slug)}
-                onClick={onClose}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link href={`/${link.slug}`}>
-                  <IconWrapper>
-                    {getIconForSlug(link.slug)}
-                  </IconWrapper>
-                  {link.title}
-                </Link>
-              </MenuItem>
-            ))}
-          </MenuList>
-          
-          <motion.div variants={itemVariants}>
-            <MenuFooter>
-              <h4 style={{ color: COLORS.primary, fontWeight: 600, marginBottom: '0.5rem' }}>
-                Potrzebujesz konsultacji?
-              </h4>
-              <p style={{ fontSize: '0.9rem', color: COLORS.text, opacity: 0.8 }}>
-                Zadzwoń i umów wizytę w gabinecie podologicznym
-              </p>
-              <ContactButton 
-                href="tel:+48123456789"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Phone size={18} /> 
-                Umów wizytę
-              </ContactButton>
-            </MenuFooter>
-          </motion.div>
-        </MenuContainer>
-      )}
-    </AnimatePresence>
+          <Phone size={18} /> 
+          Umów wizytę
+        </ContactButton>
+      </MenuFooter>
+    </MenuContainer>
   );
 };
