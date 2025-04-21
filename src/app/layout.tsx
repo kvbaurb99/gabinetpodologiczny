@@ -4,7 +4,8 @@ import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
 import { geistMono, geistSans } from "@/lib/fonts";
 import Navigation from "@/components/navigation/Navigation";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleTagManager } from "@next/third-parties/google";
 // Dynamic imports
 const Footer = dynamic(() => import("@/components/footer/Footer"));
 
@@ -18,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <GoogleTagManager gtmId="GTM-TKSW436G" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
