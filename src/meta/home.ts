@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Specjalistyczny gabinet podologiczny z Jaworza. Oferujemy kompleksową pielęgnację stóp, leczenie grzybicy, wrastających paznokci oraz usuwanie odcisków. Umów wizytę już dziś!",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
