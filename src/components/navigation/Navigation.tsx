@@ -11,8 +11,10 @@ import {
 import { EnhancedMobileMenu } from "./MobileMenu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import LogoImage from "@/assets/logo.svg";
 import { navbarLinks } from "./data/navbarLinks";
 import { Menu, XIcon } from "lucide-react";
+import Image from "next/image";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -48,10 +50,15 @@ export default function Navigation() {
   return (
     <Nav $scrolled={scrolled}>
       <NavContainer>
-        <LogoContainer>
-          {/* Tutaj dodaj swoje logo */}
-          <Logo>Zdrowe Stopy</Logo>
-        </LogoContainer>
+        <Image
+          src={LogoImage}
+          alt="Zdrowe Stopy Logo"
+          width={250}
+          quality={100}
+          priority
+          height={160}
+          className="h-[60px] object-cover w-[200px] lg:w-[250px]"
+        />
 
         {/* Menu na większych ekranach */}
         <MenuItems>
@@ -84,11 +91,11 @@ export default function Navigation() {
           />
         )}
         <div className="hidden xl:block" />
-        
+
         {/* Enhanced Mobile Menu */}
-        <EnhancedMobileMenu 
-          $isOpen={mobileMenuOpen} 
-          $scrolled={scrolled} 
+        <EnhancedMobileMenu
+          $isOpen={mobileMenuOpen}
+          $scrolled={scrolled}
           navbarLinks={navbarLinks}
           onClose={handleMobileMenuClick}
           currentPath={currentCategory}

@@ -104,7 +104,7 @@ export const ButtonsContainer = styled.div`
   }
 `;
 
-export const PrimaryButton = styled.a`
+export const PrimaryButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -141,7 +141,7 @@ export const PrimaryButton = styled.a`
   }
 `;
 
-export const SecondaryButton = styled.a`
+export const SecondaryButton = styled.button`
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;

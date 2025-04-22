@@ -175,7 +175,7 @@ function HeaderSlide({
             </SlideDescription>
 
             <ButtonsContainer>
-              <Link href="tel:+48501408528" passHref legacyBehavior>
+              <Link href="tel:+48501408528" passHref>
                 <PrimaryButton>
                   <Calendar />
                   <span>Umów wizytę</span>
@@ -183,7 +183,7 @@ function HeaderSlide({
                 </PrimaryButton>
               </Link>
 
-              <Link href="tel:+48501408528" passHref legacyBehavior>
+              <Link href="tel:+48501408528" passHref>
                 <SecondaryButton>
                   <Phone />
                   <span>+48 501 408 528</span>

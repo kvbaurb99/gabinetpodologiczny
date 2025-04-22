@@ -1,5 +1,6 @@
 // Footer.js
-import React from "react";
+import LogoImage from "@/assets/logo.svg";
+
 import {
   FooterWrapper,
   Container,
@@ -14,6 +15,7 @@ import {
   SocialLinks,
   Copyright,
 } from "./style/footer";
+import Image from "next/image";
 
 const menuItems = [
   { title: "Strona główna", href: "#" },
@@ -31,9 +33,15 @@ const Footer = () => {
         <GridContainer>
           {/* Column 1: Logo and Description */}
           <Column>
-            <LogoContainer>
-              <span className="font-semibold">Zdrowe Stopy</span>
-            </LogoContainer>
+            <Image
+              src={LogoImage}
+              alt="Zdrowe Stopy Logo"
+              width={240}
+              quality={100}
+              loading="lazy"
+              height={160}
+              className="object-cover h-[80px]"
+            />
             <Description>
               Gabinet Podologiczny Zdrowe Stopy - Twoja kompleksowa opieka
               podologiczna w profesjonalnych warunkach. Specjalizujemy się w
