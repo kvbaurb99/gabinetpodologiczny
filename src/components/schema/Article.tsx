@@ -1,4 +1,3 @@
-// components/ArticleSchema.tsx
 import { Article, BreadcrumbList, WithContext } from "schema-dts";
 
 interface ArticleSchemaProps {
@@ -36,7 +35,7 @@ const ArticleSchema: React.FC<ArticleSchemaProps> = ({
     author: {
       "@type": "Person",
       name: authorName,
-      url: authorUrl,
+      url: "https://podologjaworze.pl",
     },
     publisher: {
       "@type": "Organization",
