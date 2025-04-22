@@ -19,6 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="fCwJ7xTv5BKEE8tlBRT2-9Mo2OaospF0DB3PV4THWE8"
+        />
+      </head>
       <GoogleTagManager gtmId="GTM-TKSW436G" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
