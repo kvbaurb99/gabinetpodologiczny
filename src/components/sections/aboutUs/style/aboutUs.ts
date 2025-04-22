@@ -12,7 +12,7 @@ export const AboutContainer = styled.div<AboutUsProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem;
+  gap: 3rem;
   flex-direction: ${(props) => (props.$reverse ? "row-reverse" : "row")};
   padding: 2rem 0;
 
