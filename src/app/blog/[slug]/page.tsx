@@ -1,6 +1,8 @@
+import ArticleSchema from "@/components/schema/Article";
 import ArticleStyles from "@/global-styles/article/article";
 import { getArticle } from "@/server/getArticle";
 import { getArticles } from "@/server/getArticles";
+import LogoImage from "@/assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -18,6 +20,15 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
   const restArticles = articles.filter((item) => item.slug !== slug);
   return (
     <>
+      <ArticleSchema
+        title={article.title}
+        description={article.overview}
+        articleSlug={article.slug}
+        imageUrl={article.image}
+        authorName="Gabinet Podologiczny Jaworze"
+        organizationName="Gabinet Podologiczny Jaworze"
+        organizationLogo={LogoImage.src}
+      />
       <ArticleStyles />
       <div className="mt-32 flex flex-col xl:grid xl:grid-cols-12 gap-12 w-[90%] xl:w-[80%] mx-auto">
         <article className="col-span-12 xl:col-span-8">
@@ -29,7 +40,7 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
             alt={article.title}
             className="w-full rounded-xl shadow-md shadow-black/20 h-[220px] xl:h-[480px] object-cover"
           />
-          <h1 className="mt-6 text-2xl xl:text-4xl font-bold leading-snug">
+          <h1 className="mt-4 xl:mt-6 text-2xl xl:text-4xl font-bold xl:leading-snug">
             {article.title}
           </h1>
           <div
