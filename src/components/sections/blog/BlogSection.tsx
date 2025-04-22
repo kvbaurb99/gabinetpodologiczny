@@ -10,7 +10,7 @@ type Props = {
 
 export default function BlogSection({ articles }: Props) {
   return (
-    <SectionWrapper $smallerMargin id="blog">
+    <SectionWrapper id="blog">
       <SectionTitle>Artykuły podologiczne</SectionTitle>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
         {articles.map((article) => (

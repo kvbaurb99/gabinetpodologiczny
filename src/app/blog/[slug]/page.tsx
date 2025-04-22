@@ -30,7 +30,7 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
         organizationLogo={LogoImage.src}
       />
       <ArticleStyles />
-      <div className="mt-32 flex flex-col xl:grid xl:grid-cols-12 gap-12 w-[90%] xl:w-[80%] mx-auto">
+      <div className="mt-6 xl:mt-16 flex flex-col xl:grid xl:grid-cols-12 gap-12 w-[90%] xl:w-[80%] mx-auto">
         <article className="col-span-12 xl:col-span-8">
           <Image
             src={article.image}
@@ -59,7 +59,10 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
                   key={i}
                   className="flex gap-4 border-b border-gray-200 pb-4 flex-col xl:flex-row"
                 >
-                  <Link className="min-w-24 max-w-24 h-24" href={`/blog/${item.slug}`}>
+                  <Link
+                    className="min-w-24 max-w-24 h-24"
+                    href={`/blog/${item.slug}`}
+                  >
                     <Image
                       src={item.image}
                       width={100}

@@ -12,7 +12,7 @@ type MobileMenuProps = {
 
 // Główny kontener nawigacji
 export const Nav = styled.nav`
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
