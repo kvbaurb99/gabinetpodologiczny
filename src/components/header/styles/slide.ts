@@ -72,7 +72,7 @@ export const Divider = styled.div`
   border-radius: 9999px;
 `;
 
-export const SlideTitle = styled.h1`
+export const SlideTitle = styled.p`
   font-size: 2rem;
   line-height: 1.2;
   font-weight: 700;
