@@ -48,7 +48,7 @@ export default function Navigation() {
   };
 
   return (
-    <Nav $scrolled={scrolled}>
+    <Nav>
       <NavContainer>
         <Image
           src={LogoImage}

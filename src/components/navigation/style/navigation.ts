@@ -1,10 +1,6 @@
 "use client";
 import styled from "styled-components";
 
-type NavProps = {
-  $scrolled: boolean;
-};
-
 type LinkProps = {
   $isActive: boolean;
 };
@@ -15,23 +11,20 @@ type MobileMenuProps = {
 };
 
 // Główny kontener nawigacji
-export const Nav = styled.nav<NavProps>`
+export const Nav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: ${(props) =>
-    props.$scrolled ? "#ffffff" : "rgba(255, 255, 255, 0.9)"};
-  padding: ${(props) => (props.$scrolled ? "0.8rem 0" : "1.5rem 0")};
+  background-color: #ffffff;
+  padding: 0.8rem 0;
   transition: all 0.3s ease-in-out;
-  box-shadow: ${(props) =>
-    props.$scrolled
-      ? "0 4px 12px rgba(43, 103, 119, 0.15)"
-      : "0 2px 8px rgba(43, 103, 119, 0.08)"};
+  box-shadow: 0 4px 12px rgba(43, 103, 119, 0.15);
+
   backdrop-filter: blur(8px);
   @media (max-width: 768px) {
-    padding: ${(props) => (props.$scrolled ? "0.5rem 0" : "0.8rem 0")};
+    padding: "0.5rem 0";
   }
 `;
 
