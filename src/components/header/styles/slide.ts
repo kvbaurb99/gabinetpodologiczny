@@ -139,6 +139,9 @@ export const PrimaryButton = styled.button`
     height: 1.25rem;
     width: 1.25rem;
   }
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 export const SecondaryButton = styled.button`
@@ -162,6 +165,9 @@ export const SecondaryButton = styled.button`
   & svg {
     height: 1.25rem;
     width: 1.25rem;
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
   }
 `;
 
