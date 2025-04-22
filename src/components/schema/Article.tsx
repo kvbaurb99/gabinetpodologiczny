@@ -31,6 +31,7 @@ const ArticleSchema: React.FC<ArticleSchemaProps> = ({
     "@type": "Article",
     headline: title,
     description: description,
+    url: articleUrl,
     image: imageUrl,
     author: {
       "@type": "Person",
@@ -72,7 +73,7 @@ const ArticleSchema: React.FC<ArticleSchemaProps> = ({
         "@type": "ListItem",
         position: 3,
         name: title,
-        item: `https://podologjaworze.pl/${articleSlug}`,
+        item: articleUrl,
       },
     ],
   };
