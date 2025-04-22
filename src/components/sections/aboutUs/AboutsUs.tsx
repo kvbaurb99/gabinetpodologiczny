@@ -1,6 +1,6 @@
 import { SectionWrapper } from "@/global-styles/global";
 import about_src from "@/assets/backgrounds/clinic.webp";
-import about_src_2 from "@/assets/testowe.webp";
+import about_src_2 from "@/assets/sections/aboutUs/testowe.webp";
 import Link from "next/link";
 import {
   AboutContainer,

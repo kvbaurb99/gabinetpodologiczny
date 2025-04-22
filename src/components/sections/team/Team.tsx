@@ -1,6 +1,6 @@
 import { H2, P, SectionWrapper } from "@/global-styles/global";
 import Image, { StaticImageData } from "next/image";
-import MemberImage from "@/assets/387872201_6208764695892156_305300303520319174_n.jpg";
+import MemberImage from "@/assets/sections/team/387872201_6208764695892156_305300303520319174_n.jpg";
 import MemberImageTwo from "@/assets/sections/aboutUs/about_us.png";
 
 type TeamMemberProps = {
