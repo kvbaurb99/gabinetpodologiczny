@@ -59,7 +59,7 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
                   key={i}
                   className="flex gap-4 border-b border-gray-200 pb-4 flex-col xl:flex-row"
                 >
-                  <Link className="min-w-24 h-24" href={`/blog/${item.slug}`}>
+                  <Link className="min-w-24 max-w-24 h-24" href={`/blog/${item.slug}`}>
                     <Image
                       src={item.image}
                       width={100}
