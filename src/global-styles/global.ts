@@ -20,6 +20,7 @@ export const SectionWrapper = styled.section<SectionProps>`
   @media (max-width: 768px) {
     width: ${(props) => (props.$fullWidth ? "100%" : "90%")};
     margin-top: ${(props) => (props.$smallerMargin ? "0.5rem" : "2rem")};
+    padding: ${(props) => (props.$fullWidth ? "3rem 0" : "0 0")};
   }
 `;
 

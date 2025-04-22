@@ -24,6 +24,9 @@ export const ReviewCard = styled.div`
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08),
       0 10px 10px -5px rgba(0, 0, 0, 0.03);
   }
+  @media (max-width: 780px) {
+    height: 300px;
+  }
 `;
 
 export const ReviewHeader = styled.div`

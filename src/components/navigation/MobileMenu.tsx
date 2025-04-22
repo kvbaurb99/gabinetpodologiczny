@@ -5,12 +5,11 @@ import Link from "next/link";
 import {
   Phone,
   Home,
-  Clipboard,
   Info,
-  Mail,
   Heart,
   Users,
   Star,
+  Book,
   ScrollText,
   Footprints,
 } from "lucide-react";
@@ -172,6 +171,8 @@ const getIconForSlug = (slug: string) => {
       return <Users size={18} />;
     case "#reviews":
       return <Star size={18} />;
+    case "blog":
+      return <Book size={18} />;
     default:
       return <Heart size={18} />;
   }
