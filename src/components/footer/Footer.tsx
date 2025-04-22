@@ -19,11 +19,10 @@ import Image from "next/image";
 
 const menuItems = [
   { title: "Strona główna", href: "#" },
-  { title: "O nas", href: "#" },
-  { title: "Oferta", href: "#" },
-  { title: "Cennik", href: "#" },
-  { title: "Blog", href: "#" },
-  { title: "Kontakt", href: "#" },
+  { title: "O nas", href: "#about" },
+  { title: "Oferta", href: "#offer" },
+  { title: "Zespół", href: "#team" },
+  { title: "Opinie", href: "#reviews" },
 ];
 
 const Footer = () => {
