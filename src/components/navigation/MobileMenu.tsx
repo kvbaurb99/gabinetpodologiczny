@@ -207,7 +207,7 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
       </MenuList>
 
       <MenuFooter>
-        <h4
+        <p
           style={{
             color: COLORS.primary,
             fontWeight: 600,
@@ -215,7 +215,7 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
           }}
         >
           Potrzebujesz konsultacji?
-        </h4>
+        </p>
         <p style={{ fontSize: "0.9rem", color: COLORS.text, opacity: 0.8 }}>
           Zadzwoń i umów wizytę w gabinecie podologicznym
         </p>
