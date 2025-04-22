@@ -2,11 +2,12 @@ import ArticleStyles from "@/global-styles/article/article";
 import { getArticle } from "@/server/getArticle";
 import { getArticles } from "@/server/getArticles";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type Props = Promise<{ slug: string }>;
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function BlogPageSingle({ params }: { params: Props }) {
   const { slug } = await params;
@@ -47,16 +48,22 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
                   key={i}
                   className="flex gap-4 border-b border-gray-200 pb-4 flex-col xl:flex-row"
                 >
-                  <Image
-                    src={item.image}
-                    width={100}
-                    height={100}
-                    priority
-                    alt={item.title}
-                    className="w-24 h-24 rounded-lg shadow-md object-cover shadow-black/20"
-                  />
+                  <Link className="min-w-24 h-24" href={`/blog/${item.slug}`}>
+                    <Image
+                      src={item.image}
+                      width={100}
+                      height={100}
+                      priority
+                      alt={item.title}
+                      className="rounded-lg w-full h-full shadow-md object-cover shadow-black/20"
+                    />
+                  </Link>
                   <div>
-                    <h5 className="font-semibold line-clamp-2">{item.title}</h5>
+                    <Link href={`/blog/${item.slug}`}>
+                      <h5 className="font-semibold line-clamp-2">
+                        {item.title}
+                      </h5>
+                    </Link>
                     <p className="text-sm text-gray-500 line-clamp-3">
                       {item.overview}
                     </p>
