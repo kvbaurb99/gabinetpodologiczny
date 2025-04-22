@@ -50,15 +50,17 @@ export default function Navigation() {
   return (
     <Nav>
       <NavContainer>
-        <Image
-          src={LogoImage}
-          alt="Zdrowe Stopy Logo"
-          width={240}
-          quality={100}
-          priority
-          height={160}
-          className="h-[58px] object-cover w-[200px] lg:w-[245px] relative top-0.5"
-        />
+        <Link href={"/"}>
+          <Image
+            src={LogoImage}
+            alt="Zdrowe Stopy Logo"
+            width={240}
+            quality={100}
+            priority
+            height={160}
+            className="h-[58px] object-cover w-[200px] lg:w-[245px] relative top-0.5"
+          />
+        </Link>
 
         {/* Menu na większych ekranach */}
         <MenuItems>

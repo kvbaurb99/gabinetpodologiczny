@@ -19,4 +19,8 @@ export const navbarLinks = [
     title: "Opinie",
     slug: "#reviews",
   },
+  {
+    title: "Blog",
+    slug: "blog",
+  },
 ];

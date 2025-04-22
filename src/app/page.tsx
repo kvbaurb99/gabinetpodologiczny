@@ -3,11 +3,14 @@ import Header from "@/components/header/Header";
 import { mobileDetectFunction } from "@/utils/mobileDetectFunction";
 import AboutsUs from "@/components/sections/aboutUs/AboutsUs";
 import Reviews from "@/components/sections/reviews/Reviews";
+import BlogSection from "@/components/sections/blog/BlogSection";
+import { getArticles } from "@/server/getArticles";
 const Offer = dynamic(() => import("@/components/sections/offer/Offer"));
 const Team = dynamic(() => import("@/components/sections/team/Team"));
 
 export default async function Home() {
   const isMobile = await mobileDetectFunction();
+  const articles = await getArticles();
   return (
     <>
       <Header isMobile={isMobile} />
@@ -24,6 +27,7 @@ export default async function Home() {
       <Offer isMobile={isMobile} />
       <Team />
       <Reviews />
+      <BlogSection articles={articles.slice(0, 3)} />
     </>
   );
 }
