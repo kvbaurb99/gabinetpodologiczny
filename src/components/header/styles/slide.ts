@@ -40,9 +40,12 @@ export const ContentContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
+  position: relative;
+  bottom: 1rem;
 
   @media (min-width: 768px) {
     width: 80%; /* Larger screens: 80% width */
+    bottom: 0;
   }
 `;
 

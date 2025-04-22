@@ -133,7 +133,6 @@ function HeaderSlide({
   alt,
   title,
   description,
-  isMobile,
   isActive,
   isInitialRender,
 }: SlideProps) {
