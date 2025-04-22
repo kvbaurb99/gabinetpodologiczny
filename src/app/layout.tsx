@@ -6,6 +6,7 @@ import { geistMono, geistSans } from "@/lib/fonts";
 import Navigation from "@/components/navigation/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleTagManager } from "@next/third-parties/google";
+import JsonLdSchema from "@/components/schema/Organization";
 // Dynamic imports
 const Footer = dynamic(() => import("@/components/footer/Footer"));
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="fCwJ7xTv5BKEE8tlBRT2-9Mo2OaospF0DB3PV4THWE8"
         />
+        <JsonLdSchema />
       </head>
       <GoogleTagManager gtmId="GTM-TKSW436G" />
       <body
