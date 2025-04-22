@@ -87,7 +87,7 @@ export default function Navigation() {
         ) : (
           <Menu
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden"
+            className="lg:hidden"
             size={24}
             color="#2c3e50"
           />
