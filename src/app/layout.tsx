@@ -9,6 +9,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 // Dynamic imports
 const Footer = dynamic(() => import("@/components/footer/Footer"));
 
+
 // Meta data is imported from the meta folder
 export { metadata };
 
