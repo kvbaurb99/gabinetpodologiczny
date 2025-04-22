@@ -1,8 +1,19 @@
 "use client";
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import Link from 'next/link';
-import { Phone, Home, Clipboard, Info, Mail, Heart, Users, Star, ScrollText, Footprints } from 'lucide-react';
+import Link from "next/link";
+import {
+  Phone,
+  Home,
+  Clipboard,
+  Info,
+  Mail,
+  Heart,
+  Users,
+  Star,
+  ScrollText,
+  Footprints,
+} from "lucide-react";
 
 interface NavLink {
   title: string;
@@ -19,15 +30,15 @@ interface MobileMenuProps {
 
 // Colors matching your existing theme
 const COLORS = {
-  primary: '#007BA7', // Matches your logo color
-  secondary: '#F5F7FA',
-  accent: '#4f67bd', // From your hover color
-  text: '#2c3e50', // Matches your text color
-  lightText: '#718096',
+  primary: "#007BA7", // Matches your logo color
+  secondary: "#F5F7FA",
+  accent: "#4f67bd", // From your hover color
+  text: "#2c3e50", // Matches your text color
+  lightText: "#718096",
 };
 
 // Menu container with styling matched to your navbar and simple animation
-const MenuContainer = styled.div<{ $isOpen: boolean, $scrolled: boolean }>`
+const MenuContainer = styled.div<{ $isOpen: boolean; $scrolled: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
@@ -39,13 +50,13 @@ const MenuContainer = styled.div<{ $isOpen: boolean, $scrolled: boolean }>`
   padding: 1rem 0 1.5rem 0;
   overflow: hidden;
   border-top: 1px solid rgba(0, 123, 167, 0.1);
-  
+
   /* Simple slide down and opacity animation */
-  transform: translateY(${props => props.$isOpen ? '0' : '-20px'});
-  opacity: ${props => props.$isOpen ? 1 : 0};
-  max-height: ${props => props.$isOpen ? '1000px' : '0'};
+  transform: translateY(${(props) => (props.$isOpen ? "0" : "-20px")});
+  opacity: ${(props) => (props.$isOpen ? 1 : 0)};
+  max-height: ${(props) => (props.$isOpen ? "1000px" : "0")};
   transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
-  pointer-events: ${props => props.$isOpen ? 'all' : 'none'};
+  pointer-events: ${(props) => (props.$isOpen ? "all" : "none")};
 `;
 
 const MenuList = styled.ul`
@@ -60,33 +71,39 @@ const MenuList = styled.ul`
 
 const MenuItem = styled.li<{ $isActive: boolean }>`
   border-radius: 8px;
-  background: ${props => props.$isActive ? COLORS.primary + '10' : 'transparent'};
+  background: ${(props) =>
+    props.$isActive ? COLORS.primary + "10" : "transparent"};
   transition: all 0.3s ease;
-  
+
   &:active {
     transform: scale(0.98);
   }
-  
+
   a {
     display: flex;
     align-items: center;
     padding: 0.85rem 1rem;
-    font-weight: ${props => props.$isActive ? '600' : '500'};
+    font-weight: ${(props) => (props.$isActive ? "600" : "500")};
     font-size: 1.05rem;
-    color: ${props => props.$isActive ? COLORS.primary : COLORS.text};
+    color: ${(props) => (props.$isActive ? COLORS.primary : COLORS.text)};
     transition: all 0.3s ease;
     text-decoration: none;
     position: relative;
-    
+
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 1rem;
       right: 1rem;
       bottom: 0;
       height: 1px;
-      background: linear-gradient(to right, transparent, ${COLORS.lightText}20, transparent);
-      opacity: ${props => props.$isActive ? 0 : 0.3};
+      background: linear-gradient(
+        to right,
+        transparent,
+        ${COLORS.lightText}20,
+        transparent
+      );
+      opacity: ${(props) => (props.$isActive ? 0 : 0.3)};
     }
   }
 `;
@@ -125,16 +142,16 @@ const ContactButton = styled.a`
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
-  
+
   &:hover {
     background: ${COLORS.accent};
     transform: scale(1.02);
   }
-  
+
   &:active {
     transform: scale(0.98);
   }
-  
+
   svg {
     margin-right: 0.5rem;
   }
@@ -142,30 +159,30 @@ const ContactButton = styled.a`
 
 // Function to get icon based on menu item slug
 const getIconForSlug = (slug: string) => {
-  switch(slug) {
-    case '':
+  switch (slug) {
+    case "":
       return <Home size={18} />;
-    case '#about':
+    case "#about":
       return <ScrollText size={18} />;
-    case '#offer':
+    case "#offer":
       return <Footprints size={18} />;
-    case 'o-nas':
+    case "o-nas":
       return <Info size={18} />;
-    case '#team':
+    case "#team":
       return <Users size={18} />;
-    case '#reviews':
+    case "#reviews":
       return <Star size={18} />;
     default:
       return <Heart size={18} />;
   }
 };
 
-export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({ 
-  $isOpen, 
-  $scrolled, 
-  navbarLinks, 
+export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
+  $isOpen,
+  $scrolled,
+  navbarLinks,
   onClose,
-  currentPath 
+  currentPath,
 }) => {
   // Function to check if a menu item is active
   const isActive = (slug: string) => {
@@ -173,38 +190,37 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
   };
 
   return (
-    <MenuContainer
-      $isOpen={$isOpen}
-      $scrolled={$scrolled}
-    >
+    <MenuContainer $isOpen={$isOpen} $scrolled={$scrolled}>
       <MenuList>
         {navbarLinks.map((link, index) => (
-          <MenuItem 
+          <MenuItem
             key={index}
             $isActive={isActive(link.slug)}
             onClick={onClose}
           >
             <Link href={`/${link.slug}`}>
-              <IconWrapper>
-                {getIconForSlug(link.slug)}
-              </IconWrapper>
+              <IconWrapper>{getIconForSlug(link.slug)}</IconWrapper>
               {link.title}
             </Link>
           </MenuItem>
         ))}
       </MenuList>
-      
+
       <MenuFooter>
-        <h4 style={{ color: COLORS.primary, fontWeight: 600, marginBottom: '0.5rem' }}>
+        <h4
+          style={{
+            color: COLORS.primary,
+            fontWeight: 600,
+            marginBottom: "0.5rem",
+          }}
+        >
           Potrzebujesz konsultacji?
         </h4>
-        <p style={{ fontSize: '0.9rem', color: COLORS.text, opacity: 0.8 }}>
+        <p style={{ fontSize: "0.9rem", color: COLORS.text, opacity: 0.8 }}>
           Zadzwoń i umów wizytę w gabinecie podologicznym
         </p>
-        <ContactButton 
-          href="tel:+48123456789"
-        >
-          <Phone size={18} /> 
+        <ContactButton href="tel:+48501408528">
+          <Phone size={18} />
           Umów wizytę
         </ContactButton>
       </MenuFooter>

@@ -53,11 +53,11 @@ export default function Navigation() {
         <Image
           src={LogoImage}
           alt="Zdrowe Stopy Logo"
-          width={250}
+          width={240}
           quality={100}
           priority
           height={160}
-          className="h-[60px] object-cover w-[200px] lg:w-[250px]"
+          className="h-[55px] object-cover w-[200px] lg:w-[245px] relative lg:top-0.5"
         />
 
         {/* Menu na większych ekranach */}
