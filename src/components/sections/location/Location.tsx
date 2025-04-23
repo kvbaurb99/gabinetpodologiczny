@@ -78,11 +78,11 @@ export default function Location({ api }: Props) {
               <Phone size={24} />
               <InfoTitle>Kontakt</InfoTitle>
             </InfoHeader>
-            <ContactItem href="tel:+48123456789">
+            <ContactItem href="tel:+48501408528">
               <Phone size={16} />
               +48 501 408 528
             </ContactItem>
-            <ContactItem href="tel:+48987654321">
+            <ContactItem href="tel:+48509614723">
               <Phone size={16} />
               +48 509 614 723
             </ContactItem>

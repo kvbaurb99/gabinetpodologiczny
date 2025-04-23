@@ -19,7 +19,7 @@ export const SectionWrapper = styled.section<SectionProps>`
   margin-top: 4rem;
   @media (max-width: 768px) {
     width: ${(props) => (props.$fullWidth ? "100%" : "90%")};
-    margin-top: ${(props) => (props.$smallerMargin ? "0.5rem" : "2rem")};
+    margin-top: ${(props) => (props.$smallerMargin ? "0.5rem" : "2.5rem")};
     padding: ${(props) => (props.$fullWidth ? "3rem 0" : "0 0")};
   }
 `;
@@ -44,7 +44,7 @@ export const H2 = styled.h2<H2Props>`
   font-weight: 700;
   margin-bottom: 1rem;
   @media (max-width: 768px) {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
   }
 `;
 
