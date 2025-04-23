@@ -68,4 +68,13 @@ export const reviews = [
     date: "20.02.2024",
     type: "facebook",
   },
+  {
+    id: 9,
+    name: "Dariusz Sklarczyk",
+    rating: 5,
+    content:
+      "Pełen profesjonalizm, super klimat, zapach no i oczywiście obsługa 😃👌👌👌",
+    date: "16.01.2025",
+    type: "google",
+  },
 ];
