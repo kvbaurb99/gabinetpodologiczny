@@ -1,5 +1,5 @@
-"use client"
-import styled from "styled-components"
+"use client";
+import styled from "styled-components";
 
 export const LocationContentWrapper = styled.div`
   display: flex;
@@ -45,6 +45,9 @@ export const InfoTitle = styled.h3`
   font-size: 1.4rem;
   font-weight: 600;
   color: #333;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const InfoSection = styled.div`
