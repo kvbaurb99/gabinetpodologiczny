@@ -42,9 +42,8 @@ export const InfoContainer = styled.div`
 `;
 
 export const InfoTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
   color: #333;
 `;
 
