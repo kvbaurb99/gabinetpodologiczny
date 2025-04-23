@@ -6,10 +6,12 @@ export const LocationContentWrapper = styled.div`
   flex-direction: column;
   gap: 2rem;
   width: 100%;
+  margin-bottom: 2rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: stretch;
+    margin-bottom: 4rem;
   }
 `;
 
