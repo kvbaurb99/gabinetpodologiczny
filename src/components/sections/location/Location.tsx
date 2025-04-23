@@ -178,11 +178,11 @@ export default function Location({ api }: Props) {
             </InfoHeader>
             <ContactItem href="tel:+48123456789">
               <Phone size={16} />
-              +48 123 456 789
+              +48 501 408 528
             </ContactItem>
             <ContactItem href="tel:+48987654321">
               <Phone size={16} />
-              +48 987 654 321
+              +48 509 614 723
             </ContactItem>
           </InfoSection>
         </InfoContainer>
