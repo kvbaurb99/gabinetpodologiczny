@@ -68,8 +68,8 @@ export default function Team() {
   return (
     <SectionWrapper id="zespol" className="py-20 relative">
       <div className="relative z-10">
-        <div className="mb-8 xl:mb-16">
-          <H2 className="mb-4">Poznaj nasz zespół</H2>
+        <div className="mb-8">
+          <H2>Poznaj nasz zespół</H2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
