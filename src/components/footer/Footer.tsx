@@ -70,12 +70,6 @@ const Footer = () => {
               <p>Tel: +48 501 408 528</p>
             </ContactInfo>
           </Column>
-
-          {/* Column 4: Follow Us */}
-          <Column>
-            <Title>Obserwuj nas</Title>
-            <SocialLinks>Facebook</SocialLinks>
-          </Column>
         </GridContainer>
 
         {/* Copyright */}
