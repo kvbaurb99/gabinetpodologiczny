@@ -10,9 +10,9 @@ type Props = {
 export default function Sidebar({ restArticles }: Props) {
   return (
     <aside className="col-span-12 xl:col-span-4 sticky top-32 h-fit">
-      <h4 className="font-semibold text-xl xl:text-2xl">
+      <h2 className="font-semibold text-xl xl:text-2xl">
         Przeczytaj pozostałe artykuły
-      </h4>
+      </h2>
       <div className="flex flex-col gap-4 mt-10">
         {restArticles.map((item, i) => {
           return (
@@ -35,7 +35,7 @@ export default function Sidebar({ restArticles }: Props) {
               </Link>
               <div>
                 <Link href={`/blog/${item.slug}`}>
-                  <h5 className="font-semibold line-clamp-2">{item.title}</h5>
+                  <h3 className="font-semibold line-clamp-2">{item.title}</h3>
                 </Link>
                 <p className="text-sm text-gray-500 line-clamp-3">
                   {item.overview}
