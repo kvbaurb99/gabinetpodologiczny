@@ -40,7 +40,7 @@ function MapComponent({ center, api }: MapComponentProps) {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={15}
+      zoom={18.7}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >

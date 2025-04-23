@@ -23,7 +23,7 @@ type Props = {
 };
 
 export default function Location({ api }: Props) {
-  const location = { lat: 49.79600891129703, lng: 18.946997424298008 };
+  const location = { lat: 49.795859234092916, lng: 18.947077466267235 };
 
   return (
     <SectionWrapper>
