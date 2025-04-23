@@ -9,14 +9,15 @@ type Props = {
 export default function ArticleSingle({ title, image, content }: Props) {
   return (
     <article className="col-span-12 xl:col-span-8">
-      <Image
-        src={image}
-        width={640}
-        height={360}
-        priority
-        alt={title}
-        className="w-full rounded-xl shadow-md shadow-black/20 h-[220px] xl:h-[480px] object-cover"
-      />
+      <figure className="h-[220px] xl:h-[480px] relative">
+        <Image
+          src={image}
+          fill
+          priority
+          alt={title}
+          className="w-full h-full rounded-xl shadow-md shadow-black/10  object-cover"
+        />
+      </figure>
       <h1 className="mt-4 xl:mt-6 text-2xl xl:text-4xl font-bold xl:leading-snug">
         {title}
       </h1>
