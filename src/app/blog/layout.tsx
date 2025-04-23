@@ -3,7 +3,7 @@ import OGImage from "@/assets/header/img_one.webp";
 
 export async function generateMetadata() {
   return {
-    title: "Artykuły podologiczne - Podolog Jaworze",
+    title: "Artykuły podologiczne - Zdrowe Stopy Podolog Jaworze",
     description: "",
     keywords: "",
     alternates: {
@@ -11,7 +11,7 @@ export async function generateMetadata() {
     },
     publisher: `https://podologjaworze.pl`,
     openGraph: {
-      title: "Artykuły podologiczne - Podolog Jaworze",
+      title: "Artykuły podologiczne - Zdrowe Stopy Podolog Jaworze",
       description: "",
       url: `https://podologjaworze.pl/blog`,
       siteName: "Podolog Jaworze",

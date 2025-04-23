@@ -6,7 +6,7 @@ import { geistMono, geistSans } from "@/lib/fonts";
 import Navigation from "@/components/navigation/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleTagManager } from "@next/third-parties/google";
-import JsonLdSchema from "@/components/schema/Organization";
+import JsonLdSchema from "@/components/schema/global/Organization";
 // Dynamic imports
 const Footer = dynamic(() => import("@/components/footer/Footer"));
 

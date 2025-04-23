@@ -3,7 +3,6 @@ import { businessSchema, medicalSchema } from "./businessSchema";
 import { faqSchema } from "./faqSchema";
 
 export default function JsonLdSchema() {
-
   return (
     <>
       <script
