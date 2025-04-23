@@ -44,23 +44,23 @@ export default function Location({ api }: Props) {
             <HoursContainer>
               <HoursRow>
                 <span>Poniedziałek</span>
-                <span>10:00 - 17:00</span>
+                <span>8:40 - 17:00</span>
               </HoursRow>
               <HoursRow>
                 <span>Wtorek</span>
-                <span>10:00 - 17:00</span>
+                <span>8:40 - 17:00</span>
               </HoursRow>
               <HoursRow>
                 <span>Środa</span>
-                <span>10:00 - 17:00</span>
+                <span>8:40 - 17:00</span>
               </HoursRow>
               <HoursRow>
                 <span>Czwartek</span>
-                <span>10:00 - 17:00</span>
+                <span>8:40 - 17:00</span>
               </HoursRow>
               <HoursRow>
                 <span>Piątek</span>
-                <span>10:00 - 17:00</span>
+                <span>8:40 - 15:00</span>
               </HoursRow>
               <HoursRow>
                 <span>Sobota</span>
