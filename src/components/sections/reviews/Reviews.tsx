@@ -65,7 +65,7 @@ const Reviews = () => {
             modules={[Pagination, Navigation, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            autoplay={{ delay: 15000, disableOnInteraction: true }}
             loop={true}
             onSwiper={setSwiper}
             onRealIndexChange={(swiper) => {
