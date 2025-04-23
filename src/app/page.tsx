@@ -29,8 +29,9 @@ export default async function Home() {
       />
       <Offer isMobile={isMobile} />
       <Team />
-      <Reviews />
       <Location api={String(mapsApiKey)} />
+      <Reviews />
+
       <BlogSection articles={articles.slice(0, 3)} />
     </>
   );
