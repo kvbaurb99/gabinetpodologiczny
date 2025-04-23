@@ -5,12 +5,15 @@ import AboutsUs from "@/components/sections/aboutUs/AboutsUs";
 import Reviews from "@/components/sections/reviews/Reviews";
 import BlogSection from "@/components/sections/blog/BlogSection";
 import { getArticles } from "@/server/getArticles";
+import Location from "@/components/sections/location/Location";
 const Offer = dynamic(() => import("@/components/sections/offer/Offer"));
 const Team = dynamic(() => import("@/components/sections/team/Team"));
 
 export default async function Home() {
   const isMobile = await mobileDetectFunction();
   const articles = await getArticles();
+  const mapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
+
   return (
     <>
       <Header isMobile={isMobile} />
@@ -27,6 +30,7 @@ export default async function Home() {
       <Offer isMobile={isMobile} />
       <Team />
       <Reviews />
+      <Location api={String(mapsApiKey)} />
       <BlogSection articles={articles.slice(0, 3)} />
     </>
   );
