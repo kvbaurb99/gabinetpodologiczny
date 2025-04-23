@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://podologjaworze.pl",
   },
+  icons: {
+    icon: [
+      {
+        url: "/favicon.png",
+        href: "/favicon.png",
+      },
+    ],
+  },
   openGraph: {
     url: "https://podojaworze.pl",
     title: "Zdrowe Stopy Jaworze | Profesjonalna Pielęgnacja Stóp",
