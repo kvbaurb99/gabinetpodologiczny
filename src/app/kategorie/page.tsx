@@ -11,13 +11,13 @@ export default async function CategoryPage() {
     <>
       <SectionWrapper className="min-h-screen">
         <SectionTitle>Kategorie artykułów podologicznych</SectionTitle>
-        <div className="flex flex-wrap items-center gap-4 mt-4">
+        <div className="flex flex-wrap items-center gap-2 xl:gap-4">
           {categories.map((category, i) => {
             return (
               <Link href={`/kategorie/${category.slug}`} key={i}>
                 <button
                   key={i}
-                  className="bg-blue-600/60 text-white font-semibold px-6 py-3 rounded-full shadow-md shadow-black/20 hover:scale-95 duration-150"
+                  className="bg-blue-600/60 text-white font-semibold px-4 xl:px-6 py-2.5 xl:py-3 rounded-full shadow-md shadow-black/20 hover:scale-95 duration-150 text-sm xl:text-base"
                 >
                   {category.name}
                 </button>

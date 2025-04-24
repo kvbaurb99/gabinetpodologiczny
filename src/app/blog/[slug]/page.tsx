@@ -32,6 +32,8 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
       <div className="mt-6 xl:mt-16 flex flex-col xl:grid xl:grid-cols-12 gap-12 w-[90%] xl:w-[80%] mx-auto">
         <ArticleSingle
           title={article.title}
+          category={article.category}
+          category_slug={article.category_slug}
           image={article.image}
           content={article.content}
         />
