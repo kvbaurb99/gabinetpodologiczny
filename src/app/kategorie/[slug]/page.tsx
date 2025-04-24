@@ -1,5 +1,8 @@
 import { SectionWrapper } from "@/global-styles/global";
-import { MainTitle, SectionTitle } from "@/components/sections/reviews/style/reviews";
+import {
+  MainTitle,
+  SectionTitle,
+} from "@/components/sections/reviews/style/reviews";
 import { getCategories } from "@/server/getCategories";
 import { getArticles } from "@/server/getArticles";
 import ArticleCard from "@/components/blog/card/ArticleCard";
@@ -31,6 +34,7 @@ export default async function CategoryPageSingle({
                 key={i}
                 title={article.title}
                 category={article.category}
+                priority
                 description={article.overview}
                 category_slug={article.category_slug}
                 date="12.12.2023"

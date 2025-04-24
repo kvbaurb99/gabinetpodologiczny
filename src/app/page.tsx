@@ -31,7 +31,7 @@ export default async function Home() {
       <Team />
       <Reviews />
       <Location api={String(mapsApiKey)} />
-      <BlogSection articles={articles.slice(0, 3)} />
+      <BlogSection lazy articles={articles.slice(0, 3)} />
     </>
   );
 }

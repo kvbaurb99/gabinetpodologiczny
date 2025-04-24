@@ -12,12 +12,16 @@ type Props = {
   description: string;
   slug: string;
   date: string;
+  priority?: boolean;
+  lazy?: boolean;
 };
 
 export default function ArticleCard({
   img,
   alt,
   title,
+  lazy,
+  priority,
   description,
   category,
   slug,
@@ -32,9 +36,10 @@ export default function ArticleCard({
           src={img}
           alt={alt}
           fill
+          loading={lazy ? "lazy" : "eager"}
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority={false}
+          priority={priority}
         />
 
         <Link href={`/blog/${slug}`} className="block">

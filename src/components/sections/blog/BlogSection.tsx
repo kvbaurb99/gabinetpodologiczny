@@ -6,9 +6,10 @@ import ArticleCard from "@/components/blog/card/ArticleCard";
 
 type Props = {
   articles: Article[];
+  lazy?: boolean;
 };
 
-export default function BlogSection({ articles }: Props) {
+export default function BlogSection({ articles, lazy }: Props) {
   return (
     <SectionWrapper id="blog">
       <SectionTitle>Artykuły podologiczne</SectionTitle>
@@ -18,6 +19,7 @@ export default function BlogSection({ articles }: Props) {
             key={article.id}
             title={article.title}
             slug={article.slug}
+            lazy={lazy}
             category={article.category}
             category_slug={article.category_slug}
             alt={article.title}

@@ -4,7 +4,7 @@ import TestImage from "@/assets/header/img_one.webp";
 import { getArticles } from "@/server/getArticles";
 import { MainTitle } from "@/components/sections/reviews/style/reviews";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function BlogPage() {
   const articles = await getArticles();
@@ -18,6 +18,7 @@ export default async function BlogPage() {
               <ArticleCard
                 key={i}
                 title={article.title}
+                priority
                 category={article.category}
                 category_slug={article.category_slug}
                 description={article.overview}
