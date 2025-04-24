@@ -1,5 +1,5 @@
 import { SectionWrapper } from "@/global-styles/global";
-import { SectionTitle } from "@/components/sections/reviews/style/reviews";
+import { MainTitle, SectionTitle } from "@/components/sections/reviews/style/reviews";
 import { getCategories } from "@/server/getCategories";
 import { getArticles } from "@/server/getArticles";
 import ArticleCard from "@/components/blog/card/ArticleCard";
@@ -23,7 +23,7 @@ export default async function CategoryPageSingle({
   return (
     <>
       <SectionWrapper>
-        <SectionTitle>Kategoria {category?.name}</SectionTitle>
+        <MainTitle>Kategoria {category?.name}</MainTitle>
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-4">
           {filteredArticles.map((article, i) => {
             return (

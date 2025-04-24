@@ -161,6 +161,16 @@ export const PaginationDot = styled.span<{ $isActive?: boolean }>`
   }
 `;
 
+export const MainTitle = styled.h1`
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  @media (max-width: 768px) {
+    font-size: 1.55rem;
+  }
+`;
+
 export const SectionTitle = styled(H2)`
   position: relative;
   display: inline-block;

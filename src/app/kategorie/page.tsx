@@ -1,5 +1,5 @@
 import { SectionWrapper } from "@/global-styles/global";
-import { SectionTitle } from "@/components/sections/reviews/style/reviews";
+import { MainTitle } from "@/components/sections/reviews/style/reviews";
 import { getCategories } from "@/server/getCategories";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ export default async function CategoryPage() {
   return (
     <>
       <SectionWrapper className="min-h-screen">
-        <SectionTitle>Kategorie artykułów podologicznych</SectionTitle>
+        <MainTitle>Kategorie artykułów podologicznych</MainTitle>
         <div className="flex flex-wrap items-center gap-2 xl:gap-4">
           {categories.map((category, i) => {
             return (
