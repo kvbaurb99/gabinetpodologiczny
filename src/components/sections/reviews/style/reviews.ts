@@ -162,7 +162,7 @@ export const PaginationDot = styled.span<{ $isActive?: boolean }>`
 `;
 
 export const MainTitle = styled.h1`
-  color: "#007BA7";
+  color: #007BA7;
   position: relative;
   font-size: 2.125rem;
   display: inline-block;
