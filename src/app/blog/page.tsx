@@ -19,6 +19,7 @@ export default async function BlogPage() {
                 key={i}
                 title={article.title}
                 category={article.category}
+                category_slug={article.category_slug}
                 description={article.overview}
                 date="12.12.2023"
                 alt="test"

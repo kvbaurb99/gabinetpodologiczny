@@ -19,6 +19,7 @@ export default function BlogSection({ articles }: Props) {
             title={article.title}
             slug={article.slug}
             category={article.category}
+            category_slug={article.category_slug}
             alt={article.title}
             img={article.image}
             date={article.date}

@@ -4,6 +4,7 @@ export interface Article {
   slug: string;
   content: string;
   category: string;
+  category_slug: string;
   overview: string;
   image: string;
   date: string;
