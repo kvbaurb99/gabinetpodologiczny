@@ -1,12 +1,27 @@
 import { getArticles } from "@/server/getArticles";
+import { getCategories } from "@/server/getCategories";
 
 export async function GET() {
   const articles = await getArticles();
+  const categories = await getCategories();
   const date = new Date();
   const offset = date.getTimezoneOffset() * 60000; // offest in ms
   const localISOTime = new Date(date.getTime() - offset).toISOString();
 
-  const sitemapIndex = articles
+  const sitemapIndexCategories = categories
+    .map((category) => {
+      return `
+  <url>
+    <loc>https://podologjaworze.pl/kategorie/${category.slug}</loc>
+    <lastmod>${localISOTime}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+`;
+    })
+    .join("\n");
+
+  const sitemapIndexArticles = articles
     .map((article) => {
       return `
     <url>
@@ -33,7 +48,14 @@ export async function GET() {
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
     </url>
-    ${sitemapIndex}
+          <url>
+      <loc>https://podologjaworze.pl/kategorie</loc>
+      <lastmod>${localISOTime}</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.6</priority>
+    </url>
+    ${sitemapIndexArticles}
+    ${sitemapIndexCategories}
   </urlset>
 `;
 
