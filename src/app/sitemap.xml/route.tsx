@@ -15,7 +15,7 @@ export async function GET() {
     <loc>https://podologjaworze.pl/kategorie/${category.slug}</loc>
     <lastmod>${localISOTime}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 `;
     })
@@ -52,7 +52,7 @@ export async function GET() {
       <loc>https://podologjaworze.pl/kategorie</loc>
       <lastmod>${localISOTime}</lastmod>
       <changefreq>daily</changefreq>
-      <priority>0.6</priority>
+      <priority>0.8</priority>
     </url>
     ${sitemapIndexArticles}
     ${sitemapIndexCategories}
