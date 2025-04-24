@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Props }) {
         },
       ],
       locale: "pl-PL",
-      type: "website",
+      type: "article",
     },
   };
 }

@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     url: "https://podojaworze.pl",
     title: "Zdrowe Stopy Jaworze | Profesjonalna Pielęgnacja Stóp",
     siteName: "Zdrowe Stopy Jaworze",
+    type: "website",
     images: [
       {
         url: OGImage.src,
