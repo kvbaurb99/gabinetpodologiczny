@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import OGImage from "@/assets/header/img_one.webp";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://podologjaworze.pl"),
   title: "Zdrowe Stopy Jaworze | Profesjonalna Pielęgnacja Stóp",
   description:
     "Specjalistyczny gabinet podologiczny w Jaworzu. Oferujemy kompleksową pielęgnację stóp, leczenie grzybicy, wrastających paznokci oraz usuwanie odcisków. Umów wizytę już dziś!",
