@@ -37,7 +37,7 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
           image={article.image}
           content={article.content}
         />
-        <Sidebar restArticles={restArticles} />
+        <Sidebar restArticles={restArticles.slice(0, 4)} />
       </div>
     </>
   );
