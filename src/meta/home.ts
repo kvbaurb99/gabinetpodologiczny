@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://podologjaworze.pl"),
   title: "Zdrowe Stopy Jaworze | Profesjonalna Pielęgnacja Stóp",
   description:
-    "Specjalistyczny gabinet podologiczny w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci, usuwanie odcisków. Umów wizytę!",
+    "Gabinet Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę już dziś!",
   keywords:
     "podolog Jaworze, Zdrowe stopy Jaworze, gabinet podologiczny Jaworze, podologia Jaworze, pielęgnacja stóp Jaworze, leczenie stóp, ulica Zdrojowa, wrastające paznokcie, odciski, modzele, grzybica paznokci, pedicure leczniczy, halluksy, płaskostopie, opieka podologiczna, stopy cukrzycowe, diagnostyka stóp, wkładki ortopedyczne, usuwanie odcisków, problemy stóp, profesjonalna podologia, podolog województwo śląskie, Zdrowe stopy, podolog Bielsko-Biała okolice",
   publisher: "https://podologjaworze.pl",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       },
     ],
     description:
-      "Specjalistyczny gabinet podologiczny w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci, usuwanie odcisków. Umów wizytę już dziś!",
+      "Gabinet Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę już dziś!",
   },
   robots: {
     index: true,
