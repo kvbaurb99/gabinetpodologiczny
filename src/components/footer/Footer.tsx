@@ -78,13 +78,6 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Zdrowe Stopy. Wszelkie prawa
             zastrzeżone.
           </p>
-          <a
-            rel="nofollow noopener noreferrer"
-            target="_blank"
-            href="https://urbanski-frontend.pl/"
-          >
-            <p className="mt-4 underline text-xs">urbanski-frontend.pl</p>
-          </a>
         </Copyright>
       </Container>
     </FooterWrapper>
