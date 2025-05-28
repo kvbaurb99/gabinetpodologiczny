@@ -3,7 +3,7 @@ import OGImage from "@/assets/header/img_one.webp";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://podologjaworze.pl"),
-  title: "Zdrowe Stopy Jaworze | Profesjonalna Pielęgnacja Stóp",
+  title: "Zdrowe Stopy Jaworze | Gabinet Podologiczny",
   description:
     "Gabinet podologiczny Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę dziś!",
   keywords:
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "https://podojaworze.pl",
-    title: "Zdrowe Stopy Jaworze | Profesjonalna Pielęgnacja Stóp",
+    title: "Zdrowe Stopy Jaworze | Gabinet Podologiczny",
     siteName: "Zdrowe Stopy Jaworze",
     type: "website",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: OGImage.src,
         width: 1200,
         height: 630,
-        alt: "Zdrowe Stopy Jaworze | Profesjonalna Pielęgnacja Stóp",
+        alt: "Zdrowe Stopy Jaworze | Gabinet Podologiczny",
       },
     ],
     description:
