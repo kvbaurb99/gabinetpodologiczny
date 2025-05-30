@@ -141,6 +141,7 @@ function HeaderSlide({
       {/* Background Image - disable transition on initial render */}
       <Image
         priority={currentIndex === 0}
+        fetchPriority={currentIndex === 0 ? "high" : "low"}
         src={img}
         alt={alt}
         fill
