@@ -5,9 +5,11 @@ import AboutsUs from "@/components/sections/aboutUs/AboutsUs";
 import Reviews from "@/components/sections/reviews/Reviews";
 import BlogSection from "@/components/sections/blog/BlogSection";
 import { getArticles } from "@/server/getArticles";
-import Location from "@/components/sections/location/Location";
 const Offer = dynamic(() => import("@/components/sections/offer/Offer"));
 const Team = dynamic(() => import("@/components/sections/team/Team"));
+const Location = dynamic(
+  () => import("@/components/sections/location/Location")
+);
 
 export default async function Home() {
   const isMobile = await mobileDetectFunction();

@@ -3,19 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/third-parties": "^15.3.1",
+    "@next/third-parties": "16.0.4",
     "@react-google-maps/api": "^2.20.6",
     "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.7.3",
     "lucide-react": "^0.460.0",
     "mobile-detect": "^1.4.5",
-    "next": "15.3.1",
+    "next": "16.0.4",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-device-detect": "^2.2.3",
     "react-dom": "19.0.0-rc-66855b96-20241106",
