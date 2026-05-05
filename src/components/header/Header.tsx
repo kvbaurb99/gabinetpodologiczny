@@ -1,22 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect, useRef } from "react";
 import { headerSlides } from "./data/headerSlides";
-import { EffectFade, Pagination, Autoplay } from "swiper/modules";
 import { Phone, Calendar, ChevronRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/autoplay";
-import "swiper/css/pagination";
-
-// Import styled components
 import {
   SliderHeader,
+  SliderTrack,
   SlideWrapper,
   GradientOverlay,
   SlideContent,
@@ -33,9 +25,9 @@ import {
   PaginationContainer,
   PaginationInner,
   PaginationDots,
+  PaginationBullet,
 } from "./styles/slide";
 
-// Types
 type HeaderProps = {
   isMobile: boolean;
 };
@@ -51,29 +43,15 @@ type SlideProps = {
   isInitialRender: boolean;
 };
 
-// Slider settings
-const sliderSettings = {
-  slidesPerView: 1,
-  spaceBetween: 0,
-  loop: true,
-  speed: 1000,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: true,
-  },
-  fadeEffect: {
-    crossFade: true,
-  },
-};
+const AUTOPLAY_DELAY = 5000;
 
-// Main Header Component
 export default function Header({ isMobile }: HeaderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInitialRender, setIsInitialRender] = useState(true);
+  const autoplayStoppedRef = useRef(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // After component mounts, mark initial render as complete
   useEffect(() => {
-    // Use a small timeout to ensure the component has fully rendered
     const timer = setTimeout(() => {
       setIsInitialRender(false);
     }, 100);
@@ -81,23 +59,31 @@ export default function Header({ isMobile }: HeaderProps) {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      if (autoplayStoppedRef.current) return;
+      setActiveIndex((prev) => (prev + 1) % headerSlides.length);
+    }, AUTOPLAY_DELAY);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  const handleDotClick = (index: number) => {
+    autoplayStoppedRef.current = true;
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    setActiveIndex(index);
+  };
+
   return (
     <SliderHeader>
-      <Swiper
-        {...sliderSettings}
-        modules={[Pagination, EffectFade, Autoplay]}
-        effect="fade"
-        pagination={{
-          clickable: true,
-          el: ".pagination-container",
-          bulletClass: "pagination-bullet",
-          bulletActiveClass: "pagination-bullet-active",
-        }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        className="medical-slider"
-      >
+      <SliderTrack>
         {headerSlides.map((slide, index) => (
-          <SwiperSlide key={index} className="overflow-hidden">
+          <SlideWrapper key={index} $isActive={activeIndex === index}>
             <HeaderSlide
               currentIndex={index}
               img={slide.src}
@@ -108,25 +94,32 @@ export default function Header({ isMobile }: HeaderProps) {
               isActive={activeIndex === index}
               isInitialRender={isInitialRender}
             />
-          </SwiperSlide>
+          </SlideWrapper>
         ))}
 
-        {/* Custom pagination dots container */}
         <PaginationContainer>
           <PaginationInner>
-            <PaginationDots className="pagination-container" />
+            <PaginationDots>
+              {headerSlides.map((_, index) => (
+                <PaginationBullet
+                  key={index}
+                  type="button"
+                  $isActive={activeIndex === index}
+                  onClick={() => handleDotClick(index)}
+                  aria-label={`Pokaż slajd ${index + 1}`}
+                />
+              ))}
+            </PaginationDots>
           </PaginationInner>
         </PaginationContainer>
-      </Swiper>
+      </SliderTrack>
 
-      {/* Medical decorative elements */}
       <TopGradient />
       <BottomGradient />
     </SliderHeader>
   );
 }
 
-// Single Slide Component
 function HeaderSlide({
   currentIndex,
   img,
@@ -137,8 +130,7 @@ function HeaderSlide({
   isInitialRender,
 }: SlideProps) {
   return (
-    <SlideWrapper>
-      {/* Background Image - disable transition on initial render */}
+    <>
       <Image
         priority={currentIndex === 0}
         fetchPriority={currentIndex === 0 ? "high" : "low"}
@@ -155,11 +147,8 @@ function HeaderSlide({
         }}
       />
 
-      {/* Gradient overlay with medical blue tones */}
       <GradientOverlay />
 
-
-      {/* Slide Content - disable animation on initial render */}
       <SlideContent>
         <ContentContainer>
           <ContentBox $isActive={isActive} $isInitialRender={isInitialRender}>
@@ -193,6 +182,6 @@ function HeaderSlide({
           </ContentBox>
         </ContentContainer>
       </SlideContent>
-    </SlideWrapper>
+    </>
   );
 }

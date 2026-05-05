@@ -1,10 +1,4 @@
 User-agent: *
 Disallow: /api/
 
-User-agent: Facebot/1.0
-Crawl-delay: 5
-
-User-agent: Facebot/1.1
-Crawl-delay: 5
-
 Sitemap: https://podologjaworze.pl/sitemap.xml

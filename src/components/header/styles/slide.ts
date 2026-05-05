@@ -2,19 +2,34 @@
 
 import styled from "styled-components";
 
-// Styled components for the slider
 export const SliderHeader = styled.header`
   position: relative;
 `;
 
-export const SlideWrapper = styled.div`
+export const SliderTrack = styled.div`
   position: relative;
   width: 100%;
   height: 590px;
+  overflow: hidden;
 
   @media (min-width: 1280px) {
     height: 600px;
   }
+`;
+
+interface SlideWrapperProps {
+  $isActive: boolean;
+}
+
+export const SlideWrapper = styled.div<SlideWrapperProps>`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: ${({ $isActive }) => ($isActive ? 1 : 0)};
+  z-index: ${({ $isActive }) => ($isActive ? 2 : 1)};
+  transition: opacity 1000ms ease-in-out;
+  pointer-events: ${({ $isActive }) => ($isActive ? "auto" : "none")};
 `;
 
 export const GradientOverlay = styled.div`
@@ -262,21 +277,25 @@ export const PaginationInner = styled.div`
 
 export const PaginationDots = styled.div`
   display: flex;
-  justify-content: center; /* Center the pagination dots */
+  justify-content: center;
   gap: 0.5rem;
+`;
 
-  & .pagination-bullet {
-    width: 12px;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+export const PaginationBullet = styled.button<{ $isActive: boolean }>`
+  width: ${({ $isActive }) => ($isActive ? "24px" : "12px")};
+  height: 4px;
+  background-color: ${({ $isActive }) =>
+    $isActive ? "#007ba7" : "rgba(255, 255, 255, 0.4)"};
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+  margin: 0;
 
-  & .pagination-bullet-active {
-    width: 24px;
-    background-color: #007ba7;
+  &:hover {
+    background-color: ${({ $isActive }) =>
+      $isActive ? "#007ba7" : "rgba(255, 255, 255, 0.6)"};
   }
 `;
 
@@ -296,11 +315,4 @@ export const BackgroundImage = styled.img<BackgroundImageProps>`
     transition: transform 7000ms;
     transform: ${$isActive ? "scale(1.05)" : "scale(1)"};
   `}
-`;
-
-// For additional CSS that needs to be global
-export const GlobalStyles = `
-.medical-slider .swiper-slide-active {
-  z-index: 2;
-}
 `;

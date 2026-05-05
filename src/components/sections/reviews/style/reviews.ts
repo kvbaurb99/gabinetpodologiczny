@@ -1,9 +1,7 @@
 "use client";
 import { H2 } from "@/global-styles/global";
 import styled from "styled-components";
-import { Swiper } from "swiper/react";
 
-// Styled Components
 export const ReviewsContainer = styled.div`
   position: relative;
 `;
@@ -102,8 +100,29 @@ export const SourceIcon = styled.div`
   }
 `;
 
-export const StyledSwiper = styled(Swiper)`
+export const CarouselViewport = styled.div`
+  overflow: hidden;
   padding: 1rem 0.5rem 2rem 0.5rem;
+  --spv: 1;
+
+  @media (min-width: 640px) {
+    --spv: 2;
+  }
+
+  @media (min-width: 1024px) {
+    --spv: 3;
+  }
+`;
+
+export const CarouselTrack = styled.div`
+  display: flex;
+  will-change: transform;
+`;
+
+export const SlideItem = styled.div`
+  flex: 0 0 calc(100% / var(--spv));
+  padding: 0 15px;
+  box-sizing: border-box;
 `;
 
 export const NavigationButton = styled.button<{ $direction: "prev" | "next" }>`
