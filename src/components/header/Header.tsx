@@ -1,19 +1,24 @@
 import { useState, useEffect, useRef } from "react";
-import { headerSlides } from "./data/headerSlides";
 import Icon from "@/components/icons/Icon";
 
-type HeaderProps = {
-  isMobile: boolean;
-};
-
-type ImgLike = { src: string } | string;
-
-type SlideProps = {
-  currentIndex: number;
-  img: ImgLike;
+type Slide = {
+  src: string;
+  srcSet?: string;
+  width?: number | string;
+  height?: number | string;
   alt: string;
   title?: string;
   description?: string;
+};
+
+type HeaderProps = {
+  isMobile: boolean;
+  slides: Slide[];
+};
+
+type SlideProps = {
+  currentIndex: number;
+  slide: Slide;
   isMobile: boolean;
   isActive: boolean;
   isInitialRender: boolean;
@@ -21,10 +26,7 @@ type SlideProps = {
 
 const AUTOPLAY_DELAY = 5000;
 
-const resolveSrc = (img: ImgLike): string =>
-  typeof img === "string" ? img : img.src;
-
-export default function Header({ isMobile }: HeaderProps) {
+export default function Header({ isMobile, slides }: HeaderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInitialRender, setIsInitialRender] = useState(true);
   const autoplayStoppedRef = useRef(false);
@@ -41,13 +43,13 @@ export default function Header({ isMobile }: HeaderProps) {
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       if (autoplayStoppedRef.current) return;
-      setActiveIndex((prev) => (prev + 1) % headerSlides.length);
+      setActiveIndex((prev) => (prev + 1) % slides.length);
     }, AUTOPLAY_DELAY);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, []);
+  }, [slides.length]);
 
   const handleDotClick = (index: number) => {
     autoplayStoppedRef.current = true;
@@ -61,7 +63,7 @@ export default function Header({ isMobile }: HeaderProps) {
   return (
     <header className="relative">
       <div className="relative w-full h-[590px] xl:h-[600px] overflow-hidden">
-        {headerSlides.map((slide, index) => {
+        {slides.map((slide, index) => {
           const isActive = activeIndex === index;
           return (
             <div
@@ -75,10 +77,7 @@ export default function Header({ isMobile }: HeaderProps) {
             >
               <HeaderSlide
                 currentIndex={index}
-                img={slide.src}
-                alt={slide.alt}
-                title={slide.title}
-                description={slide.description}
+                slide={slide}
                 isMobile={isMobile}
                 isActive={isActive}
                 isInitialRender={isInitialRender}
@@ -90,7 +89,7 @@ export default function Header({ isMobile }: HeaderProps) {
         <div className="absolute bottom-8 left-0 right-0 z-10">
           <div className="relative bottom-3 w-[90%] md:w-[80%] mx-auto px-4 md:px-8">
             <div className="flex justify-center gap-2">
-              {headerSlides.map((_, index) => {
+              {slides.map((_, index) => {
                 const isActive = activeIndex === index;
                 return (
                   <button
@@ -121,10 +120,7 @@ export default function Header({ isMobile }: HeaderProps) {
 
 function HeaderSlide({
   currentIndex,
-  img,
-  alt,
-  title,
-  description,
+  slide,
   isActive,
   isInitialRender,
 }: SlideProps) {
@@ -132,8 +128,12 @@ function HeaderSlide({
   return (
     <>
       <img
-        src={resolveSrc(img)}
-        alt={alt}
+        src={slide.src}
+        srcSet={slide.srcSet}
+        sizes="100vw"
+        width={slide.width}
+        height={slide.height}
+        alt={slide.alt}
         loading={isFirst ? "eager" : "lazy"}
         fetchPriority={isFirst ? "high" : "low"}
         decoding="async"
@@ -164,11 +164,11 @@ function HeaderSlide({
             <div className="w-16 h-1 bg-[#007ba7] mb-6 rounded-full" />
 
             <p className="text-3xl md:text-5xl leading-tight font-bold mb-4">
-              {title || "Profesjonalna opieka podologiczna"}
+              {slide.title || "Profesjonalna opieka podologiczna"}
             </p>
 
             <p className="text-base md:text-lg leading-relaxed opacity-90 mb-8 text-slate-100">
-              {description ||
+              {slide.description ||
                 "Zapewniamy kompleksową opiekę nad zdrowiem Twoich stóp, wykorzystując najnowocześniejsze metody i sprzęt medyczny."}
             </p>
 

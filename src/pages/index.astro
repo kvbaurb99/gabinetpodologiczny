@@ -9,6 +9,8 @@ import Location from "@/components/sections/location/Location.astro";
 import BlogSection from "@/components/sections/blog/BlogSection.astro";
 import { detectMobile } from "@/utils/mobileDetect";
 import { getArticles } from "@/server/getArticles";
+import { getImage } from "astro:assets";
+import { headerSlides } from "@/components/header/data/headerSlides";
 
 const isMobile = detectMobile(Astro.request.headers.get("user-agent"));
 
@@ -20,6 +22,26 @@ try {
 }
 
 const mapsApiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+
+const HEADER_WIDTHS = [640, 960, 1280, 1600, 1920, 2560];
+const optimizedSlides = await Promise.all(
+  headerSlides.map(async (slide) => {
+    const img = await getImage({
+      src: slide.src,
+      widths: HEADER_WIDTHS,
+      format: "webp",
+    });
+    return {
+      src: img.src,
+      srcSet: img.srcSet.attribute,
+      width: img.attributes.width,
+      height: img.attributes.height,
+      alt: slide.alt,
+      title: slide.title,
+      description: slide.description,
+    };
+  })
+);
 ---
 
 <MainLayout
@@ -27,7 +49,7 @@ const mapsApiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
   description="Gabinet podologiczny Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę dziś!"
   canonical="https://podologjaworze.pl"
 >
-  <Header isMobile={isMobile} client:load />
+  <Header isMobile={isMobile} slides={optimizedSlides} client:load />
   <AboutsUs
     main
     title="Gabinet Podologiczny Zdrowe Stopy - Twój Specjalista od Pielęgnacji Stóp"
