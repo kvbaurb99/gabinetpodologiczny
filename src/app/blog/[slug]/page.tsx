@@ -1,5 +1,4 @@
 import ArticleSchema from "@/components/schema/article/Article";
-import ArticleStyles from "@/global-styles/article/article";
 import { getArticle } from "@/server/getArticle";
 import { getArticles } from "@/server/getArticles";
 import LogoImage from "@/assets/logo.svg";
@@ -28,7 +27,6 @@ export default async function BlogPageSingle({ params }: { params: Props }) {
         organizationName="Gabinet Podologiczny Jaworze"
         organizationLogo={LogoImage.src}
       />
-      <ArticleStyles />
       <div className="mt-6 xl:mt-16 flex flex-col xl:grid xl:grid-cols-12 gap-12 w-[90%] xl:w-[80%] mx-auto">
         <ArticleSingle
           title={article.title}

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import styled from "styled-components";
 import Link from "next/link";
 import {
   Phone,
@@ -27,136 +26,6 @@ interface MobileMenuProps {
   currentPath: string;
 }
 
-// Colors matching your existing theme
-const COLORS = {
-  primary: "#007BA7", // Matches your logo color
-  secondary: "#F5F7FA",
-  accent: "#4f67bd", // From your hover color
-  text: "#2c3e50", // Matches your text color
-  lightText: "#718096",
-};
-
-// Menu container with styling matched to your navbar and simple animation
-const MenuContainer = styled.div<{ $isOpen: boolean; $scrolled: boolean }>`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  padding: 1rem 0 1.5rem 0;
-  overflow: hidden;
-  border-top: 1px solid rgba(0, 123, 167, 0.1);
-
-  /* Simple slide down and opacity animation */
-  transform: translateY(${(props) => (props.$isOpen ? "0" : "-20px")});
-  opacity: ${(props) => (props.$isOpen ? 1 : 0)};
-  max-height: ${(props) => (props.$isOpen ? "1000px" : "0")};
-  transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
-  pointer-events: ${(props) => (props.$isOpen ? "all" : "none")};
-`;
-
-const MenuList = styled.ul`
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  list-style: none;
-  padding: 0;
-`;
-
-const MenuItem = styled.li<{ $isActive: boolean }>`
-  border-radius: 8px;
-  background: ${(props) =>
-    props.$isActive ? COLORS.primary + "10" : "transparent"};
-  transition: all 0.3s ease;
-
-  &:active {
-    transform: scale(0.98);
-  }
-
-  a {
-    display: flex;
-    align-items: center;
-    padding: 0.85rem 1rem;
-    font-weight: ${(props) => (props.$isActive ? "600" : "500")};
-    font-size: 1.05rem;
-    color: ${(props) => (props.$isActive ? COLORS.primary : COLORS.text)};
-    transition: all 0.3s ease;
-    text-decoration: none;
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      left: 1rem;
-      right: 1rem;
-      bottom: 0;
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        transparent,
-        ${COLORS.lightText}20,
-        transparent
-      );
-      opacity: ${(props) => (props.$isActive ? 0 : 0.3)};
-    }
-  }
-`;
-
-const IconWrapper = styled.span`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.75rem;
-  color: ${COLORS.primary};
-`;
-
-// Info section at the bottom of the menu
-const MenuFooter = styled.div`
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: rgba(0, 123, 167, 0.05);
-  border-radius: 8px;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const ContactButton = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background: ${COLORS.primary};
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 0.85rem;
-  font-weight: 600;
-  margin-top: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-
-  &:hover {
-    background: ${COLORS.accent};
-    transform: scale(1.02);
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-
-  svg {
-    margin-right: 0.5rem;
-  }
-`;
-
-// Function to get icon based on menu item slug
 const getIconForSlug = (slug: string) => {
   switch (slug) {
     case "":
@@ -180,51 +49,69 @@ const getIconForSlug = (slug: string) => {
 
 export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
   $isOpen,
-  $scrolled,
   navbarLinks,
   onClose,
   currentPath,
 }) => {
-  // Function to check if a menu item is active
-  const isActive = (slug: string) => {
-    return currentPath === slug;
-  };
+  const isActive = (slug: string) => currentPath === slug;
 
   return (
-    <MenuContainer $isOpen={$isOpen} $scrolled={$scrolled}>
-      <MenuList>
-        {navbarLinks.map((link, index) => (
-          <MenuItem
-            key={index}
-            $isActive={isActive(link.slug)}
-            onClick={onClose}
-          >
-            <Link href={`/${link.slug}`}>
-              <IconWrapper>{getIconForSlug(link.slug)}</IconWrapper>
-              {link.title}
-            </Link>
-          </MenuItem>
-        ))}
-      </MenuList>
+    <div
+      className="absolute top-full left-0 w-full bg-white/[.98] backdrop-blur-md shadow-[0_10px_15px_rgba(0,0,0,0.1)] z-[1000] pt-4 pb-6 overflow-hidden border-t border-[rgba(0,123,167,0.1)] transition-[transform,opacity,max-height] duration-300 ease-in-out"
+      style={{
+        transform: $isOpen ? "translateY(0)" : "translateY(-20px)",
+        opacity: $isOpen ? 1 : 0,
+        maxHeight: $isOpen ? 1000 : 0,
+        pointerEvents: $isOpen ? "all" : "none",
+      }}
+    >
+      <ul className="w-[90%] mx-auto flex flex-col gap-1 list-none p-0">
+        {navbarLinks.map((link, index) => {
+          const active = isActive(link.slug);
+          return (
+            <li
+              key={index}
+              onClick={onClose}
+              className={`rounded-lg transition-all duration-300 active:scale-[0.98] ${
+                active ? "bg-[#007BA7]/10" : "bg-transparent"
+              }`}
+            >
+              <Link
+              prefetch={false}
+                href={`/${link.slug}`}
+                className={`relative flex items-center px-4 py-3.5 text-[1.05rem] transition-all duration-300 no-underline ${
+                  active
+                    ? "font-semibold text-[#007BA7]"
+                    : "font-medium text-[#2c3e50]"
+                } after:content-[''] after:absolute after:left-4 after:right-4 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[#71809620] after:to-transparent ${
+                  active ? "after:opacity-0" : "after:opacity-30"
+                }`}
+              >
+                <span className="inline-flex items-center justify-center mr-3 text-[#007BA7]">
+                  {getIconForSlug(link.slug)}
+                </span>
+                {link.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
 
-      <MenuFooter>
-        <p
-          style={{
-            color: COLORS.primary,
-            fontWeight: 600,
-            marginBottom: "0.5rem",
-          }}
-        >
+      <div className="mt-6 p-5 bg-[#007BA7]/5 rounded-lg w-[90%] mx-auto">
+        <p className="text-[#007BA7] font-semibold mb-2">
           Potrzebujesz konsultacji?
         </p>
-        <p style={{ fontSize: "0.9rem", color: COLORS.text, opacity: 0.8 }}>
+        <p className="text-sm text-[#2c3e50] opacity-80">
           Zadzwoń i umów wizytę w gabinecie podologicznym
         </p>
-        <ContactButton href="tel:+48501408528">
-          <Phone size={18} />
+        <a
+          href="tel:+48501408528"
+          className="flex items-center justify-center w-full bg-[#007BA7] text-white border-0 rounded-md py-3.5 font-semibold mt-3 cursor-pointer transition-all duration-200 no-underline hover:bg-[#4f67bd] hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <Phone size={18} className="mr-2" />
           Umów wizytę
-        </ContactButton>
-      </MenuFooter>
-    </MenuContainer>
+        </a>
+      </div>
+    </div>
   );
 };

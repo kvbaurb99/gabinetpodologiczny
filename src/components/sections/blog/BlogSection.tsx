@@ -1,6 +1,4 @@
-import { SectionWrapper } from "@/global-styles/global";
 import React from "react";
-import { SectionTitle } from "../reviews/style/reviews";
 import { Article } from "@/types/articles";
 import ArticleCard from "@/components/blog/card/ArticleCard";
 
@@ -11,8 +9,13 @@ type Props = {
 
 export default function BlogSection({ articles, lazy }: Props) {
   return (
-    <SectionWrapper id="blog">
-      <SectionTitle>Artykuły podologiczne</SectionTitle>
+    <section
+      id="blog"
+      className="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16"
+    >
+      <h2 className="relative inline-block mb-8 font-bold text-[#007BA7] text-[1.55rem] md:text-[2.125rem]">
+        Artykuły podologiczne
+      </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {articles.map((article) => (
           <ArticleCard
@@ -29,6 +32,6 @@ export default function BlogSection({ articles, lazy }: Props) {
           />
         ))}
       </div>
-    </SectionWrapper>
+    </section>
   );
 }

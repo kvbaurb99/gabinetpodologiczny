@@ -6,28 +6,6 @@ import { Phone, Calendar, ChevronRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-import {
-  SliderHeader,
-  SliderTrack,
-  SlideWrapper,
-  GradientOverlay,
-  SlideContent,
-  ContentContainer,
-  ContentBox,
-  Divider,
-  SlideTitle,
-  SlideDescription,
-  ButtonsContainer,
-  PrimaryButton,
-  SecondaryButton,
-  TopGradient,
-  BottomGradient,
-  PaginationContainer,
-  PaginationInner,
-  PaginationDots,
-  PaginationBullet,
-} from "./styles/slide";
-
 type HeaderProps = {
   isMobile: boolean;
 };
@@ -80,43 +58,63 @@ export default function Header({ isMobile }: HeaderProps) {
   };
 
   return (
-    <SliderHeader>
-      <SliderTrack>
-        {headerSlides.map((slide, index) => (
-          <SlideWrapper key={index} $isActive={activeIndex === index}>
-            <HeaderSlide
-              currentIndex={index}
-              img={slide.src}
-              alt={slide.alt}
-              title={slide.title}
-              description={slide.description}
-              isMobile={isMobile}
-              isActive={activeIndex === index}
-              isInitialRender={isInitialRender}
-            />
-          </SlideWrapper>
-        ))}
+    <header className="relative">
+      <div className="relative w-full h-[590px] xl:h-[600px] overflow-hidden">
+        {headerSlides.map((slide, index) => {
+          const isActive = activeIndex === index;
+          return (
+            <div
+              key={index}
+              className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+              style={{
+                opacity: isActive ? 1 : 0,
+                zIndex: isActive ? 2 : 1,
+                pointerEvents: isActive ? "auto" : "none",
+              }}
+            >
+              <HeaderSlide
+                currentIndex={index}
+                img={slide.src}
+                alt={slide.alt}
+                title={slide.title}
+                description={slide.description}
+                isMobile={isMobile}
+                isActive={isActive}
+                isInitialRender={isInitialRender}
+              />
+            </div>
+          );
+        })}
 
-        <PaginationContainer>
-          <PaginationInner>
-            <PaginationDots>
-              {headerSlides.map((_, index) => (
-                <PaginationBullet
-                  key={index}
-                  type="button"
-                  $isActive={activeIndex === index}
-                  onClick={() => handleDotClick(index)}
-                  aria-label={`Pokaż slajd ${index + 1}`}
-                />
-              ))}
-            </PaginationDots>
-          </PaginationInner>
-        </PaginationContainer>
-      </SliderTrack>
+        <div className="absolute bottom-8 left-0 right-0 z-10">
+          <div className="relative bottom-3 w-[90%] md:w-[80%] mx-auto px-4 md:px-8">
+            <div className="flex justify-center gap-2">
+              {headerSlides.map((_, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => handleDotClick(index)}
+                    aria-label={`Pokaż slajd ${index + 1}`}
+                    className="h-1 rounded-sm border-0 p-0 m-0 cursor-pointer transition-all duration-300"
+                    style={{
+                      width: isActive ? 24 : 12,
+                      backgroundColor: isActive
+                        ? "#007ba7"
+                        : "rgba(255, 255, 255, 0.4)",
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <TopGradient />
-      <BottomGradient />
-    </SliderHeader>
+      <div className="absolute top-0 left-0 w-1/3 h-1 bg-gradient-to-r from-[#007ba7] to-transparent" />
+      <div className="absolute bottom-0 right-0 w-1/3 h-1 bg-gradient-to-l from-[#007ba7] to-transparent" />
+    </header>
   );
 }
 
@@ -147,41 +145,52 @@ function HeaderSlide({
         }}
       />
 
-      <GradientOverlay />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-800/60 to-transparent" />
 
-      <SlideContent>
-        <ContentContainer>
-          <ContentBox $isActive={isActive} $isInitialRender={isInitialRender}>
-            <Divider />
+      <div className="absolute inset-0 flex items-center">
+        <div className="w-[90%] md:w-[80%] mx-auto flex justify-start relative bottom-4 md:bottom-0">
+          <div
+            className="max-w-xl text-white"
+            style={
+              !isInitialRender
+                ? {
+                    transition: "all 1000ms",
+                    transform: isActive ? "translateY(0)" : "translateY(2rem)",
+                    opacity: isActive ? 1 : 0,
+                  }
+                : undefined
+            }
+          >
+            <div className="w-16 h-1 bg-[#007ba7] mb-6 rounded-full" />
 
-            <SlideTitle>
+            <p className="text-3xl md:text-5xl leading-tight font-bold mb-4">
               {title || "Profesjonalna opieka podologiczna"}
-            </SlideTitle>
+            </p>
 
-            <SlideDescription>
+            <p className="text-base md:text-lg leading-relaxed opacity-90 mb-8 text-slate-100">
               {description ||
                 "Zapewniamy kompleksową opiekę nad zdrowiem Twoich stóp, wykorzystując najnowocześniejsze metody i sprzęt medyczny."}
-            </SlideDescription>
+            </p>
 
-            <ButtonsContainer>
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link href="tel:+48501408528" passHref>
-                <PrimaryButton>
-                  <Calendar />
+                <button className="w-full lg:w-auto inline-flex items-center justify-center bg-[#007ba7] hover:bg-teal-600 text-white font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl group/btn">
+                  <Calendar className="mr-2 h-5 w-5" />
                   <span>Umów wizytę</span>
-                  <ChevronRight />
-                </PrimaryButton>
+                  <ChevronRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </button>
               </Link>
 
               <Link href="tel:+48501408528" passHref>
-                <SecondaryButton>
-                  <Phone />
+                <button className="w-full lg:w-auto inline-flex items-center gap-3 justify-center bg-white/10 backdrop-blur-sm text-white border border-white/30 font-medium px-6 py-3 rounded-md transition-all duration-300 hover:bg-white/20">
+                  <Phone className="h-5 w-5" />
                   <span>+48 501 408 528</span>
-                </SecondaryButton>
+                </button>
               </Link>
-            </ButtonsContainer>
-          </ContentBox>
-        </ContentContainer>
-      </SlideContent>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

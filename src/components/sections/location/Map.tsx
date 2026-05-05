@@ -16,7 +16,6 @@ const containerStyle = {
   height: "100%",
 };
 
-// Określenie tablicy bibliotek jako stałej
 const libraries: Libraries = ["places"];
 
 function MapComponent({ center, api }: MapComponentProps) {

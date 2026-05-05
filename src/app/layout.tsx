@@ -1,14 +1,11 @@
 import { metadata } from "@/meta/home";
-import dynamic from "next/dynamic";
 import "./globals.css";
-import StyledComponentsRegistry from "@/lib/registry";
 import { geistMono, geistSans } from "@/lib/fonts";
 import Navigation from "@/components/navigation/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleTagManager } from "@next/third-parties/google";
 import JsonLdSchema from "@/components/schema/global/Organization";
-// Dynamic imports
-const Footer = dynamic(() => import("@/components/footer/Footer"));
+import Footer from "@/components/footer/Footer";
 
 
 // Meta data is imported from the meta folder
@@ -32,13 +29,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <StyledComponentsRegistry>
-          <main>
-            <Navigation />
-            {children}
-            <Footer />
-          </main>
-        </StyledComponentsRegistry>
+        <main>
+          <Navigation />
+          {children}
+          <Footer />
+        </main>
       </body>
       <Analytics />
     </html>

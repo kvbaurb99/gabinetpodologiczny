@@ -26,7 +26,7 @@ export default function ArticleSingle({
           alt={title}
           className="w-full h-full rounded-xl shadow-md shadow-black/10  object-cover"
         />
-        <Link href={`/kategorie/${category_slug}`}>
+        <Link prefetch={false} href={`/kategorie/${category_slug}`}>
           <span className="absolute top-4 left-4 bg-[#007BA7] text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">
             {category}
           </span>

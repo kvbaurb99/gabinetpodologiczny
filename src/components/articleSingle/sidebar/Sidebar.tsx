@@ -22,6 +22,7 @@ export default function Sidebar({ restArticles }: Props) {
             >
               <Link
                 className="min-w-24 max-w-24 h-24"
+                prefetch={false}
                 href={`/blog/${item.slug}`}
               >
                 <Image
@@ -34,7 +35,7 @@ export default function Sidebar({ restArticles }: Props) {
                 />
               </Link>
               <div>
-                <Link href={`/blog/${item.slug}`}>
+                <Link prefetch={false} href={`/blog/${item.slug}`}>
                   <h3 className="font-semibold line-clamp-2">{item.title}</h3>
                 </Link>
                 <p className="text-sm text-gray-500 line-clamp-3">

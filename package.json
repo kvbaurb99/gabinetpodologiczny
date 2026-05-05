@@ -12,15 +12,12 @@
     "@next/third-parties": "^16.2.4",
     "@react-google-maps/api": "^2.20.6",
     "@vercel/analytics": "^1.5.0",
-    "framer-motion": "^12.7.3",
     "lucide-react": "^0.460.0",
     "mobile-detect": "^1.4.5",
     "next": "^16.2.4",
     "react": "^19.2.5",
-    "react-device-detect": "^2.2.3",
     "react-dom": "^19.2.5",
-    "schema-dts": "^1.1.2",
-    "styled-components": "6"
+    "schema-dts": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "^20",

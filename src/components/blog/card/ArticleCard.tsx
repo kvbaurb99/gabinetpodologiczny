@@ -42,12 +42,17 @@ export default function ArticleCard({
           priority={priority}
         />
 
-        <Link href={`/blog/${slug}`} className="block">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </Link>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        />
         {/* Category Tag */}
-        <Link href={`/kategorie/${category_slug}`}>
-          <span className="absolute top-4 left-4 bg-[#007BA7] text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">
+        <Link
+          prefetch={false}
+          href={`/kategorie/${category_slug}`}
+          className="absolute top-4 left-4 z-10"
+        >
+          <span className="bg-[#007BA7] text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">
             {category}
           </span>
         </Link>
@@ -57,7 +62,7 @@ export default function ArticleCard({
       <div className="p-6 relative">
         {/* Decorative Accent Line */}
         <div className="absolute top-0 left-6 w-16 h-1 bg-indigo-200 rounded-full" />
-        <Link href={`/blog/${slug}`} className="block">
+        <Link prefetch={false} href={`/blog/${slug}`} className="block">
           <h3 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#007BA7] transition-colors duration-300">
             {title}
           </h3>
@@ -66,7 +71,7 @@ export default function ArticleCard({
 
         {/* Read More with Icon */}
         <div className="flex items-center gap-2">
-          <Link href={`/blog/${slug}`} className="block">
+          <Link prefetch={false} href={`/blog/${slug}`} className="block">
             <span className="inline-block text-[#007BA7] font-medium text-sm group-hover:underline">
               Czytaj więcej →
             </span>
