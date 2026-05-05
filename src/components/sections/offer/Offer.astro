@@ -2,12 +2,6 @@
 import { Image } from "astro:assets";
 import { offer } from "./data/offer";
 import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_900px_cf1ef4ccad.webp";
-
-interface Props {
-  isMobile: boolean;
-}
-
-const { isMobile } = Astro.props;
 ---
 
 <section
@@ -30,9 +24,10 @@ const { isMobile } = Astro.props;
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
-                    width={isMobile ? 120 : 140}
+                    width={140}
                     height={160}
                     style={{ height: "auto" }}
+                    class="w-[120px] md:w-[140px] h-auto"
                   />
                   <h3 class="font-semibold text-lg leading-7">{item.title}</h3>
                   <span

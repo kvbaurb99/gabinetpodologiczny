@@ -12,21 +12,19 @@ type Slide = {
 };
 
 type HeaderProps = {
-  isMobile: boolean;
   slides: Slide[];
 };
 
 type SlideProps = {
   currentIndex: number;
   slide: Slide;
-  isMobile: boolean;
   isActive: boolean;
   isInitialRender: boolean;
 };
 
 const AUTOPLAY_DELAY = 5000;
 
-export default function Header({ isMobile, slides }: HeaderProps) {
+export default function Header({ slides }: HeaderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInitialRender, setIsInitialRender] = useState(true);
   const autoplayStoppedRef = useRef(false);
@@ -78,7 +76,6 @@ export default function Header({ isMobile, slides }: HeaderProps) {
               <HeaderSlide
                 currentIndex={index}
                 slide={slide}
-                isMobile={isMobile}
                 isActive={isActive}
                 isInitialRender={isInitialRender}
               />

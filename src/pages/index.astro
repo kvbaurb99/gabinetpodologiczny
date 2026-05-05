@@ -7,13 +7,10 @@ import Team from "@/components/sections/team/Team.astro";
 import Reviews from "@/components/sections/reviews/Reviews";
 import Location from "@/components/sections/location/Location.astro";
 import BlogSection from "@/components/sections/blog/BlogSection.astro";
-import { detectMobile } from "@/utils/mobileDetect";
 import { getArticles } from "@/server/getArticles";
 import { getImage } from "astro:assets";
 import { headerSlides } from "@/components/header/data/headerSlides";
 import { faqSchema } from "@/components/schema/global/faqSchema";
-
-const isMobile = detectMobile(Astro.request.headers.get("user-agent"));
 
 let articles = [] as Awaited<ReturnType<typeof getArticles>>;
 try {
@@ -43,6 +40,8 @@ const optimizedSlides = await Promise.all(
     };
   })
 );
+
+const lcpSlide = optimizedSlides[0];
 ---
 
 <MainLayout
@@ -55,7 +54,20 @@ const optimizedSlides = await Promise.all(
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
   />
-  <Header isMobile={isMobile} slides={optimizedSlides} client:load />
+  {
+    lcpSlide && (
+      <link
+        slot="head-extra"
+        rel="preload"
+        as="image"
+        href={lcpSlide.src}
+        imagesrcset={lcpSlide.srcSet}
+        imagesizes="100vw"
+        fetchpriority="high"
+      />
+    )
+  }
+  <Header slides={optimizedSlides} client:load />
   <AboutsUs
     main
     title="Gabinet Podologiczny Zdrowe Stopy - Twój Specjalista od Pielęgnacji Stóp"
@@ -66,7 +78,7 @@ const optimizedSlides = await Promise.all(
     title="Profesjonalne Zabiegi Podologiczne w Gabinecie Zdrowe Stopy"
     description="Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii. Specjalizujemy się w leczeniu wrastających paznokci, usuwaniu odcisków i modzeli oraz profesjonalnej pielęgnacji stóp diabetycznych. "
   />
-  <Offer isMobile={isMobile} />
+  <Offer />
   <Team />
   <Reviews client:visible />
   <Location api={mapsApiKey} />
