@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { ClientRouter } from "astro:transitions";
 import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/footer/Footer.astro";
+import SvgSprite from "@/components/icons/SvgSprite.astro";
 import OGImage from "@/assets/header/img_one.webp";
 
 interface Props {
@@ -95,6 +96,7 @@ const GTM_ID = "GTM-TKSW436G";
     <ClientRouter />
   </head>
   <body class="antialiased">
+    <SvgSprite />
     <noscript>
       <iframe
         src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

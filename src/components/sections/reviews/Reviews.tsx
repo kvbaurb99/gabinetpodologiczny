@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { Star } from "lucide-react";
 import { reviews } from "./data/reviews";
 import GoogleIcon from "@/assets/socials/google.svg";
 import FacebookIcon from "@/assets/socials/facebook-circle.svg";
@@ -117,14 +116,17 @@ const Reviews = () => {
                         </h3>
                         <div className="flex items-center gap-1">
                           {[...Array(5)].map((_, i) => (
-                            <Star
+                            <svg
                               key={i}
-                              size={16}
-                              fill={i < review.rating ? "#FCD34D" : "#E2E8F0"}
-                              stroke={
-                                i < review.rating ? "#FCD34D" : "#E2E8F0"
-                              }
-                            />
+                              width={16}
+                              height={16}
+                              style={{
+                                color:
+                                  i < review.rating ? "#FCD34D" : "#E2E8F0",
+                              }}
+                            >
+                              <use href="#i-star" />
+                            </svg>
                           ))}
                         </div>
                       </div>

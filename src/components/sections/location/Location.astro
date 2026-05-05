@@ -29,7 +29,7 @@ const center = { lat: 49.795859234092916, lng: 18.947077466267235 };
   <div class="flex flex-col md:flex-row md:items-stretch gap-8 w-full mb-8 md:mb-16">
     <div class="w-full h-[360px] rounded-[10px] overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.1)] md:flex-[2] md:h-auto md:flex">
       <div class="w-full h-full">
-        <Map api={api} center={center} client:visible />
+        <Map api={api} center={center} client:only="react" />
       </div>
     </div>
 

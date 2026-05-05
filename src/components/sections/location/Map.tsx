@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 type Libraries = (
@@ -26,23 +26,52 @@ const containerStyle = {
 const libraries: Libraries = ["places"];
 
 function MapComponent({ center, api }: MapComponentProps) {
-  const { isLoaded } = useJsApiLoader({
+  const apiKey = api?.trim() ?? "";
+  const hasKey = apiKey.length > 0;
+
+  useEffect(() => {
+    if (!hasKey && typeof window !== "undefined") {
+      console.warn(
+        "[Map] Brak Google Maps API key. Ustaw PUBLIC_GOOGLE_MAPS_API_KEY w .env (lokalnie) i Vercel → Project Settings → Environments."
+      );
+    }
+  }, [hasKey]);
+
+  const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: api,
+    googleMapsApiKey: apiKey,
     libraries,
   });
 
-  const [map, setMap] = useState<google.maps.Map | null>(null);
+  const [, setMap] = useState<google.maps.Map | null>(null);
 
-  const onLoad = useCallback(function callback(map: google.maps.Map) {
+  const onLoad = useCallback((map: google.maps.Map) => {
     setMap(map);
   }, []);
 
-  const onUnmount = useCallback(function callback(map: google.maps.Map) {
+  const onUnmount = useCallback(() => {
     setMap(null);
   }, []);
 
-  return isLoaded ? (
+  if (!hasKey) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-slate-100 text-slate-500 text-sm p-4 text-center">
+        Brak klucza Google Maps API. Dodaj <code>PUBLIC_GOOGLE_MAPS_API_KEY</code> w env.
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-red-50 text-red-700 text-sm p-4 text-center">
+        Nie udało się załadować Google Maps. Sprawdź ograniczenia klucza (HTTP referrers) w Google Cloud Console.
+      </div>
+    );
+  }
+
+  if (!isLoaded) return null;
+
+  return (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
@@ -52,8 +81,6 @@ function MapComponent({ center, api }: MapComponentProps) {
     >
       <Marker position={center} />
     </GoogleMap>
-  ) : (
-    <></>
   );
 }
 
