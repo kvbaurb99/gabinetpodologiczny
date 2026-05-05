@@ -4,6 +4,7 @@ import LogoImage from "@/assets/logo.svg";
 import { navbarLinks } from "./data/navbarLinks";
 import { Menu, XIcon } from "lucide-react";
 
+
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
