@@ -62,7 +62,7 @@ export default function Header({ isMobile, slides }: HeaderProps) {
 
   return (
     <header className="relative">
-      <div className="relative w-full h-[590px] xl:h-[600px] overflow-hidden">
+      <div className="relative w-full h-[460px] md:h-[590px] xl:h-[600px] overflow-hidden">
         {slides.map((slide, index) => {
           const isActive = activeIndex === index;
           return (
