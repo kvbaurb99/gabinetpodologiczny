@@ -1,4 +1,6 @@
 import type { APIRoute } from "astro";
+import { promises as fs } from "fs";
+import path from "path";
 import { getArticles } from "@/server/getArticles";
 import { getCategories } from "@/server/getCategories";
 
@@ -12,59 +14,53 @@ export const GET: APIRoute = async () => {
     ]);
   } catch {}
 
-  const date = new Date();
-  const offset = date.getTimezoneOffset() * 60000;
-  const localISOTime = new Date(date.getTime() - offset).toISOString();
+  // lastmod = mtime of underlying data file (sensowny sygnał dla crawlerów)
+  let articlesLastMod = new Date().toISOString();
+  let categoriesLastMod = articlesLastMod;
+  try {
+    const articlesStat = await fs.stat(
+      path.join(process.cwd(), "src/data/articles.json")
+    );
+    articlesLastMod = articlesStat.mtime.toISOString();
+  } catch {}
+  try {
+    const categoriesStat = await fs.stat(
+      path.join(process.cwd(), "src/data/categories.json")
+    );
+    categoriesLastMod = categoriesStat.mtime.toISOString();
+  } catch {}
 
-  const sitemapIndexCategories = categories
-    .map(
-      (category) => `
-  <url>
-    <loc>https://podologjaworze.pl/kategorie/${category.slug}</loc>
-    <lastmod>${localISOTime}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-`
-    )
-    .join("\n");
+  const escape = (s: string) =>
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-  const sitemapIndexArticles = articles
+  const urls = [
+    { loc: "https://podologjaworze.pl/", lastmod: articlesLastMod },
+    { loc: "https://podologjaworze.pl/blog", lastmod: articlesLastMod },
+    {
+      loc: "https://podologjaworze.pl/kategorie",
+      lastmod: categoriesLastMod,
+    },
+    ...articles.map((a) => ({
+      loc: `https://podologjaworze.pl/blog/${a.slug}`,
+      lastmod: articlesLastMod,
+    })),
+    ...categories.map((c) => ({
+      loc: `https://podologjaworze.pl/kategorie/${c.slug}`,
+      lastmod: categoriesLastMod,
+    })),
+  ];
+
+  const body = urls
     .map(
-      (article) => `
-    <url>
-      <loc>https://podologjaworze.pl/blog/${article.slug}</loc>
-      <lastmod>${localISOTime}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-  `
+      ({ loc, lastmod }) =>
+        `  <url>\n    <loc>${escape(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`
     )
     .join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <url>
-      <loc>https://podologjaworze.pl</loc>
-      <lastmod>${localISOTime}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-      <url>
-      <loc>https://podologjaworze.pl/blog</loc>
-      <lastmod>${localISOTime}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-          <url>
-      <loc>https://podologjaworze.pl/kategorie</loc>
-      <lastmod>${localISOTime}</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.8</priority>
-    </url>
-    ${sitemapIndexArticles}
-    ${sitemapIndexCategories}
-  </urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${body}
+</urlset>
 `;
 
   return new Response(xml, {

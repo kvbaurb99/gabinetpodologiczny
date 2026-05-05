@@ -21,7 +21,12 @@ const {
   organizationLogo,
 } = Astro.props;
 
-const articleUrl = `https://podologjaworze.pl/blog/${articleSlug}`;
+const SITE = "https://podologjaworze.pl";
+const articleUrl = `${SITE}/blog/${articleSlug}`;
+
+// Wymuś absolute URL dla obrazów (relative paths w Article schema = nieklikable rich result)
+const toAbsolute = (u: string) =>
+  u?.startsWith("http") ? u : `${SITE}${u?.startsWith("/") ? u : `/${u}`}`;
 
 const articleSchema: WithContext<SchemaArticle> = {
   "@context": "https://schema.org",
@@ -29,18 +34,18 @@ const articleSchema: WithContext<SchemaArticle> = {
   headline: title,
   description,
   url: articleUrl,
-  image: imageUrl,
+  image: toAbsolute(imageUrl),
   author: {
     "@type": "Person",
     name: authorName,
-    url: "https://podologjaworze.pl",
+    url: SITE,
   },
   publisher: {
     "@type": "Organization",
     name: organizationName,
     logo: {
       "@type": "ImageObject",
-      url: organizationLogo,
+      url: toAbsolute(organizationLogo),
     },
   },
   mainEntityOfPage: {
@@ -53,8 +58,8 @@ const breadcrumbSchema: WithContext<BreadcrumbList> = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://podologjaworze.pl" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://podologjaworze.pl/blog" },
+    { "@type": "ListItem", position: 1, name: "Strona główna", item: SITE },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
     { "@type": "ListItem", position: 3, name: title, item: articleUrl },
   ],
 };

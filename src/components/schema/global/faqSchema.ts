@@ -3,7 +3,7 @@
   export const faqSchema: WithContext<FAQPage> = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": "https://www.example-podiatry-clinic.com/#faq",
+    "@id": "https://podologjaworze.pl/#faq",
     mainEntity: [
       {
         "@type": "Question",

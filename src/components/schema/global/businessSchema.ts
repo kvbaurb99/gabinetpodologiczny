@@ -1,17 +1,20 @@
 import type { WithContext, MedicalBusiness, MedicalProcedure } from "schema-dts";
 import BackgroudImage from "@/assets/header/img_one.webp";
 
+const SITE = "https://podologjaworze.pl";
+
 export const businessSchema: WithContext<MedicalBusiness> = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
-  "@id": "https://www.example-podiatry-clinic.com/#business",
+  "@id": `${SITE}/#business`,
   name: "Gabinet Podologiczny Zdrowe Stopy",
   description:
     "Specjalistyczny gabinet podologiczny oferujący kompleksowe usługi z zakresu leczenia i pielęgnacji stóp.",
-  url: "https://podologjaworze.pl/",
+  url: `${SITE}/`,
   telephone: "+48 501 408 528",
-  image: BackgroudImage.src,
+  image: `${SITE}${BackgroudImage.src}`,
   priceRange: "$$",
+  hasMap: "https://maps.google.com/?cid=&q=ul.+Zdrojowa+78,+43-384+Jaworze",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -20,10 +23,15 @@ export const businessSchema: WithContext<MedicalBusiness> = {
         "https://schema.org/Tuesday",
         "https://schema.org/Wednesday",
         "https://schema.org/Thursday",
-        "https://schema.org/Friday",
       ],
-      opens: "10:00",
+      opens: "08:40",
       closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["https://schema.org/Friday"],
+      opens: "08:40",
+      closes: "15:00",
     },
     {
       "@type": "OpeningHoursSpecification",
@@ -40,13 +48,24 @@ export const businessSchema: WithContext<MedicalBusiness> = {
     postalCode: "43-384",
     addressCountry: "PL",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 49.795859234092916,
+    longitude: 18.947077466267235,
+  },
+  areaServed: [
+    { "@type": "City", name: "Jaworze" },
+    { "@type": "City", name: "Bielsko-Biała" },
+    { "@type": "City", name: "Cieszyn" },
+    { "@type": "City", name: "Skoczów" },
+  ],
 };
 
 // Default Medical Schema Data for Podiatry Procedures
 export const medicalSchema: WithContext<MedicalProcedure> = {
   "@context": "https://schema.org",
   "@type": "MedicalProcedure",
-  "@id": "https://www.example-podiatry-clinic.com/#medical",
+  "@id": `${SITE}/#service`,
   name: "Usługi Podologiczne",
   description:
     "Profesjonalne zabiegi podologiczne wykonywane przez certyfikowanych specjalistów.",

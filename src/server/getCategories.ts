@@ -1,9 +1,13 @@
 import type { Category } from "@/types/category";
+import { promises as fs } from "fs";
+import path from "path";
 
 export async function getCategories(): Promise<Category[]> {
-  const res = await fetch("https://podologjaworze.pl/api/categories");
-  if (!res.ok) {
-    throw new Error("Failed to fetch categories");
+  try {
+    const file = path.join(process.cwd(), "src/data/categories.json");
+    const json = await fs.readFile(file, "utf-8");
+    return JSON.parse(json) as Category[];
+  } catch {
+    return [];
   }
-  return (await res.json()) as Category[];
 }

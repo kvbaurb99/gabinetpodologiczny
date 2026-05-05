@@ -145,9 +145,8 @@ const Reviews = () => {
                               ? FacebookIcon.src
                               : GoogleIcon.src
                           }
-                          alt={
-                            review.type === "facebook" ? "Facebook" : "Google"
-                          }
+                          alt=""
+                          aria-hidden="true"
                           width={22}
                           height={22}
                           loading="lazy"
