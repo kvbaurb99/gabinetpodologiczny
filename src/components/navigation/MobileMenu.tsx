@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Phone,
-  Home,
-  Info,
-  Heart,
-  Users,
-  Star,
-  Book,
-  ScrollText,
-  Footprints,
-} from "lucide-react";
+import Icon from "@/components/icons/Icon";
 
 interface NavLink {
   title: string;
@@ -24,25 +14,24 @@ interface MobileMenuProps {
   currentPath: string;
 }
 
-const getIconForSlug = (slug: string) => {
-  switch (slug) {
-    case "":
-      return <Home size={18} />;
-    case "#about":
-      return <ScrollText size={18} />;
-    case "#offer":
-      return <Footprints size={18} />;
-    case "o-nas":
-      return <Info size={18} />;
-    case "#team":
-      return <Users size={18} />;
-    case "#reviews":
-      return <Star size={18} />;
-    case "blog":
-      return <Book size={18} />;
-    default:
-      return <Heart size={18} />;
-  }
+const SLUG_TO_ICON: Record<
+  string,
+  | "home"
+  | "scroll-text"
+  | "footprints"
+  | "info"
+  | "users"
+  | "star"
+  | "book"
+  | "heart"
+> = {
+  "": "home",
+  "#about": "scroll-text",
+  "#offer": "footprints",
+  "o-nas": "info",
+  "#team": "users",
+  "#reviews": "star",
+  blog: "book",
 };
 
 export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
@@ -66,6 +55,7 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
       <ul className="w-[90%] mx-auto flex flex-col gap-1 list-none p-0">
         {navbarLinks.map((link, index) => {
           const active = isActive(link.slug);
+          const iconName = SLUG_TO_ICON[link.slug] ?? "heart";
           return (
             <li
               key={index}
@@ -85,7 +75,7 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
                 }`}
               >
                 <span className="inline-flex items-center justify-center mr-3 text-[#007BA7]">
-                  {getIconForSlug(link.slug)}
+                  <Icon name={iconName} size={18} />
                 </span>
                 {link.title}
               </a>
@@ -105,7 +95,7 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
           href="tel:+48501408528"
           className="flex items-center justify-center w-full bg-[#007BA7] text-white border-0 rounded-md py-3.5 font-semibold mt-3 cursor-pointer transition-all duration-200 no-underline hover:bg-[#4f67bd] hover:scale-[1.02] active:scale-[0.98]"
         >
-          <Phone size={18} className="mr-2" />
+          <Icon name="phone" size={18} className="mr-2" />
           Umów wizytę
         </a>
       </div>

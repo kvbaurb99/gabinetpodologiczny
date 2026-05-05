@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { EnhancedMobileMenu } from "./MobileMenu";
 import LogoImage from "@/assets/logo.svg";
 import { navbarLinks } from "./data/navbarLinks";
-import { Menu, XIcon } from "lucide-react";
+import Icon from "@/components/icons/Icon";
 
 
 export default function Navigation() {
@@ -72,19 +72,23 @@ export default function Navigation() {
           })}
         </ul>
         {mobileMenuOpen ? (
-          <XIcon
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden cursor-pointer"
-            size={24}
-            color="#2c3e50"
-          />
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Zamknij menu"
+            className="xl:hidden cursor-pointer text-[#2c3e50] bg-transparent border-0 p-0"
+          >
+            <Icon name="x" size={24} />
+          </button>
         ) : (
-          <Menu
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden cursor-pointer"
-            size={24}
-            color="#2c3e50"
-          />
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Otwórz menu"
+            className="lg:hidden cursor-pointer text-[#2c3e50] bg-transparent border-0 p-0"
+          >
+            <Icon name="menu" size={24} />
+          </button>
         )}
         <div className="hidden xl:block" />
 

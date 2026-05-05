@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { headerSlides } from "./data/headerSlides";
-import { Phone, Calendar, ChevronRight } from "lucide-react";
+import Icon from "@/components/icons/Icon";
 
 type HeaderProps = {
   isMobile: boolean;
@@ -175,15 +175,19 @@ function HeaderSlide({
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="tel:+48501408528">
                 <button className="w-full lg:w-auto inline-flex items-center justify-center bg-[#007ba7] hover:bg-teal-600 text-white font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl group/btn">
-                  <Calendar className="mr-2 h-5 w-5" />
+                  <Icon name="calendar" size={20} className="mr-2" />
                   <span>Umów wizytę</span>
-                  <ChevronRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  <Icon
+                    name="chevron-right"
+                    size={16}
+                    className="ml-1 transition-transform duration-300 group-hover/btn:translate-x-1"
+                  />
                 </button>
               </a>
 
               <a href="tel:+48501408528">
                 <button className="w-full lg:w-auto inline-flex items-center gap-3 justify-center bg-white/10 backdrop-blur-sm text-white border border-white/30 font-medium px-6 py-3 rounded-md transition-all duration-300 hover:bg-white/20">
-                  <Phone className="h-5 w-5" />
+                  <Icon name="phone" size={20} />
                   <span>+48 501 408 528</span>
                 </button>
               </a>
