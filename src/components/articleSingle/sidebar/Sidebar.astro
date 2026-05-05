@@ -1,0 +1,40 @@
+---
+import type { Article } from "@/types/articles";
+
+interface Props {
+  restArticles: Article[];
+}
+
+const { restArticles } = Astro.props;
+---
+
+<aside class="col-span-12 xl:col-span-4 sticky top-32 h-fit">
+  <h2 class="font-semibold text-xl xl:text-2xl">
+    Przeczytaj pozostałe artykuły
+  </h2>
+  <div class="flex flex-col gap-4 mt-10">
+    {
+      restArticles.map((item) => (
+        <div class="flex gap-4 border-b border-gray-200 pb-4 flex-col xl:flex-row">
+          <a class="min-w-24 max-w-24 h-24" href={`/blog/${item.slug}`}>
+            <img
+              src={item.image}
+              width={100}
+              height={100}
+              fetchpriority="high"
+              decoding="async"
+              alt={item.title}
+              class="rounded-lg w-full h-full shadow-md object-cover shadow-black/20"
+            />
+          </a>
+          <div>
+            <a href={`/blog/${item.slug}`}>
+              <h3 class="font-semibold line-clamp-2">{item.title}</h3>
+            </a>
+            <p class="text-sm text-gray-500 line-clamp-3">{item.overview}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</aside>

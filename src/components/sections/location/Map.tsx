@@ -1,7 +1,14 @@
-"use client";
 import React, { useState, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import { Libraries } from "@react-google-maps/api/dist/utils/make-load-script-url";
+
+type Libraries = (
+  | "drawing"
+  | "geometry"
+  | "localContext"
+  | "marker"
+  | "places"
+  | "visualization"
+)[];
 
 interface MapComponentProps {
   api: string;

@@ -1,0 +1,36 @@
+---
+import ArticleCard from "@/components/blog/card/ArticleCard.astro";
+import type { Article } from "@/types/articles";
+
+interface Props {
+  articles: Article[];
+  lazy?: boolean;
+}
+
+const { articles, lazy = false } = Astro.props;
+---
+
+<section id="blog" class="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16">
+  <h2
+    class="relative inline-block mb-8 font-bold text-[#007BA7] text-[1.55rem] md:text-[2.125rem]"
+  >
+    Artykuły podologiczne
+  </h2>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    {
+      articles.map((article) => (
+        <ArticleCard
+          title={article.title}
+          slug={article.slug}
+          lazy={lazy}
+          category={article.category}
+          category_slug={article.category_slug}
+          alt={article.title}
+          img={article.image}
+          date={article.date}
+          description={article.overview}
+        />
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import { offer } from "./data/offer";
+import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_900px_cf1ef4ccad.webp";
+
+interface Props {
+  isMobile: boolean;
+}
+
+const { isMobile } = Astro.props;
+---
+
+<section
+  id="offer"
+  class="h-[800px] max-md:h-[2250px] w-full mt-8 relative bg-cover bg-center bg-no-repeat bg-fixed max-md:bg-repeat"
+  style={`background-image: url(${BackgroundImage.src});`}
+>
+  <div class="absolute inset-0 bg-[#007ba7]/60">
+    <div class="w-[90%] md:w-[80%] mx-auto py-12">
+      <h2 class="text-white text-2xl md:text-[2.125rem] font-bold mb-4">
+        Schorzenia stóp którymi się zajmujemy:
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
+        {
+          offer.map((item) => (
+            <div class="h-[300px] [perspective:1000px] group/card">
+              <div class="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover/card:[transform:rotateY(180deg)]">
+                <div class="absolute inset-0 flex flex-col items-center justify-center gap-8 py-8 bg-white rounded shadow-[0_8px_30px_rgba(0,0,0,0.12)] [backface-visibility:hidden]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    width={isMobile ? 120 : 140}
+                    height={160}
+                    style={{ height: "auto" }}
+                  />
+                  <h3 class="font-semibold text-lg leading-7">{item.title}</h3>
+                  <span
+                    style="color: #007BA7; font-weight: 500;"
+                    class="relative bottom-6"
+                  >
+                    Dowiedz się więcej
+                  </span>
+                </div>
+                <div class="absolute inset-0 flex flex-col items-center gap-4 py-8 bg-white rounded shadow-[0_8px_30px_rgba(0,0,0,0.12)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <h3 class="font-semibold text-lg leading-7">{item.title}</h3>
+                  <p class="px-6 text-center text-[#747474]">
+                    {item.overview}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

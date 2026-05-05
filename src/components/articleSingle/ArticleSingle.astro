@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  content: string;
+  category_slug: string;
+  category: string;
+}
+
+const { title, image, content, category, category_slug } = Astro.props;
+---
+
+<article class="col-span-12 xl:col-span-8">
+  <figure class="h-[220px] xl:h-[480px] relative">
+    <img
+      src={image}
+      alt={title}
+      fetchpriority="high"
+      decoding="async"
+      class="absolute inset-0 w-full h-full rounded-xl shadow-md shadow-black/10 object-cover"
+    />
+    <a href={`/kategorie/${category_slug}`}>
+      <span
+        class="absolute top-4 left-4 bg-[#007BA7] text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm"
+      >
+        {category}
+      </span>
+    </a>
+  </figure>
+  <h1 class="mt-4 xl:mt-6 text-2xl xl:text-4xl font-bold xl:leading-snug">
+    {title}
+  </h1>
+  <div data-article-content set:html={content} />
+</article>

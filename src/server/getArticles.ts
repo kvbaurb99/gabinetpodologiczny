@@ -1,11 +1,9 @@
-import { Article } from "@/types/articles";
-import { permanentRedirect } from "next/navigation";
+import type { Article } from "@/types/articles";
 
 export async function getArticles(): Promise<Article[]> {
   const res = await fetch("https://podologjaworze.pl/api/articles");
   if (!res.ok) {
-    permanentRedirect("/");
+    throw new Error("Failed to fetch articles");
   }
-  const articles = await res.json();
-  return articles;
+  return (await res.json()) as Article[];
 }

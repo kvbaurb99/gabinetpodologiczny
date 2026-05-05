@@ -1,18 +1,16 @@
-"use client";
-
 import { useState, useEffect, useRef } from "react";
 import { headerSlides } from "./data/headerSlides";
 import { Phone, Calendar, ChevronRight } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
 
 type HeaderProps = {
   isMobile: boolean;
 };
 
+type ImgLike = { src: string } | string;
+
 type SlideProps = {
   currentIndex: number;
-  img: string | StaticImageData;
+  img: ImgLike;
   alt: string;
   title?: string;
   description?: string;
@@ -22,6 +20,9 @@ type SlideProps = {
 };
 
 const AUTOPLAY_DELAY = 5000;
+
+const resolveSrc = (img: ImgLike): string =>
+  typeof img === "string" ? img : img.src;
 
 export default function Header({ isMobile }: HeaderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -127,19 +128,18 @@ function HeaderSlide({
   isActive,
   isInitialRender,
 }: SlideProps) {
+  const isFirst = currentIndex === 0;
   return (
     <>
-      <Image
-        priority={currentIndex === 0}
-        fetchPriority={currentIndex === 0 ? "high" : "low"}
-        src={img}
+      <img
+        src={resolveSrc(img)}
         alt={alt}
-        fill
-        sizes="100vw"
+        loading={isFirst ? "eager" : "lazy"}
+        fetchPriority={isFirst ? "high" : "low"}
+        decoding="async"
+        className="absolute inset-0 w-full h-full"
         style={{
           objectFit: "cover",
-          width: "100%",
-          height: "100%",
           transition: !isInitialRender ? "transform 7000ms" : "none",
           transform: !isInitialRender && isActive ? "scale(1.05)" : "scale(1)",
         }}
@@ -173,20 +173,20 @@ function HeaderSlide({
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="tel:+48501408528" passHref>
+              <a href="tel:+48501408528">
                 <button className="w-full lg:w-auto inline-flex items-center justify-center bg-[#007ba7] hover:bg-teal-600 text-white font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl group/btn">
                   <Calendar className="mr-2 h-5 w-5" />
                   <span>Umów wizytę</span>
                   <ChevronRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </button>
-              </Link>
+              </a>
 
-              <Link href="tel:+48501408528" passHref>
+              <a href="tel:+48501408528">
                 <button className="w-full lg:w-auto inline-flex items-center gap-3 justify-center bg-white/10 backdrop-blur-sm text-white border border-white/30 font-medium px-6 py-3 rounded-md transition-all duration-300 hover:bg-white/20">
                   <Phone className="h-5 w-5" />
                   <span>+48 501 408 528</span>
                 </button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,114 @@
+---
+import "@/styles/globals.css";
+import { ClientRouter } from "astro:transitions";
+import Navigation from "@/components/navigation/Navigation";
+import Footer from "@/components/footer/Footer.astro";
+import OGImage from "@/assets/header/img_one.webp";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogUrl?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+}
+
+const {
+  title = "Zdrowe Stopy Jaworze | Gabinet Podologiczny",
+  description = "Gabinet podologiczny Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę dziś!",
+  canonical = Astro.url.href,
+  ogTitle,
+  ogDescription,
+  ogUrl,
+  ogImage = OGImage.src,
+  ogType = "website",
+  noindex = false,
+} = Astro.props;
+
+const keywordsDefault =
+  "podolog Jaworze, Zdrowe stopy Jaworze, gabinet podologiczny Jaworze, podologia Jaworze, pielęgnacja stóp Jaworze, leczenie stóp, ulica Zdrojowa, wrastające paznokcie, odciski, modzele, grzybica paznokci, pedicure leczniczy, halluksy, płaskostopie, opieka podologiczna, stopy cukrzycowe, diagnostyka stóp, wkładki ortopedyczne, usuwanie odcisków, problemy stóp, profesjonalna podologia, podolog województwo śląskie, Zdrowe stopy, podolog Bielsko-Biała okolice";
+
+import { businessSchema, medicalSchema } from "@/components/schema/global/businessSchema";
+import { faqSchema } from "@/components/schema/global/faqSchema";
+
+const GTM_ID = "GTM-TKSW436G";
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywordsDefault} />
+    <meta name="publisher" content="https://podologjaworze.pl" />
+    <meta name="author" content="https://podologjaworze.pl" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={ogUrl ?? canonical} />
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Zdrowe Stopy Jaworze" />
+    <meta property="og:locale" content="pl_PL" />
+
+    <meta
+      name="google-site-verification"
+      content="fCwJ7xTv5BKEE8tlBRT2-9Mo2OaospF0DB3PV4THWE8"
+    />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(businessSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(medicalSchema)}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <!-- Google Tag Manager -->
+    <script is:inline define:vars={{ GTM_ID }}>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", GTM_ID);
+    </script>
+
+    <ClientRouter />
+  </head>
+  <body class="antialiased">
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <main>
+      <Navigation client:load />
+      <slot />
+      <Footer />
+    </main>
+    <script>
+      import("@vercel/analytics").then(({ inject }) => inject());
+    </script>
+  </body>
+</html>

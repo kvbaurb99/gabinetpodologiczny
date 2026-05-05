@@ -1,0 +1,70 @@
+---
+import Map from "./Map";
+
+interface Props {
+  api: string;
+}
+
+const { api } = Astro.props;
+
+const dayHours = [
+  { day: "Poniedziałek", hours: "8:40 - 17:00" },
+  { day: "Wtorek", hours: "8:40 - 17:00" },
+  { day: "Środa", hours: "8:40 - 17:00" },
+  { day: "Czwartek", hours: "8:40 - 17:00" },
+  { day: "Piątek", hours: "8:40 - 15:00" },
+  { day: "Sobota", hours: "Zamknięte" },
+  { day: "Niedziela", hours: "Zamknięte" },
+];
+
+const center = { lat: 49.795859234092916, lng: 18.947077466267235 };
+---
+
+<section class="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16">
+  <h2
+    class="relative inline-block mb-8 font-bold text-[#007BA7] text-[1.55rem] md:text-[2.125rem]"
+  >
+    Gdzie nas znaleźć?
+  </h2>
+  <div class="flex flex-col md:flex-row md:items-stretch gap-8 w-full mb-8 md:mb-16">
+    <div class="w-full h-[360px] rounded-[10px] overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.1)] md:flex-[2] md:h-auto md:flex">
+      <div class="w-full h-full">
+        <Map api={api} center={center} client:visible />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-6 p-6 bg-[#f9f9f9] rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.1)] md:flex-1">
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-3 mb-2 [&_svg]:text-[#007ba7]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3 class="text-[1.2rem] md:text-[1.4rem] font-semibold text-[#333]">Godziny otwarcia</h3>
+        </div>
+        <div class="flex flex-col gap-2">
+          {
+            dayHours.map(({ day, hours }) => (
+              <div class="flex justify-between pb-2 border-b border-[#eaeaea] last:border-b-0">
+                <span class="font-medium">{day}</span>
+                <span class="text-[#666]">{hours}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-3 mb-2 [&_svg]:text-[#007ba7]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <h3 class="text-[1.2rem] md:text-[1.4rem] font-semibold text-[#333]">Kontakt</h3>
+        </div>
+        <a href="tel:+48501408528" class="flex items-center gap-2 no-underline text-[#333] transition-colors duration-200 hover:text-[#007ba7]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +48 501 408 528
+        </a>
+        <a href="tel:+48509614723" class="flex items-center gap-2 no-underline text-[#333] transition-colors duration-200 hover:text-[#007ba7]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +48 509 614 723
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

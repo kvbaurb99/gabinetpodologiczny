@@ -1,0 +1,56 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ArticleSchema from "@/components/schema/article/ArticleSchema.astro";
+import ArticleSingle from "@/components/articleSingle/ArticleSingle.astro";
+import Sidebar from "@/components/articleSingle/sidebar/Sidebar.astro";
+import { getArticle } from "@/server/getArticle";
+import { getArticles } from "@/server/getArticles";
+import LogoImage from "@/assets/logo.svg";
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect("/blog");
+
+const article = await getArticle({ slug });
+if (!article) return Astro.redirect("/blog");
+
+let articles = [] as Awaited<ReturnType<typeof getArticles>>;
+try {
+  articles = await getArticles();
+} catch {
+  articles = [];
+}
+const restArticles = articles.filter((item) => item.slug !== slug);
+---
+
+<MainLayout
+  title={article.title}
+  description={article.overview}
+  canonical={`https://podologjaworze.pl/blog/${article.slug}`}
+  ogTitle={article.title}
+  ogDescription={article.overview}
+  ogUrl={`https://podologjaworze.pl/blog/${article.slug}`}
+  ogImage={article.image}
+  ogType="article"
+>
+  <ArticleSchema
+    title={article.title}
+    description={article.overview}
+    articleSlug={article.slug}
+    imageUrl={article.image}
+    authorName="Gabinet Podologiczny Jaworze"
+    organizationName="Gabinet Podologiczny Jaworze"
+    organizationLogo={LogoImage.src}
+  />
+  <div
+    class="mt-6 xl:mt-16 flex flex-col xl:grid xl:grid-cols-12 gap-12 w-[90%] xl:w-[80%] mx-auto"
+  >
+    <ArticleSingle
+      title={article.title}
+      category={article.category}
+      category_slug={article.category_slug}
+      image={article.image}
+      content={article.content}
+    />
+    <Sidebar restArticles={restArticles.slice(0, 4)} />
+  </div>
+</MainLayout>

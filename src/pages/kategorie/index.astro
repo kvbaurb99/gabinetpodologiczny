@@ -1,0 +1,42 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCategories } from "@/server/getCategories";
+
+let categories = [] as Awaited<ReturnType<typeof getCategories>>;
+try {
+  categories = await getCategories();
+} catch {
+  categories = [];
+}
+---
+
+<MainLayout
+  title="Kategorie artykułów podologicznych - Zdrowe Stopy Podolog Jaworze"
+  description=""
+  canonical="https://podologjaworze.pl/kategorie"
+  ogTitle="Kategorie artykułów podologicznych"
+  ogUrl="https://podologjaworze.pl/kategorie"
+>
+  <section
+    class="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16 min-h-screen"
+  >
+    <h1
+      class="relative inline-block mb-8 font-bold text-[#007BA7] text-[1.55rem] md:text-[2.125rem]"
+    >
+      Kategorie artykułów podologicznych
+    </h1>
+    <div class="flex flex-wrap items-center gap-2 xl:gap-4">
+      {
+        categories.map((category) => (
+          <a href={`/kategorie/${category.slug}`}>
+            <button
+              class="bg-blue-600/60 text-white font-semibold px-4 xl:px-6 py-2.5 xl:py-3 rounded-full shadow-md shadow-black/20 hover:scale-95 duration-150 text-sm xl:text-base"
+            >
+              {category.name}
+            </button>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

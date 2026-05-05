@@ -1,0 +1,46 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ArticleCard from "@/components/blog/card/ArticleCard.astro";
+import { getArticles } from "@/server/getArticles";
+import TestImage from "@/assets/header/img_one.webp";
+
+let articles = [] as Awaited<ReturnType<typeof getArticles>>;
+try {
+  articles = await getArticles();
+} catch {
+  articles = [];
+}
+---
+
+<MainLayout
+  title="Artykuły podologiczne - Zdrowe Stopy Podolog Jaworze"
+  description=""
+  canonical="https://podologjaworze.pl/blog"
+  ogTitle="Artykuły podologiczne - Zdrowe Stopy Podolog Jaworze"
+  ogUrl="https://podologjaworze.pl/blog"
+>
+  <section class="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16">
+    <h1
+      class="relative inline-block mb-8 font-bold text-[#007BA7] text-[1.55rem] md:text-[2.125rem]"
+    >
+      Artykuły podologiczne
+    </h1>
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-4">
+      {
+        articles.map((article) => (
+          <ArticleCard
+            title={article.title}
+            priority
+            category={article.category}
+            category_slug={article.category_slug}
+            description={article.overview}
+            date="12.12.2023"
+            alt="test"
+            img={article.image || TestImage}
+            slug={article.slug}
+          />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

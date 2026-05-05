@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  img: string | ImageMetadata;
+  alt: string;
+  category: string;
+  category_slug: string;
+  title: string;
+  description: string;
+  slug: string;
+  date: string;
+  priority?: boolean;
+  lazy?: boolean;
+}
+
+const {
+  img,
+  alt,
+  title,
+  lazy = false,
+  priority = false,
+  description,
+  category,
+  slug,
+  category_slug,
+} = Astro.props;
+---
+
+<div
+  class="group relative overflow-hidden rounded-xl bg-gray-50 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+>
+  <div class="relative h-48 w-full overflow-hidden">
+    {
+      typeof img === "string" ? (
+        <img
+          src={img}
+          alt={alt}
+          loading={lazy ? "lazy" : "eager"}
+          fetchpriority={priority ? "high" : "auto"}
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        <Image
+          src={img}
+          alt={alt}
+          loading={lazy ? "lazy" : "eager"}
+          widths={[400, 600, 900]}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      )
+    }
+
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
+    </div>
+    <a
+      href={`/kategorie/${category_slug}`}
+      class="absolute top-4 left-4 z-10"
+    >
+      <span
+        class="bg-[#007BA7] text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm"
+      >
+        {category}
+      </span>
+    </a>
+  </div>
+
+  <div class="p-6 relative">
+    <div class="absolute top-0 left-6 w-16 h-1 bg-indigo-200 rounded-full"></div>
+    <a href={`/blog/${slug}`} class="block">
+      <h3
+        class="text-xl font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#007BA7] transition-colors duration-300"
+      >
+        {title}
+      </h3>
+    </a>
+    <p class="text-gray-600 text-sm line-clamp-3 mb-4">{description}</p>
+
+    <div class="flex items-center gap-2">
+      <a href={`/blog/${slug}`} class="block">
+        <span
+          class="inline-block text-[#007BA7] font-medium text-sm group-hover:underline"
+        >
+          Czytaj więcej →
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="absolute top-0 right-0 w-20 h-20 bg-indigo-100 rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-transparent pointer-events-none"
+  >
+  </div>
+</div>

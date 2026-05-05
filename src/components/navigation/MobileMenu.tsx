@@ -1,6 +1,4 @@
-"use client";
 import React from "react";
-import Link from "next/link";
 import {
   Phone,
   Home,
@@ -76,8 +74,7 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
                 active ? "bg-[#007BA7]/10" : "bg-transparent"
               }`}
             >
-              <Link
-              prefetch={false}
+              <a
                 href={`/${link.slug}`}
                 className={`relative flex items-center px-4 py-3.5 text-[1.05rem] transition-all duration-300 no-underline ${
                   active
@@ -91,7 +88,7 @@ export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({
                   {getIconForSlug(link.slug)}
                 </span>
                 {link.title}
-              </Link>
+              </a>
             </li>
           );
         })}

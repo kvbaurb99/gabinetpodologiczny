@@ -1,11 +1,8 @@
-"use client";
-
 import { useState, useRef, useEffect } from "react";
 import { Star } from "lucide-react";
 import { reviews } from "./data/reviews";
 import GoogleIcon from "@/assets/socials/google.svg";
 import FacebookIcon from "@/assets/socials/facebook-circle.svg";
-import Image from "next/image";
 
 const DOT_GROUP_SIZE = 3;
 const AUTOPLAY_DELAY = 15000;
@@ -140,11 +137,11 @@ const Reviews = () => {
                         {review.date}
                       </div>
                       <div className="transition-transform duration-200 hover:scale-110">
-                        <Image
+                        <img
                           src={
                             review.type === "facebook"
-                              ? FacebookIcon
-                              : GoogleIcon
+                              ? FacebookIcon.src
+                              : GoogleIcon.src
                           }
                           alt={
                             review.type === "facebook" ? "Facebook" : "Google"
@@ -152,6 +149,7 @@ const Reviews = () => {
                           width={22}
                           height={22}
                           loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     </div>

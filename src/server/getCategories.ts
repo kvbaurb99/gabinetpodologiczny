@@ -1,12 +1,9 @@
-
-import { Category } from "@/types/category";
-import { permanentRedirect } from "next/navigation";
+import type { Category } from "@/types/category";
 
 export async function getCategories(): Promise<Category[]> {
   const res = await fetch("https://podologjaworze.pl/api/categories");
   if (!res.ok) {
-    permanentRedirect("/");
+    throw new Error("Failed to fetch categories");
   }
-  const categories = await res.json();
-  return categories;
+  return (await res.json()) as Category[];
 }

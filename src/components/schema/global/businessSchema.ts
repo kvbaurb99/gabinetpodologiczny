@@ -1,4 +1,4 @@
-import { WithContext, MedicalBusiness, MedicalProcedure } from "schema-dts";
+import type { WithContext, MedicalBusiness, MedicalProcedure } from "schema-dts";
 import BackgroudImage from "@/assets/header/img_one.webp";
 
 export const businessSchema: WithContext<MedicalBusiness> = {

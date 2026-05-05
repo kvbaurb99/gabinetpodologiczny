@@ -1,5 +1,5 @@
   // FAQ Schema
-  import { WithContext, FAQPage } from "schema-dts";
+  import type { WithContext, FAQPage } from "schema-dts";
   export const faqSchema: WithContext<FAQPage> = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

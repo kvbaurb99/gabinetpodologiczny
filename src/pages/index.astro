@@ -1,0 +1,46 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import Header from "@/components/header/Header";
+import AboutsUs from "@/components/sections/aboutUs/AboutsUs.astro";
+import Offer from "@/components/sections/offer/Offer.astro";
+import Team from "@/components/sections/team/Team.astro";
+import Reviews from "@/components/sections/reviews/Reviews";
+import Location from "@/components/sections/location/Location.astro";
+import BlogSection from "@/components/sections/blog/BlogSection.astro";
+import { detectMobile } from "@/utils/mobileDetect";
+import { getArticles } from "@/server/getArticles";
+
+const isMobile = detectMobile(Astro.request.headers.get("user-agent"));
+
+let articles = [] as Awaited<ReturnType<typeof getArticles>>;
+try {
+  articles = await getArticles();
+} catch {
+  articles = [];
+}
+
+const mapsApiKey = import.meta.env.GOOGLE_MAPS_API_KEY ?? "";
+---
+
+<MainLayout
+  title="Zdrowe Stopy Jaworze | Gabinet Podologiczny"
+  description="Gabinet podologiczny Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę dziś!"
+  canonical="https://podologjaworze.pl"
+>
+  <Header isMobile={isMobile} client:load />
+  <AboutsUs
+    main
+    title="Gabinet Podologiczny Zdrowe Stopy - Twój Specjalista od Pielęgnacji Stóp"
+    description="Witaj w gabinecie podologicznym Zdrowe Stopy w Jaworzu, Bielsko-Biała i okolice, gdzie profesjonalizm łączy się z indywidualnym podejściem do każdego pacjenta. Specjalizujemy się w kompleksowej diagnostyce i leczeniu wszelkich dolegliwości stóp. Oferujemy szeroki zakres zabiegów, od podstawowej pielęgnacji po specjalistyczne procedury medyczne. "
+  />
+  <AboutsUs
+    reverse
+    title="Profesjonalne Zabiegi Podologiczne w Gabinecie Zdrowe Stopy"
+    description="Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii. Specjalizujemy się w leczeniu wrastających paznokci, usuwaniu odcisków i modzeli oraz profesjonalnej pielęgnacji stóp diabetycznych. "
+  />
+  <Offer isMobile={isMobile} />
+  <Team />
+  <Reviews client:visible />
+  <Location api={mapsApiKey} />
+  <BlogSection lazy articles={articles.slice(0, 3)} />
+</MainLayout>
