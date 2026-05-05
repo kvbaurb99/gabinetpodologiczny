@@ -1,5 +1,5 @@
 import type { WithContext, MedicalBusiness, MedicalProcedure } from "schema-dts";
-import BackgroudImage from "@/assets/header/img_one.webp";
+import BackgroudImage from "@/assets/backgrounds/new_1.webp";
 
 const SITE = "https://podologjaworze.pl";
 
