@@ -24,6 +24,7 @@ const SLUG_TO_ICON: Record<
   | "star"
   | "book"
   | "heart"
+  | "phone"
 > = {
   "": "home",
   "#about": "scroll-text",
@@ -32,6 +33,7 @@ const SLUG_TO_ICON: Record<
   "#team": "users",
   "#reviews": "star",
   blog: "book",
+  kontakt: "phone",
 };
 
 export const EnhancedMobileMenu: React.FC<MobileMenuProps> = ({

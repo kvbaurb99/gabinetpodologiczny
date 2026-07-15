@@ -35,6 +35,7 @@ export const GET: APIRoute = async () => {
 
   const urls = [
     { loc: "https://podologjaworze.pl/", lastmod: articlesLastMod },
+    { loc: "https://podologjaworze.pl/kontakt", lastmod: articlesLastMod },
     { loc: "https://podologjaworze.pl/blog", lastmod: articlesLastMod },
     {
       loc: "https://podologjaworze.pl/kategorie",

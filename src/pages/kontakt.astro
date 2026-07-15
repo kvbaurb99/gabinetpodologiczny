@@ -1,0 +1,99 @@
+---
+import type { WithContext, ContactPage } from "schema-dts";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Location from "@/components/sections/location/Location.astro";
+
+const mapsApiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+
+const SITE = "https://podologjaworze.pl";
+
+const contactPageSchema: WithContext<ContactPage> = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${SITE}/kontakt#webpage`,
+  url: `${SITE}/kontakt`,
+  name: "Kontakt - Gabinet Podologiczny Zdrowe Stopy Jaworze",
+  about: { "@id": `${SITE}/#business` },
+};
+---
+
+<MainLayout
+  title="Kontakt | Zdrowe Stopy Jaworze - Gabinet Podologiczny"
+  description="Skontaktuj się z gabinetem podologicznym Zdrowe Stopy w Jaworzu. Telefon: +48 501 408 528, ul. Zdrojowa 78, 43-384 Jaworze. Sprawdź godziny otwarcia i dojazd."
+  canonical="https://podologjaworze.pl/kontakt"
+>
+  <script
+    slot="head-schema"
+    type="application/ld+json"
+    set:html={JSON.stringify(contactPageSchema)}
+  />
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16">
+    <h1
+      class="text-[#007BA7] text-[1.675rem] md:text-[2.5rem] font-bold mb-4 leading-[1.35]"
+    >
+      Kontakt - Gabinet Podologiczny Zdrowe Stopy
+    </h1>
+    <p class="text-[1.1rem] leading-[1.8] text-[#747474] max-w-3xl">
+      Masz pytania lub chcesz umówić wizytę? Zadzwoń do nas albo odwiedź gabinet
+      w Jaworzu koło Bielska-Białej. Odpowiemy na wszystkie pytania i dobierzemy
+      termin dopasowany do Twoich potrzeb.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <div
+        class="flex flex-col gap-2 p-6 bg-[#f9f9f9] rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+      >
+        <div class="flex items-center gap-3 [&_svg]:text-[#007ba7]">
+          <svg width="24" height="24"><use href="#i-phone" /></svg>
+          <h2 class="text-[1.2rem] font-semibold text-[#333]">Telefon</h2>
+        </div>
+        <a
+          href="tel:+48501408528"
+          class="no-underline text-[#333] transition-colors duration-200 hover:text-[#007ba7]"
+        >
+          +48 501 408 528
+        </a>
+        <a
+          href="tel:+48509614723"
+          class="no-underline text-[#333] transition-colors duration-200 hover:text-[#007ba7]"
+        >
+          +48 509 614 723
+        </a>
+      </div>
+
+      <div
+        class="flex flex-col gap-2 p-6 bg-[#f9f9f9] rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+      >
+        <div class="flex items-center gap-3 [&_svg]:text-[#007ba7]">
+          <svg width="24" height="24"><use href="#i-home" /></svg>
+          <h2 class="text-[1.2rem] font-semibold text-[#333]">Adres</h2>
+        </div>
+        <p class="m-0 text-[#333]">Gabinet Podologiczny Zdrowe Stopy</p>
+        <p class="m-0 text-[#666]">ul. Zdrojowa 78<br />43-384 Jaworze</p>
+      </div>
+
+      <div
+        class="flex flex-col gap-2 p-6 bg-[#f9f9f9] rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+      >
+        <div class="flex items-center gap-3 [&_svg]:text-[#007ba7]">
+          <svg width="24" height="24"><use href="#i-calendar" /></svg>
+          <h2 class="text-[1.2rem] font-semibold text-[#333]">Umów wizytę</h2>
+        </div>
+        <p class="m-0 text-[#666]">
+          Wizyty umawiamy wyłącznie telefonicznie — zadzwoń w godzinach otwarcia
+          gabinetu.
+        </p>
+        <a href="tel:+48501408528" class="mt-1">
+          <button
+            class="max-w-fit font-semibold transition-all duration-300 max-md:text-sm bg-[#007BA7] text-white px-6 py-3 rounded-md cursor-pointer hover:bg-[#3b7389] hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(79,103,189,0.3)]"
+          >
+            Zadzwoń teraz
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Location api={mapsApiKey} />
+</MainLayout>

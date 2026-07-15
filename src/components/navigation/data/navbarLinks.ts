@@ -23,4 +23,8 @@ export const navbarLinks = [
     title: "Blog",
     slug: "blog",
   },
+  {
+    title: "Kontakt",
+    slug: "kontakt",
+  },
 ];
