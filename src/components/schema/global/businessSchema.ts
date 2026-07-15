@@ -12,6 +12,26 @@ export const businessSchema: WithContext<MedicalBusiness> = {
     "Specjalistyczny gabinet podologiczny oferujący kompleksowe usługi z zakresu leczenia i pielęgnacji stóp.",
   url: `${SITE}/`,
   telephone: "+48 501 408 528",
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE}/favicon.png`,
+    width: { "@type": "QuantitativeValue", value: 478 },
+    height: { "@type": "QuantitativeValue", value: 479 },
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+48 501 408 528",
+      contactType: "customer service",
+      availableLanguage: "Polish",
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+48 509 614 723",
+      contactType: "customer service",
+      availableLanguage: "Polish",
+    },
+  ],
   image: `${SITE}${BackgroudImage.src}`,
   priceRange: "$$",
   hasMap: "https://maps.google.com/?cid=&q=ul.+Zdrojowa+78,+43-384+Jaworze",
