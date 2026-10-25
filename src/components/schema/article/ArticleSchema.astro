@@ -1,5 +1,6 @@
 ---
-import type { Article as SchemaArticle, BreadcrumbList, WithContext } from "schema-dts";
+import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts";
+import { toIsoDateTime } from "@/utils/isoDateTime";
 
 interface Props {
   title: string;
@@ -8,8 +9,9 @@ interface Props {
   imageUrl: string;
   datePublished: string;
   dateModified?: string;
+  category: string;
+  content: string;
   organizationName: string;
-  organizationLogo: string;
 }
 
 const {
@@ -19,8 +21,9 @@ const {
   imageUrl,
   datePublished,
   dateModified,
+  category,
+  content,
   organizationName,
-  organizationLogo,
 } = Astro.props;
 
 const SITE = "https://podologjaworze.pl";
@@ -30,29 +33,47 @@ const articleUrl = `${SITE}/blog/${articleSlug}`;
 const toAbsolute = (u: string) =>
   u?.startsWith("http") ? u : `${SITE}${u?.startsWith("/") ? u : `/${u}`}`;
 
-const articleSchema: WithContext<SchemaArticle> = {
+const wordCount = content
+  .replace(/<[^>]+>/g, " ")
+  .split(/\s+/)
+  .filter(Boolean).length;
+
+const organization = {
+  "@type": "Organization" as const,
+  "@id": `${SITE}/#business`,
+  name: organizationName,
+  url: SITE,
+  logo: {
+    "@type": "ImageObject" as const,
+    url: `${SITE}/favicon.png`,
+    width: { "@type": "QuantitativeValue" as const, value: 478 },
+    height: { "@type": "QuantitativeValue" as const, value: 479 },
+  },
+};
+
+const articleSchema: WithContext<BlogPosting> = {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
+  "@id": `${articleUrl}#article`,
   headline: title,
   description,
   url: articleUrl,
-  image: toAbsolute(imageUrl),
-  datePublished,
-  dateModified: dateModified ?? datePublished,
-  inLanguage: "pl-PL",
-  author: {
-    "@type": "Organization",
-    "@id": `${SITE}/#business`,
-    name: organizationName,
-    url: SITE,
+  image: {
+    "@type": "ImageObject",
+    url: toAbsolute(imageUrl),
   },
-  publisher: {
-    "@type": "Organization",
-    name: organizationName,
-    logo: {
-      "@type": "ImageObject",
-      url: toAbsolute(organizationLogo),
-    },
+  datePublished: toIsoDateTime(datePublished),
+  dateModified: toIsoDateTime(dateModified ?? datePublished),
+  inLanguage: "pl-PL",
+  articleSection: category,
+  wordCount,
+  author: organization,
+  publisher: organization,
+  isPartOf: {
+    "@type": "Blog",
+    "@id": `${SITE}/blog#blog`,
+    name: "Blog podologiczny – Zdrowe Stopy Jaworze",
+    url: `${SITE}/blog`,
   },
   mainEntityOfPage: {
     "@type": "WebPage",

@@ -5,6 +5,7 @@ import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/footer/Footer.astro";
 import SvgSprite from "@/components/icons/SvgSprite.astro";
 import OGImage from "@/assets/backgrounds/new_1.webp";
+import { toIsoDateTime } from "@/utils/isoDateTime";
 import { businessSchema } from "@/components/schema/global/businessSchema";
 
 interface Props {
@@ -15,7 +16,12 @@ interface Props {
   ogDescription?: string;
   ogUrl?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: "website" | "article";
+  // Tylko dla ogType="article" — daty YYYY-MM-DD
+  articlePublished?: string;
+  articleModified?: string;
+  articleSection?: string;
   noindex?: boolean;
 }
 
@@ -29,7 +35,11 @@ const {
   ogDescription,
   ogUrl,
   ogImage,
+  ogImageAlt,
   ogType = "website",
+  articlePublished,
+  articleModified,
+  articleSection,
   noindex = false,
 } = Astro.props;
 
@@ -54,7 +64,12 @@ const GTM_ID = "GTM-TKSW436G";
     <meta name="description" content={description} />
     <meta name="publisher" content={SITE} />
     <meta name="author" content={SITE} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta
+      name="robots"
+      content={noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
 
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -72,13 +87,32 @@ const GTM_ID = "GTM-TKSW436G";
     <meta property="og:title" content={ogTitle ?? title} />
     <meta property="og:description" content={ogDescription ?? description} />
     <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:alt" content={ogImageAlt ?? ogTitle ?? title} />
     <meta property="og:site_name" content="Zdrowe Stopy Jaworze" />
     <meta property="og:locale" content="pl_PL" />
+    {
+      ogType === "article" && articlePublished && (
+        <>
+          <meta
+            property="article:published_time"
+            content={toIsoDateTime(articlePublished)}
+          />
+          <meta
+            property="article:modified_time"
+            content={toIsoDateTime(articleModified ?? articlePublished)}
+          />
+          {articleSection && (
+            <meta property="article:section" content={articleSection} />
+          )}
+        </>
+      )
+    }
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={ogTitle ?? title} />
     <meta name="twitter:description" content={ogDescription ?? description} />
     <meta name="twitter:image" content={ogImageAbsolute} />
+    <meta name="twitter:image:alt" content={ogImageAlt ?? ogTitle ?? title} />
 
     <meta
       name="google-site-verification"

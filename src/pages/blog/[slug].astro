@@ -5,7 +5,6 @@ import ArticleSingle from "@/components/articleSingle/ArticleSingle.astro";
 import Sidebar from "@/components/articleSingle/sidebar/Sidebar.astro";
 import { getArticle } from "@/server/getArticle";
 import { getArticles, unlinkUnpublished } from "@/server/getArticles";
-import LogoImage from "@/assets/logo.svg";
 
 
 const { slug } = Astro.params;
@@ -31,7 +30,11 @@ const restArticles = articles.filter((item) => item.slug !== slug);
   ogDescription={article.overview}
   ogUrl={`https://podologjaworze.pl/blog/${article.slug}`}
   ogImage={article.image}
+  ogImageAlt={article.title}
   ogType="article"
+  articlePublished={article.date}
+  articleModified={article.updated}
+  articleSection={article.category}
 >
   <ArticleSchema
     title={article.title}
@@ -40,8 +43,9 @@ const restArticles = articles.filter((item) => item.slug !== slug);
     imageUrl={article.image}
     datePublished={article.date}
     dateModified={article.updated}
+    category={article.category}
+    content={article.content}
     organizationName="Gabinet Podologiczny Zdrowe Stopy"
-    organizationLogo={LogoImage.src}
   />
   <div
     class="mt-6 xl:mt-16 flex flex-col xl:grid xl:grid-cols-12 gap-12 w-[90%] xl:w-[80%] mx-auto"
