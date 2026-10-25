@@ -26,5 +26,13 @@
   {
     "name": "Choroby stóp",
     "slug": "choroby-stop"
+  },
+  {
+    "name": "Grzybica paznokci",
+    "slug": "grzybica-paznokci"
+  },
+  {
+    "name": "Porady podologa",
+    "slug": "porady-podologa"
   }
 ]

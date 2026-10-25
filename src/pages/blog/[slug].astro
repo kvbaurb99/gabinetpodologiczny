@@ -4,8 +4,9 @@ import ArticleSchema from "@/components/schema/article/ArticleSchema.astro";
 import ArticleSingle from "@/components/articleSingle/ArticleSingle.astro";
 import Sidebar from "@/components/articleSingle/sidebar/Sidebar.astro";
 import { getArticle } from "@/server/getArticle";
-import { getArticles } from "@/server/getArticles";
+import { getArticles, unlinkUnpublished } from "@/server/getArticles";
 import LogoImage from "@/assets/logo.svg";
+
 
 const { slug } = Astro.params;
 if (!slug) return Astro.redirect("/blog");
@@ -37,8 +38,9 @@ const restArticles = articles.filter((item) => item.slug !== slug);
     description={article.overview}
     articleSlug={article.slug}
     imageUrl={article.image}
-    authorName="Gabinet Podologiczny Jaworze"
-    organizationName="Gabinet Podologiczny Jaworze"
+    datePublished={article.date}
+    dateModified={article.updated}
+    organizationName="Gabinet Podologiczny Zdrowe Stopy"
     organizationLogo={LogoImage.src}
   />
   <div
@@ -49,7 +51,9 @@ const restArticles = articles.filter((item) => item.slug !== slug);
       category={article.category}
       category_slug={article.category_slug}
       image={article.image}
-      content={article.content}
+      content={unlinkUnpublished(article.content, articles)}
+      date={article.date}
+      updated={article.updated}
     />
     <Sidebar restArticles={restArticles.slice(0, 4)} />
   </div>

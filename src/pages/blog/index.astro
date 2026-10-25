@@ -13,10 +13,10 @@ try {
 ---
 
 <MainLayout
-  title="Artykuły podologiczne - Zdrowe Stopy Podolog Jaworze"
-  description="Blog gabinetu Zdrowe Stopy: praktyczna wiedza o leczeniu wrastających paznokci, modzeli, grzybicy oraz codziennej pielęgnacji stóp. Wskazówki od podologa z Jaworza."
+  title="Blog podologiczny – porady podologa z Jaworza | Zdrowe Stopy"
+  description="Blog gabinetu Zdrowe Stopy: praktyczna wiedza o leczeniu wrastających paznokci, grzybicy, odcisków i opiece nad stopą cukrzycową. Porady podologa z Jaworza koło Bielska-Białej."
   canonical="https://podologjaworze.pl/blog"
-  ogTitle="Artykuły podologiczne - Zdrowe Stopy Podolog Jaworze"
+  ogTitle="Blog podologiczny – porady podologa z Jaworza | Zdrowe Stopy"
   ogUrl="https://podologjaworze.pl/blog"
 >
   <section class="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16">
@@ -34,8 +34,8 @@ try {
             category={article.category}
             category_slug={article.category_slug}
             description={article.overview}
-            date="12.12.2023"
-            alt="test"
+            date={article.date}
+            alt={article.title}
             img={article.image || TestImage}
             slug={article.slug}
           />

@@ -8,4 +8,6 @@ export interface Article {
   overview: string;
   image: string;
   date: string;
+  // Data ostatniej merytorycznej aktualizacji (YYYY-MM-DD)
+  updated?: string;
 }
