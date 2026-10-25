@@ -1,8 +1,7 @@
 import type { APIRoute } from "astro";
-import { promises as fs } from "fs";
-import path from "path";
 import { getArticles } from "@/server/getArticles";
 import { getCategories } from "@/server/getCategories";
+import { services } from "@/data/services";
 
 export const GET: APIRoute = async () => {
   let articles: Awaited<ReturnType<typeof getArticles>> = [];
@@ -14,42 +13,43 @@ export const GET: APIRoute = async () => {
     ]);
   } catch {}
 
-  // lastmod = mtime of underlying data file (sensowny sygnał dla crawlerów)
-  let articlesLastMod = new Date().toISOString();
-  let categoriesLastMod = articlesLastMod;
-  try {
-    const articlesStat = await fs.stat(
-      path.join(process.cwd(), "src/data/articles.json")
-    );
-    articlesLastMod = articlesStat.mtime.toISOString();
-  } catch {}
-  try {
-    const categoriesStat = await fs.stat(
-      path.join(process.cwd(), "src/data/categories.json")
-    );
-    categoriesLastMod = categoriesStat.mtime.toISOString();
-  } catch {}
+  // lastmod: daty wpisane przy treści (mtime plików na Vercelu to czas builda, nie zmiany treści)
+  const PAGES_LASTMOD = "2026-10-25";
+  const articleDates = articles
+    .map((a) => a.updated ?? a.date)
+    .filter(Boolean)
+    .sort();
+  const blogLastMod = articleDates[articleDates.length - 1] ?? PAGES_LASTMOD;
+
+  const urls = [
+    { loc: "https://podologjaworze.pl/", lastmod: PAGES_LASTMOD },
+    { loc: "https://podologjaworze.pl/podolog-bielsko-biala", lastmod: PAGES_LASTMOD },
+    { loc: "https://podologjaworze.pl/o-nas", lastmod: PAGES_LASTMOD },
+    { loc: "https://podologjaworze.pl/kontakt", lastmod: PAGES_LASTMOD },
+    ...services.map((service) => ({
+      loc: `https://podologjaworze.pl/${service.slug}`,
+      lastmod: service.updated,
+    })),
+    { loc: "https://podologjaworze.pl/blog", lastmod: blogLastMod },
+    { loc: "https://podologjaworze.pl/kategorie", lastmod: blogLastMod },
+    ...articles.map((a) => ({
+      loc: `https://podologjaworze.pl/blog/${a.slug}`,
+      lastmod: a.updated ?? (a.date || blogLastMod),
+    })),
+    ...categories
+      .filter((c) => articles.some((a) => a.category_slug === c.slug))
+      .map((c) => ({
+        loc: `https://podologjaworze.pl/kategorie/${c.slug}`,
+        lastmod: blogLastMod,
+      })),
+    {
+      loc: "https://podologjaworze.pl/polityka-prywatnosci",
+      lastmod: "2025-11-27",
+    },
+  ];
 
   const escape = (s: string) =>
     s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-  const urls = [
-    { loc: "https://podologjaworze.pl/", lastmod: articlesLastMod },
-    { loc: "https://podologjaworze.pl/kontakt", lastmod: articlesLastMod },
-    { loc: "https://podologjaworze.pl/blog", lastmod: articlesLastMod },
-    {
-      loc: "https://podologjaworze.pl/kategorie",
-      lastmod: categoriesLastMod,
-    },
-    ...articles.map((a) => ({
-      loc: `https://podologjaworze.pl/blog/${a.slug}`,
-      lastmod: articlesLastMod,
-    })),
-    ...categories.map((c) => ({
-      loc: `https://podologjaworze.pl/kategorie/${c.slug}`,
-      lastmod: categoriesLastMod,
-    })),
-  ];
 
   const body = urls
     .map(

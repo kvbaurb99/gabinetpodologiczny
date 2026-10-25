@@ -1,0 +1,210 @@
+---
+import type { WithContext, WebPage } from "schema-dts";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs.astro";
+import Faq from "@/components/sections/faq/Faq.astro";
+import CallToAction from "@/components/cta/CallToAction.astro";
+import Reviews from "@/components/sections/reviews/Reviews";
+import Location from "@/components/sections/location/Location.astro";
+import { services } from "@/data/services";
+import { buildFaqSchema, type FaqItem } from "@/components/schema/global/faqSchema";
+
+const SITE = "https://podologjaworze.pl";
+const url = `${SITE}/podolog-bielsko-biala`;
+const mapsApiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+
+const nearbyDistricts = [
+  "Wapienica",
+  "Stare Bielsko",
+  "Aleksandrowice",
+  "Kamienica",
+];
+
+const nearbyTowns = [
+  "Jasienica",
+  "Mazańcowice",
+  "Rudzica",
+  "Świętoszówka",
+  "Grodziec",
+  "Bielowicko",
+  "Skoczów",
+];
+
+const faq: FaqItem[] = [
+  {
+    question: "Jak daleko jest gabinet od Bielska-Białej?",
+    answer:
+      "Gabinet mieści się w Jaworzu przy ul. Zdrojowej 78. Jaworze graniczy z bielską dzielnicą Wapienica – z centrum Bielska-Białej dojazd samochodem zajmuje zwykle kilkanaście minut.",
+  },
+  {
+    question: "Czy potrzebuję skierowania do podologa?",
+    answer:
+      "Nie. Wizyty u podologa nie wymagają skierowania. Wystarczy zadzwonić pod numer +48 501 408 528 lub +48 509 614 723 i ustalić termin.",
+  },
+  {
+    question: "W jakich godzinach przyjmujecie?",
+    answer:
+      "Od poniedziałku do czwartku w godzinach 8:40–17:00, w piątek 8:40–15:00. W soboty i niedziele gabinet jest zamknięty.",
+  },
+  {
+    question: "Z jakimi problemami mogę przyjechać?",
+    answer:
+      "Zajmujemy się m.in. wrastającymi paznokciami, grzybicą i innymi zmianami paznokci, odciskami i modzelami, brodawkami wirusowymi (kurzajkami), pękającymi piętami oraz opieką nad stopą cukrzycową. Wykonujemy też pedicure podologiczny.",
+  },
+];
+
+const pageSchema: WithContext<WebPage> = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${url}#webpage`,
+  url,
+  name: "Podolog Bielsko-Biała – gabinet Zdrowe Stopy w Jaworzu",
+  about: { "@id": `${SITE}/#business` },
+  inLanguage: "pl-PL",
+};
+---
+
+<MainLayout
+  title="Podolog Bielsko-Biała – gabinet Zdrowe Stopy tuż za miastem, w Jaworzu"
+  description="Szukasz podologa w Bielsku-Białej? Gabinet Zdrowe Stopy w Jaworzu to kilkanaście minut z centrum Bielska. Wrastające paznokcie, grzybica, odciski, kurzajki, stopa cukrzycowa."
+  canonical={url}
+>
+  <script
+    slot="head-schema"
+    type="application/ld+json"
+    set:html={JSON.stringify(pageSchema)}
+  />
+  <script
+    slot="head-schema"
+    type="application/ld+json"
+    set:html={JSON.stringify(buildFaqSchema(faq, `${url}#faq`))}
+  />
+
+  <Breadcrumbs items={[{ name: "Podolog Bielsko-Biała", path: "/podolog-bielsko-biala" }]} />
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-6 md:mt-10">
+    <h1
+      class="text-[#007BA7] text-[1.675rem] md:text-[2.5rem] font-bold mb-4 leading-[1.35] max-w-4xl"
+    >
+      Podolog dla pacjentów z Bielska-Białej – gabinet Zdrowe Stopy w Jaworzu
+    </h1>
+    <p class="text-[1.1rem] leading-[1.8] text-[#747474] max-w-3xl">
+      Nasz gabinet podologiczny mieści się w Jaworzu, tuż za zachodnią granicą
+      Bielska-Białej. Wielu naszych pacjentów to mieszkańcy Bielska – szczególnie
+      Wapienicy, Starego Bielska i Kamienicy, skąd do gabinetu jest bliżej niż do
+      centrum miasta. Przyjmujemy bez skierowania, wizytę umówisz jednym
+      telefonem.
+    </p>
+    <a href="tel:+48501408528" class="inline-block mt-6">
+      <button
+        class="max-w-fit font-semibold transition-all duration-300 max-md:text-sm bg-[#007BA7] text-white px-6 py-3 rounded-md cursor-pointer hover:bg-[#3b7389] hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(79,103,189,0.3)]"
+      >
+        Umów wizytę: +48 501 408 528
+      </button>
+    </a>
+  </section>
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div>
+      <h2 class="text-[#007BA7] text-[1.4rem] md:text-[1.75rem] font-bold mb-4 leading-[1.35]">
+        Dojazd z Bielska-Białej
+      </h2>
+      <p class="mb-4 text-[1.05rem] leading-[1.8] text-[#555]">
+        Jaworze sąsiaduje bezpośrednio z bielską dzielnicą Wapienica. Z centrum
+        Bielska-Białej dojedziesz do nas samochodem w kilkanaście minut – jadąc
+        w stronę Wapienicy, omijasz zatłoczone centrum miasta.
+      </p>
+      <p class="mb-4 text-[1.05rem] leading-[1.8] text-[#555]">
+        Adres gabinetu: <strong>ul. Zdrojowa 78, 43-384 Jaworze</strong>. Mapę z
+        dokładną lokalizacją znajdziesz na dole strony.
+      </p>
+      <p class="text-[1.05rem] leading-[1.8] text-[#555]">
+        Najbliżej mają do nas mieszkańcy dzielnic:
+      </p>
+      <ul class="flex flex-wrap gap-2 mt-3">
+        {
+          nearbyDistricts.map((district) => (
+            <li class="px-3 py-1 rounded-full bg-[#007BA7]/10 text-[#007BA7] text-sm font-medium">
+              {district}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-[#007BA7] text-[1.4rem] md:text-[1.75rem] font-bold mb-4 leading-[1.35]">
+        Pacjenci z okolic Bielska
+      </h2>
+      <p class="mb-4 text-[1.05rem] leading-[1.8] text-[#555]">
+        Poza Bielskiem-Białą i Jaworzem przyjmujemy pacjentów z całej okolicy –
+        gminy Jasienica, Skoczowa i okolicznych miejscowości. Wizyty pon.–czw. do 17:00 pozwalają przyjechać
+        także po pracy.
+      </p>
+      <ul class="flex flex-wrap gap-2 mt-3">
+        {
+          nearbyTowns.map((town) => (
+            <li class="px-3 py-1 rounded-full bg-[#f1f1f1] text-[#555] text-sm font-medium">
+              {town}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-12 md:mt-16">
+    <h2 class="text-[#007BA7] text-[1.4rem] md:text-[1.75rem] font-bold mb-2 leading-[1.35]">
+      W czym pomagamy
+    </h2>
+    <p class="mb-6 text-[1.05rem] leading-[1.8] text-[#555] max-w-3xl">
+      Zajmujemy się diagnostyką, leczeniem i profilaktyką najczęstszych
+      problemów stóp. Każdą wizytę zaczynamy od rozmowy i oceny stóp, a plan
+      leczenia dobieramy indywidualnie.
+    </p>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        services.map((service) => (
+          <li>
+            <a
+              href={`/${service.slug}`}
+              class="flex flex-col gap-2 h-full p-5 bg-[#f9f9f9] rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.06)] no-underline transition-all duration-300 hover:-translate-y-1"
+            >
+              <span class="font-semibold text-[#333]">{service.name}</span>
+              <span class="text-sm text-[#747474] leading-[1.6]">
+                {service.metaDescription.split(". ")[0]}.
+              </span>
+              <span class="mt-auto text-sm font-medium text-[#007BA7]">
+                Czytaj więcej →
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-12 md:mt-16 max-w-4xl md:ml-[10%]">
+    <h2 class="text-[#007BA7] text-[1.4rem] md:text-[1.75rem] font-bold mb-4 leading-[1.35]">
+      Kto Cię przyjmie
+    </h2>
+    <p class="text-[1.05rem] leading-[1.8] text-[#555]">
+      Gabinet prowadzi Jolanta Cięciara – dyplomowana podolożka z 8-letnim
+      doświadczeniem w leczeniu schorzeń stóp. Razem z nią pracuje Wiktoria
+      Cięciara, podolożka i kosmetolog. <a
+        href="/o-nas"
+        class="text-[#007BA7] underline">Poznaj nasz zespół</a
+      >.
+    </p>
+  </section>
+
+  <Reviews client:visible />
+
+  <Faq items={faq} title="Pytania pacjentów z Bielska-Białej" />
+
+  <CallToAction
+    title="Umów wizytę – kilkanaście minut z Bielska"
+    description="Zadzwoń, a dobierzemy termin dopasowany do Twoich potrzeb. Gabinet: ul. Zdrojowa 78, 43-384 Jaworze."
+  />
+
+  <Location api={mapsApiKey} />
+</MainLayout>

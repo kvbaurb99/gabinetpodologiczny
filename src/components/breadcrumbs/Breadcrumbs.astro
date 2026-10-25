@@ -1,0 +1,50 @@
+---
+import type { BreadcrumbList, WithContext } from "schema-dts";
+
+interface Props {
+  // Ostatni element = bieżąca strona (bez linku)
+  items: { name: string; path: string }[];
+}
+
+const SITE = "https://podologjaworze.pl";
+const { items } = Astro.props;
+const trail = [{ name: "Strona główna", path: "/" }, ...items];
+
+const breadcrumbSchema: WithContext<BreadcrumbList> = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: trail.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    item: `${SITE}${item.path}`,
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<nav
+  aria-label="Okruszki"
+  class="w-[90%] md:w-[80%] mx-auto mt-6 text-sm text-[#747474]"
+>
+  <ol class="flex flex-wrap items-center gap-2">
+    {
+      trail.map((item, index) => (
+        <li class="flex items-center gap-2">
+          {index < trail.length - 1 ? (
+            <>
+              <a href={item.path} class="hover:text-[#007BA7]">
+                {item.name}
+              </a>
+              <span aria-hidden="true">/</span>
+            </>
+          ) : (
+            <span aria-current="page" class="text-[#333]">
+              {item.name}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>

@@ -5,10 +5,7 @@ import Navigation from "@/components/navigation/Navigation";
 import Footer from "@/components/footer/Footer.astro";
 import SvgSprite from "@/components/icons/SvgSprite.astro";
 import OGImage from "@/assets/backgrounds/new_1.webp";
-import {
-  businessSchema,
-  medicalSchema,
-} from "@/components/schema/global/businessSchema";
+import { businessSchema } from "@/components/schema/global/businessSchema";
 
 interface Props {
   title?: string;
@@ -25,8 +22,8 @@ interface Props {
 const SITE = "https://podologjaworze.pl";
 
 const {
-  title = "Zdrowe Stopy Jaworze | Gabinet Podologiczny",
-  description = "Gabinet podologiczny Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę dziś!",
+  title = "Podolog Jaworze i Bielsko-Biała | Gabinet Podologiczny Zdrowe Stopy",
+  description = "Gabinet podologiczny Zdrowe Stopy w Jaworzu koło Bielska-Białej. Wrastające paznokcie, grzybica paznokci, odciski, kurzajki, pękające pięty i stopa cukrzycowa.",
   canonical = Astro.url.href,
   ogTitle,
   ogDescription,
@@ -91,10 +88,6 @@ const GTM_ID = "GTM-TKSW436G";
     <script
       type="application/ld+json"
       set:html={JSON.stringify(businessSchema)}
-    />
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(medicalSchema)}
     />
     <slot name="head-schema" />
     <slot name="head-extra" />

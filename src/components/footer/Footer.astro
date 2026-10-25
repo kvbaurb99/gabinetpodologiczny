@@ -1,12 +1,15 @@
 ---
 import LogoImage from "@/assets/logo.svg";
+import { services } from "@/data/services";
+import { FACEBOOK_URL } from "@/components/schema/global/businessSchema";
 
 const menuItems = [
-  { title: "Strona główna", href: "#" },
-  { title: "O nas", href: "#about" },
-  { title: "Oferta", href: "#offer" },
-  { title: "Zespół", href: "#team" },
-  { title: "Opinie", href: "#reviews" },
+  { title: "Strona główna", href: "/" },
+  { title: "O nas", href: "/o-nas" },
+  { title: "Oferta", href: "/#offer" },
+  { title: "Opinie", href: "/#reviews" },
+  { title: "Podolog Bielsko-Biała", href: "/podolog-bielsko-biala" },
+  { title: "Blog", href: "/blog" },
   { title: "Kontakt", href: "/kontakt" },
 ];
 ---
@@ -51,19 +54,55 @@ const menuItems = [
       </div>
 
       <div class="flex flex-col gap-4">
+        <p class="text-xl font-bold mb-1.5">Usługi</p>
+        <ul class="flex flex-col gap-2">
+          {
+            services.map((service) => (
+              <li>
+                <a
+                  href={`/${service.slug}`}
+                  class="text-gray-400 transition-colors duration-300 no-underline hover:text-white"
+                >
+                  {service.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
         <p class="text-xl font-bold mb-1.5">Kontakt</p>
-        <div class="flex flex-col gap-2 text-gray-400">
+        <address class="flex flex-col gap-2 text-gray-400 not-italic">
+          <p>Gabinet Podologiczny Zdrowe Stopy</p>
           <p>ul. Zdrojowa 78</p>
-          <p>43-384 Jaworze</p>
-          <p>Tel: +48 501 408 528</p>
-        </div>
+          <p>43-384 Jaworze (powiat bielski)</p>
+          <a href="tel:+48501408528" class="hover:text-white">
+            Tel: +48 501 408 528
+          </a>
+          <a href="tel:+48509614723" class="hover:text-white">
+            Tel: +48 509 614 723
+          </a>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white"
+          >
+            Facebook
+          </a>
+        </address>
       </div>
     </div>
 
     <div
       class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm"
     >
-      <p>&copy; {new Date().getFullYear()} Zdrowe Stopy. Wszelkie prawa zastrzeżone.</p>
+      <p>
+        &copy; {new Date().getFullYear()} Gabinet Podologiczny Zdrowe Stopy, Jaworze.
+        Wszelkie prawa zastrzeżone. ·
+        <a href="/polityka-prywatnosci" class="hover:text-white">Polityka prywatności</a>
+      </p>
     </div>
   </div>
 </footer>

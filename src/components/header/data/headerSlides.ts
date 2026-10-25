@@ -5,23 +5,23 @@ import ImageThree from "@/assets/backgrounds/new_3.webp";
 export const headerSlides = [
   {
     src: ImageOne,
-    alt: "Zadbaj o zdrowie swoich stóp",
-    title: "Zadbaj o zdrowie swoich stóp",
+    alt: "Podolog podczas badania stopy pacjenta",
+    title: "Podolog w Jaworzu, blisko Bielska-Białej",
     description:
-      "W gabinecie Zdrowe Stopy oferujemy profesjonalną diagnostykę i kompleksowe leczenie problemów stóp. Zaufaj specjalistom z wieloletnim doświadczeniem.",
+      "Gabinet podologiczny Zdrowe Stopy przy ul. Zdrojowej 78 w Jaworzu. Diagnozujemy i leczymy problemy stóp pacjentów z Jaworza, Bielska-Białej i okolic.",
   },
   {
     src: ImageTwo,
-    alt: "Nowoczesne metody leczenia",
-    title: "Nowoczesne metody leczenia",
+    alt: "Frezowanie paznokcia podczas zabiegu podologicznego",
+    title: "Wrastające paznokcie bez operacji",
     description:
-      "Wykorzystujemy najnowocześniejszy sprzęt i sprawdzone metody terapeutyczne. W gabinecie Zdrowe Stopy Twoje stopy są w najlepszych rękach.",
+      "Leczymy wrastające paznokcie metodami zachowawczymi i klamrami ortonyksyjnymi. Zajmujemy się też grzybicą paznokci, odciskami, modzelami i kurzajkami.",
   },
   {
     src: ImageThree,
-    alt: "Komfort i profesjonalizm",
-    title: "Komfort i profesjonalizm",
+    alt: "Podolożka w rękawiczkach ogląda podeszwę stopy",
+    title: "Bezpieczna opieka nad stopą cukrzycową",
     description:
-      "Zapewniamy przyjazną atmosferę i indywidualne podejście do każdego pacjenta. Skorzystaj z bezpłatnej konsultacji i przekonaj się, że Twoje stopy zasługują na najlepszą opiekę.",
+      "Regularna pielęgnacja podologiczna chroni stopy osób z cukrzycą przed powikłaniami. Zapewniamy przyjazną atmosferę i indywidualne podejście do każdego pacjenta.",
   },
 ];

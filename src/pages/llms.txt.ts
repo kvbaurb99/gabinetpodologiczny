@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { getArticles } from "@/server/getArticles";
 import { getCategories } from "@/server/getCategories";
+import { services } from "@/data/services";
 
 export const GET: APIRoute = async () => {
   const [articles, categories] = await Promise.all([
@@ -10,7 +11,7 @@ export const GET: APIRoute = async () => {
 
   const content = `# Gabinet Podologiczny Zdrowe Stopy
 
-> Specjalistyczny gabinet podologiczny w Jaworzu (województwo śląskie). Kompleksowa diagnostyka i leczenie schorzeń stóp — od pielęgnacji profilaktycznej po specjalistyczne procedury medyczne. Obsługujemy pacjentów z Jaworza, Bielska-Białej, Cieszyna i Skoczowa.
+> Specjalistyczny gabinet podologiczny w Jaworzu (województwo śląskie), tuż przy granicy z Bielskiem-Białą. Kompleksowa diagnostyka i leczenie schorzeń stóp — od pielęgnacji profilaktycznej po specjalistyczne procedury medyczne. Obsługujemy pacjentów z Jaworza, Bielska-Białej, Cieszyna i Skoczowa.
 
 ## Kontakt i lokalizacja
 
@@ -37,6 +38,15 @@ export const GET: APIRoute = async () => {
 - Paznokcie zmienione chorobowo — diagnostyka grzybicy, frezowanie płytki, indywidualny plan terapii.
 - Wrastające paznokcie — leczenie konserwatywne lub klamry ortonyksyjne; natychmiastowa ulga w bólu.
 
+## Strony usług
+
+${services
+  .map(
+    (s) =>
+      `- [${s.name}](https://podologjaworze.pl/${s.slug}): ${s.metaDescription}`
+  )
+  .join("\n")}
+
 ## Najczęstsze pytania (FAQ)
 
 - Czym zajmuje się podolog? — diagnostyka, leczenie i profilaktyka chorób stóp (wrastające paznokcie, odciski, modzele, grzybica, pękające pięty, deformacje).
@@ -49,6 +59,9 @@ export const GET: APIRoute = async () => {
 ## Główne strony
 
 - [Strona główna](https://podologjaworze.pl/): oferta, zespół, kontakt, lokalizacja na mapie.
+- [Podolog Bielsko-Biała](https://podologjaworze.pl/podolog-bielsko-biala): informacje i dojazd dla pacjentów z Bielska-Białej.
+- [O nas](https://podologjaworze.pl/o-nas): zespół gabinetu i sposób pracy.
+- [Kontakt](https://podologjaworze.pl/kontakt): telefon, adres, godziny otwarcia.
 - [Blog podologiczny](https://podologjaworze.pl/blog): artykuły o pielęgnacji i leczeniu stóp.
 - [Kategorie artykułów](https://podologjaworze.pl/kategorie): tematy uporządkowane wg problemów.
 ${
@@ -72,7 +85,7 @@ ${
   }
 ## Obszar działania
 
-Jaworze, Bielsko-Biała, Cieszyn, Skoczów oraz okolice (woj. śląskie).
+Jaworze, Bielsko-Biała, gmina Jasienica, Skoczów, Cieszyn oraz okolice (woj. śląskie).
 `;
 
   return new Response(content, {

@@ -101,6 +101,7 @@ const Reviews = () => {
               {[...reviews, ...reviews].map((review, idx) => (
                 <div
                   key={idx}
+                  aria-hidden={idx >= totalSlides || undefined}
                   className="flex-shrink-0 box-border px-[15px] basis-[calc(100%/var(--spv))]"
                 >
                   <div className="bg-white rounded-2xl shadow-md hover:shadow-xl p-7 h-[300px] md:h-[320px] flex flex-col transition-all duration-300 hover:-translate-y-1">
@@ -111,9 +112,9 @@ const Reviews = () => {
                         </span>
                       </div>
                       <div className="ml-4">
-                        <h3 className="text-lg font-semibold text-slate-900 mb-1">
+                        <p className="text-lg font-semibold text-slate-900 mb-1">
                           {review.name}
-                        </h3>
+                        </p>
                         <div className="flex items-center gap-1">
                           {[...Array(5)].map((_, i) => (
                             <svg

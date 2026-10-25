@@ -1,0 +1,154 @@
+---
+import type { WithContext, AboutPage } from "schema-dts";
+import { Image } from "astro:assets";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs.astro";
+import CallToAction from "@/components/cta/CallToAction.astro";
+import { teamMembers } from "@/components/sections/team/data/team";
+import { services } from "@/data/services";
+
+const SITE = "https://podologjaworze.pl";
+const url = `${SITE}/o-nas`;
+
+const aboutPageSchema: WithContext<AboutPage> = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${url}#webpage`,
+  url,
+  name: "O nas – Gabinet Podologiczny Zdrowe Stopy w Jaworzu",
+  about: { "@id": `${SITE}/#business` },
+  mainEntity: teamMembers.map((member) => ({
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    description: member.bio,
+    worksFor: { "@id": `${SITE}/#business` },
+  })),
+};
+
+const principles = [
+  {
+    title: "Diagnoza przed zabiegiem",
+    text: "Każdą wizytę zaczynamy od wywiadu i oceny stóp. Szukamy przyczyny problemu, a nie tylko usuwamy jego skutki.",
+  },
+  {
+    title: "Sterylność",
+    text: "Pracujemy na narzędziach poddawanych sterylizacji i jednorazowych materiałach – bezpieczeństwo pacjenta jest dla nas podstawą.",
+  },
+  {
+    title: "Indywidualny plan",
+    text: "Plan leczenia i częstotliwość wizyt dobieramy do konkretnej osoby – inaczej prowadzimy sportowca, a inaczej pacjenta z cukrzycą.",
+  },
+  {
+    title: "Edukacja",
+    text: "Pokazujemy, jak dbać o stopy między wizytami, żeby efekt utrzymywał się jak najdłużej, a problemy nie wracały.",
+  },
+];
+---
+
+<MainLayout
+  title="O nas – podolożki Jolanta i Wiktoria Cięciara | Zdrowe Stopy Jaworze"
+  description="Poznaj zespół gabinetu podologicznego Zdrowe Stopy w Jaworzu koło Bielska-Białej: dyplomowana podolożka Jolanta Cięciara i podolożka-kosmetolog Wiktoria Cięciara."
+  canonical={url}
+>
+  <script
+    slot="head-schema"
+    type="application/ld+json"
+    set:html={JSON.stringify(aboutPageSchema)}
+  />
+
+  <Breadcrumbs items={[{ name: "O nas", path: "/o-nas" }]} />
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-6 md:mt-10">
+    <h1
+      class="text-[#007BA7] text-[1.675rem] md:text-[2.5rem] font-bold mb-4 leading-[1.35]"
+    >
+      O nas – gabinet podologiczny Zdrowe Stopy w Jaworzu
+    </h1>
+    <p class="text-[1.1rem] leading-[1.8] text-[#747474] max-w-3xl">
+      Zdrowe Stopy to rodzinny gabinet podologiczny w Jaworzu, tuż obok
+      Bielska-Białej. Zajmujemy się diagnostyką, leczeniem i profilaktyką
+      schorzeń stóp – od wrastających paznokci i grzybicy, przez odciski i
+      kurzajki, po bezpieczną pielęgnację stóp osób z cukrzycą.
+    </p>
+  </section>
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-12 md:mt-16 flex flex-col gap-12">
+    <h2 class="text-[#007BA7] text-[1.4rem] md:text-[1.75rem] font-bold leading-[1.35]">
+      Nasz zespół
+    </h2>
+    {
+      teamMembers.map((member, index) => (
+        <div
+          class={`flex flex-col md:items-center gap-8 ${
+            index % 2 ? "md:flex-row-reverse" : "md:flex-row"
+          }`}
+        >
+          <div class="shrink-0 w-48 h-48 md:w-64 md:h-64 overflow-hidden rounded-full border-4 border-blue-200 shadow-md mx-auto md:mx-0">
+            <Image
+              src={member.imageSrc}
+              alt={`${member.name} – ${member.role}`}
+              widths={[256, 512]}
+              sizes="256px"
+              class="object-cover w-full h-full"
+              loading="lazy"
+            />
+          </div>
+          <div class="max-w-2xl">
+            <h3 class="text-xl md:text-2xl font-bold text-[#007BA7]">
+              {member.name}
+            </h3>
+            <p class="text-[#333] font-medium mb-3">{member.role}</p>
+            <p class="text-[1.05rem] leading-[1.8] text-[#555]">{member.bio}</p>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-12 md:mt-16">
+    <h2 class="text-[#007BA7] text-[1.4rem] md:text-[1.75rem] font-bold mb-6 leading-[1.35]">
+      Jak pracujemy
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        principles.map((principle) => (
+          <div class="p-6 bg-[#f9f9f9] rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+            <h3 class="text-[1.15rem] font-semibold text-[#333] mb-2">
+              {principle.title}
+            </h3>
+            <p class="text-[#747474] leading-[1.7]">{principle.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="w-[90%] md:w-[80%] mx-auto mt-12 md:mt-16">
+    <h2 class="text-[#007BA7] text-[1.4rem] md:text-[1.75rem] font-bold mb-6 leading-[1.35]">
+      W czym możemy pomóc
+    </h2>
+    <ul class="flex flex-wrap gap-3">
+      {
+        services.map((service) => (
+          <li>
+            <a
+              href={`/${service.slug}`}
+              class="inline-block px-4 py-2 rounded-full bg-[#007BA7]/10 text-[#007BA7] font-medium no-underline transition-colors duration-300 hover:bg-[#007BA7] hover:text-white"
+            >
+              {service.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-6 text-[#747474]">
+      Przyjeżdżasz z Bielska-Białej? <a
+        href="/podolog-bielsko-biala"
+        class="text-[#007BA7] underline">Zobacz, jak do nas dojechać</a
+      >.
+    </p>
+  </section>
+
+  <CallToAction />
+</MainLayout>

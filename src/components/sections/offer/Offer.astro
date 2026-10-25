@@ -17,7 +17,11 @@ import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
         {
           offer.map((item) => (
-            <div class="h-[300px] [perspective:1000px] group/card">
+            <a
+              href={`/${item.slug}`}
+              aria-label={`${item.title} – dowiedz się więcej`}
+              class="block h-[300px] [perspective:1000px] group/card no-underline"
+            >
               <div class="relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover/card:[transform:rotateY(180deg)]">
                 <div class="absolute inset-0 flex flex-col items-center justify-center gap-8 py-8 bg-white rounded shadow-[0_8px_30px_rgba(0,0,0,0.12)] [backface-visibility:hidden]">
                   <Image
@@ -38,13 +42,16 @@ import BackgroundImage from "@/assets/backgrounds/csm_2024_Podiatry_Header_1920_
                   </span>
                 </div>
                 <div class="absolute inset-0 flex flex-col items-center gap-4 py-8 bg-white rounded shadow-[0_8px_30px_rgba(0,0,0,0.12)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                  <h3 class="font-semibold text-lg leading-7">{item.title}</h3>
+                  <p class="font-semibold text-lg leading-7" aria-hidden="true">{item.title}</p>
                   <p class="px-6 text-center text-[#747474]">
                     {item.overview}
                   </p>
+                  <span class="mt-auto font-medium text-[#007BA7]">
+                    Czytaj więcej →
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           ))
         }
       </div>

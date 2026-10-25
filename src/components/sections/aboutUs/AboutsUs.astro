@@ -48,8 +48,9 @@ const { main = false, reverse = false, title, description } = Astro.props;
       <Image
         loading={!reverse ? "eager" : "lazy"}
         src={!reverse ? about_src : about_src_2}
-        alt="Gabinet zdrowe stopy"
-        title="Gabinet zdrowe stopy"
+        alt={!reverse
+          ? "Fotel podologiczny w gabinecie podologicznym"
+          : "Podolog opracowuje paznokieć stopy frezarką"}
         widths={[480, 768, 1200]}
         sizes="(max-width: 768px) 100vw, 50vw"
         class="w-full h-full object-cover rounded-xl transition-transform duration-500 hover:scale-105"

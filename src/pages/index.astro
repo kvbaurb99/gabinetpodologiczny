@@ -10,7 +10,8 @@ import BlogSection from "@/components/sections/blog/BlogSection.astro";
 import { getArticles } from "@/server/getArticles";
 import { getImage } from "astro:assets";
 import { headerSlides } from "@/components/header/data/headerSlides";
-import { faqSchema } from "@/components/schema/global/faqSchema";
+import Faq from "@/components/sections/faq/Faq.astro";
+import { faqSchema, homeFaq } from "@/components/schema/global/faqSchema";
 
 let articles = [] as Awaited<ReturnType<typeof getArticles>>;
 try {
@@ -45,8 +46,8 @@ const lcpSlide = optimizedSlides[0];
 ---
 
 <MainLayout
-  title="Zdrowe Stopy Jaworze | Gabinet Podologiczny"
-  description="Gabinet podologiczny Zdrowe Stopy w Jaworzu. Kompleksowa pielęgnacja stóp, leczenie grzybicy, wrastających paznokci i usuwanie odcisków. Umów wizytę dziś!"
+  title="Podolog Jaworze i Bielsko-Biała | Gabinet Podologiczny Zdrowe Stopy"
+  description="Gabinet podologiczny Zdrowe Stopy w Jaworzu, kilkanaście minut od Bielska-Białej. Leczenie wrastających paznokci, grzybicy, odcisków i kurzajek. Zadzwoń i umów wizytę."
   canonical="https://podologjaworze.pl"
 >
   <script
@@ -70,17 +71,18 @@ const lcpSlide = optimizedSlides[0];
   <Header slides={optimizedSlides} client:load />
   <AboutsUs
     main
-    title="Gabinet Podologiczny Zdrowe Stopy - Twój Specjalista od Pielęgnacji Stóp"
-    description="Witaj w gabinecie podologicznym Zdrowe Stopy w Jaworzu, Bielsko-Biała i okolice, gdzie profesjonalizm łączy się z indywidualnym podejściem do każdego pacjenta. Specjalizujemy się w kompleksowej diagnostyce i leczeniu wszelkich dolegliwości stóp. Oferujemy szeroki zakres zabiegów, od podstawowej pielęgnacji po specjalistyczne procedury medyczne. "
+    title="Gabinet podologiczny w Jaworzu – podolog dla Bielska-Białej i okolic"
+    description="Witaj w gabinecie podologicznym Zdrowe Stopy przy ul. Zdrojowej 78 w Jaworzu – tuż za granicą Bielska-Białej. Przyjmujemy pacjentów z Jaworza, Bielska-Białej, Jasienicy, Skoczowa i okolicznych miejscowości. Specjalizujemy się w diagnostyce i leczeniu dolegliwości stóp – od profilaktycznej pielęgnacji po leczenie wrastających paznokci, grzybicy i opiekę nad stopą cukrzycową."
   />
   <AboutsUs
     reverse
-    title="Profesjonalne Zabiegi Podologiczne w Gabinecie Zdrowe Stopy"
-    description="Poszukujesz skutecznego rozwiązania problemów z stopami? Gabinet podologiczny Zdrowe Stopy to miejsce, gdzie każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii. Specjalizujemy się w leczeniu wrastających paznokci, usuwaniu odcisków i modzeli oraz profesjonalnej pielęgnacji stóp diabetycznych. "
+    title="Zabiegi podologiczne – wrastające paznokcie, odciski, grzybica"
+    description="Poszukujesz skutecznego rozwiązania problemów ze stopami? W gabinecie Zdrowe Stopy każdy pacjent otrzymuje kompleksową opiekę i indywidualnie dobrany plan terapii. Leczymy wrastające paznokcie metodami zachowawczymi i klamrami ortonyksyjnymi, usuwamy odciski, modzele i kurzajki oraz prowadzimy bezpieczną pielęgnację stóp osób z cukrzycą."
   />
   <Offer />
   <Team />
   <Reviews client:visible />
+  <Faq items={homeFaq} />
   <Location api={mapsApiKey} />
   <BlogSection lazy articles={articles.slice(0, 3)} />
 </MainLayout>

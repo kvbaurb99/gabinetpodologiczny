@@ -1,0 +1,33 @@
+---
+import type { FaqItem } from "@/components/schema/global/faqSchema";
+
+interface Props {
+  items: FaqItem[];
+  title?: string;
+}
+
+const { items, title = "Najczęściej zadawane pytania" } = Astro.props;
+---
+
+<section id="faq" class="w-[90%] md:w-[80%] mx-auto mt-10 md:mt-16">
+  <h2
+    class="mb-8 font-bold text-[#007BA7] text-[1.55rem] md:text-[2.125rem]"
+  >
+    {title}
+  </h2>
+  <div class="flex flex-col gap-3">
+    {
+      items.map((item) => (
+        <details class="group bg-[#f9f9f9] rounded-[10px] shadow-[0_4px_12px_rgba(0,0,0,0.06)] open:shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
+          <summary class="flex justify-between items-center gap-4 cursor-pointer list-none p-5 font-semibold text-[#333] text-[1.05rem] [&::-webkit-details-marker]:hidden">
+            <h3>{item.question}</h3>
+            <span class="text-[#007BA7] text-2xl leading-none transition-transform duration-300 group-open:rotate-45">
+              +
+            </span>
+          </summary>
+          <p class="px-5 pb-5 text-[#747474] leading-[1.8]">{item.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>

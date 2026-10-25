@@ -1,15 +1,32 @@
-import type { WithContext, MedicalBusiness, MedicalProcedure } from "schema-dts";
+import type { WithContext, MedicalBusiness, Place } from "schema-dts";
 import BackgroudImage from "@/assets/backgrounds/new_1.webp";
+import { services } from "@/data/services";
 
 const SITE = "https://podologjaworze.pl";
+
+export const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=100081916855170";
+
+// Profile zewnętrzne (wizytówka Google, Booksy, ZnanyLekarz) — dopisywać pełne URL-e
+const SAME_AS: string[] = [FACEBOOK_URL];
+
+export const areaServed: Place[] = [
+  { "@type": "City", name: "Jaworze" },
+  { "@type": "City", name: "Bielsko-Biała" },
+  { "@type": "City", name: "Jasienica" },
+  { "@type": "City", name: "Skoczów" },
+  { "@type": "City", name: "Cieszyn" },
+  { "@type": "City", name: "Czechowice-Dziedzice" },
+];
 
 export const businessSchema: WithContext<MedicalBusiness> = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
   "@id": `${SITE}/#business`,
   name: "Gabinet Podologiczny Zdrowe Stopy",
+  alternateName: "Zdrowe Stopy Jaworze",
   description:
-    "Specjalistyczny gabinet podologiczny oferujący kompleksowe usługi z zakresu leczenia i pielęgnacji stóp.",
+    "Gabinet podologiczny w Jaworzu koło Bielska-Białej. Leczenie wrastających paznokci, grzybicy paznokci, odcisków, modzeli, brodawek wirusowych, pękających pięt oraz opieka nad stopą cukrzycową.",
+  medicalSpecialty: "https://schema.org/Podiatric",
   url: `${SITE}/`,
   telephone: "+48 501 408 528",
   logo: {
@@ -34,7 +51,9 @@ export const businessSchema: WithContext<MedicalBusiness> = {
   ],
   image: `${SITE}${BackgroudImage.src}`,
   priceRange: "$$",
-  hasMap: "https://maps.google.com/?cid=&q=ul.+Zdrojowa+78,+43-384+Jaworze",
+  hasMap:
+    "https://www.google.com/maps/search/?api=1&query=Gabinet+Podologiczny+Zdrowe+Stopy+Zdrojowa+78+Jaworze",
+  ...(SAME_AS.length > 0 && { sameAs: SAME_AS }),
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -65,6 +84,7 @@ export const businessSchema: WithContext<MedicalBusiness> = {
     "@type": "PostalAddress",
     streetAddress: "ul. Zdrojowa 78",
     addressLocality: "Jaworze",
+    addressRegion: "śląskie",
     postalCode: "43-384",
     addressCountry: "PL",
   },
@@ -73,33 +93,32 @@ export const businessSchema: WithContext<MedicalBusiness> = {
     latitude: 49.795859234092916,
     longitude: 18.947077466267235,
   },
-  areaServed: [
-    { "@type": "City", name: "Jaworze" },
-    { "@type": "City", name: "Bielsko-Biała" },
-    { "@type": "City", name: "Cieszyn" },
-    { "@type": "City", name: "Skoczów" },
+  areaServed,
+  employee: [
+    {
+      "@type": "Person",
+      name: "Jolanta Cięciara",
+      jobTitle: "Dyplomowana podolożka",
+      url: `${SITE}/o-nas`,
+    },
+    {
+      "@type": "Person",
+      name: "Wiktoria Cięciara",
+      jobTitle: "Podolożka, kosmetolog",
+      url: `${SITE}/o-nas`,
+    },
   ],
-};
-
-// Default Medical Schema Data for Podiatry Procedures
-export const medicalSchema: WithContext<MedicalProcedure> = {
-  "@context": "https://schema.org",
-  "@type": "MedicalProcedure",
-  "@id": `${SITE}/#service`,
-  name: "Usługi Podologiczne",
-  description:
-    "Profesjonalne zabiegi podologiczne wykonywane przez certyfikowanych specjalistów.",
-  relevantSpecialty: {
-    "@type": "MedicalSpecialty",
-    name: "Podiatry",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Zabiegi podologiczne",
+    itemListElement: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        "@id": `${SITE}/${service.slug}#service`,
+        name: service.name,
+        url: `${SITE}/${service.slug}`,
+      },
+    })),
   },
-  preparation: [
-    "Konsultacja wstępna",
-    "Ocena stanu zdrowia stóp",
-    "Omówienie planu leczenia",
-  ],
-  status: "http://schema.org/ActiveActionStatus",
-  howPerformed:
-    "Zabiegi wykonywane są przy użyciu profesjonalnego sprzętu medycznego w sterylnych warunkach.",
-  bodyLocation: "Stopy i paznokcie",
 };

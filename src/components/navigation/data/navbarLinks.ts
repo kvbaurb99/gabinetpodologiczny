@@ -5,7 +5,7 @@ export const navbarLinks = [
   },
   {
     title: "O nas",
-    slug: "#about",
+    slug: "o-nas",
   },
   {
     title: "Oferta",
