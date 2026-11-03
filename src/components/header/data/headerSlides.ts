@@ -6,7 +6,7 @@ export const headerSlides = [
   {
     src: ImageOne,
     alt: "Podolog podczas badania stopy pacjenta",
-    title: "Podolog w Jaworzu, blisko Bielska-Białej",
+    title: "Gabinet podologiczny Zdrowe Stopy w Jaworzu",
     description:
       "Gabinet podologiczny Zdrowe Stopy przy ul. Zdrojowej 78 w Jaworzu. Diagnozujemy i leczymy problemy stóp pacjentów z Jaworza, Bielska-Białej i okolic.",
   },
