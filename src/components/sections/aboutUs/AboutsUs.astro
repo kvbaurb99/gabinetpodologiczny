@@ -46,12 +46,13 @@ const { main = false, reverse = false, title, description } = Astro.props;
       class="w-1/2 h-[400px] max-md:w-full max-md:h-[240px] overflow-hidden rounded-xl shadow-[0_8px_24px_rgba(79,103,189,0.15)] relative m-0"
     >
       <Image
-        loading={!reverse ? "eager" : "lazy"}
+        loading="lazy"
         src={!reverse ? about_src : about_src_2}
         alt={!reverse
           ? "Fotel podologiczny w gabinecie podologicznym"
           : "Podolog opracowuje paznokieć stopy frezarką"}
         widths={[480, 768, 1200]}
+        quality={70}
         sizes="(max-width: 768px) 100vw, 50vw"
         class="w-full h-full object-cover rounded-xl transition-transform duration-500 hover:scale-105"
       />

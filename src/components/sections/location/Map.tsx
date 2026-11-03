@@ -23,7 +23,7 @@ const containerStyle = {
   height: "100%",
 };
 
-const libraries: Libraries = ["places"];
+const libraries: Libraries = [];
 
 function MapComponent({ center, api }: MapComponentProps) {
   const apiKey = api?.trim() ?? "";

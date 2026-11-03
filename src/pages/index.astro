@@ -29,6 +29,7 @@ const optimizedSlides = await Promise.all(
       src: slide.src,
       widths: HEADER_WIDTHS,
       format: "webp",
+      quality: 70,
     });
     return {
       src: img.src,
